@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_gradient_bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/dark_666" />
+
+    <com.yinglan.alphatabs.AlphaTabsIndicator
+        android:id="@+id/alphaIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/bg_navigation_gray"
+        android:orientation="horizontal">
+
+        <com.yinglan.alphatabs.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/dp5"
+            app:tabIconNormal="@mipmap/equipment_"
+            app:tabIconSelected="@mipmap/equipment"
+            app:tabText="@string/device"
+            app:tabTextSize="@dimen/sp14"
+            app:textColorNormal="@color/text_black"
+            app:textColorSelected="@color/title_backBlue" />
+
+        <com.yinglan.alphatabs.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/dp5"
+            app:tabIconNormal="@mipmap/eyes"
+            app:tabIconSelected="@mipmap/eyes_pressed"
+            app:tabText="@string/discovery"
+            app:tabTextSize="@dimen/sp14"
+            app:textColorNormal="@color/text_black"
+            app:textColorSelected="@color/title_backBlue" />
+
+        <com.yinglan.alphatabs.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/dp5"
+            app:tabIconNormal="@mipmap/news_"
+            app:tabIconSelected="@mipmap/news"
+            app:tabText="@string/alarm"
+            app:tabTextSize="@dimen/sp14"
+            app:textColorNormal="@color/text_black"
+            app:textColorSelected="@color/title_backBlue"
+
+            />
+
+        <com.yinglan.alphatabs.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/dp5"
+            app:tabIconNormal="@mipmap/home_"
+            app:tabIconSelected="@mipmap/home"
+            app:tabText="@string/me"
+            app:tabTextSize="@dimen/sp14"
+            app:textColorNormal="@color/text_black"
+            app:textColorSelected="@color/title_backBlue" />
+    </com.yinglan.alphatabs.AlphaTabsIndicator>
+</LinearLayout>

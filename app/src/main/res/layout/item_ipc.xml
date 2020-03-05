@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mcxtzhang.swipemenulib.SwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/menu_layout"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_margin="3dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <org.khj.khjbasiscamerasdk.view.OvalImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="match_parent"
+            android:layout_height="195dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/device_bg_orange"
+            app:ovalradius="10dp" />
+
+        <ImageView
+            android:id="@+id/iv_icon_play"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="67.5dp"
+            android:src="@drawable/header_icon_play_ap" />
+
+        <TextView
+            android:id="@+id/tv_online"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_pic"
+            android:layout_marginStart="@dimen/padding_start_small"
+            android:layout_marginLeft="@dimen/padding_start_small"
+            android:layout_marginBottom="@dimen/padding_start_small"
+            android:background="@drawable/shape_black_corner"
+            android:gravity="center"
+            android:minWidth="40dp"
+            android:padding="2dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize_very_small" />
+
+        <CheckBox
+            android:id="@+id/cbx_turnOnCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/padding_start_small"
+            android:layout_marginEnd="@dimen/padding_start_small"
+            android:layout_marginRight="@dimen/padding_start_small"
+            android:button="@drawable/selector_cbx_orange" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/padding_start_small"
+            android:layout_marginEnd="@dimen/padding_start_small"
+            android:layout_marginRight="@dimen/padding_start_small"
+            android:src="@drawable/lzfx"
+            android:visibility="gone" />
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="92.5dp"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:background="@mipmap/lefr_double_arrow" />
+
+    </RelativeLayout>
+    <!-- 以下都是侧滑菜单的内容依序排列 -->
+
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:background="@color/red"
+            android:gravity="center"
+            android:text="@string/delete"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textsize_middle" />
+
+    </LinearLayout>
+
+</com.mcxtzhang.swipemenulib.SwipeMenuLayout>

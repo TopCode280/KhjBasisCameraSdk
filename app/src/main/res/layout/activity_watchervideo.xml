@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rv_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/topbar" />
+
+    <RelativeLayout
+        android:id="@+id/rv_video"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="@dimen/topBar_height"
+        android:background="@color/black">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/video_loading"
+            style="@style/AVLoadingIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:indicatorColor="@color/white"
+            app:indicatorName="BallSpinFadeLoaderIndicator" />
+
+        <TextureView
+            android:id="@+id/textureView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_handler"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_item_height_small"
+        android:layout_below="@+id/rv_video"
+        android:background="@color/translucent"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/sp_dpi"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_next"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:spinnerMode="dialog">
+        </Spinner>
+
+        <TextView
+            android:id="@+id/tv_recordVideo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_next"
+            android:gravity="center"
+            android:text="@string/startRecordingVideo"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/cbx_changelight"
+        android:layout_width="98dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/ll_handler"
+        android:text="@string/whiteLight"
+        android:textColor="@color/black"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:layout_below="@+id/rv_video"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp">
+
+        <Button
+            android:id="@+id/btn_direction_up"
+            android:layout_width="@dimen/btn_direction"
+            android:layout_height="@dimen/btn_direction"
+            android:layout_centerHorizontal="true"
+            android:text="@string/up" />
+
+        <Button
+            android:id="@+id/btn_direction_left"
+            android:layout_width="@dimen/btn_direction"
+            android:layout_height="@dimen/btn_direction"
+            android:layout_below="@+id/btn_direction_up"
+            android:text="@string/left" />
+
+        <Button
+            android:id="@+id/btn_direction_right"
+            android:layout_width="@dimen/btn_direction"
+            android:layout_height="@dimen/btn_direction"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/btn_direction_up"
+            android:text="@string/right" />
+
+        <Button
+            android:id="@+id/btn_direction_down"
+            android:layout_width="@dimen/btn_direction"
+            android:layout_height="@dimen/btn_direction"
+            android:layout_below="@+id/btn_direction_left"
+            android:layout_centerHorizontal="true"
+            android:text="@string/under" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_screenshot"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/screenshot" />
+
+        <Button
+            android:id="@+id/btn_sendvoice"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_centerHorizontal="true"
+            android:text="@string/sendvoice" />
+
+        <CheckBox
+            android:id="@+id/cbx_receiveAudio"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/monitor" />
+
+    </RelativeLayout>
+</RelativeLayout>

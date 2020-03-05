@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.yinglan.alphatabs:library:1.0.8@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c270df5dadcb7baf55c48855f75408b2/jetified-library-1.0.8/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c270df5dadcb7baf55c48855f75408b2/jetified-library-1.0.8/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.yinglan.alphatabs/library/1.0.8/3e80678e37f23a07aa4f68f30f88efc9b61d183e/library-1.0.8-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.yinglan.alphatabs/library/1.0.8/94335ce34f1bf8986faccb71bce93fd1f7804a0/library-1.0.8-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

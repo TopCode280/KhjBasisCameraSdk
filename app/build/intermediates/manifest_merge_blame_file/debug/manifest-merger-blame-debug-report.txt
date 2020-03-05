@@ -1,0 +1,241 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="org.khj.khjbasiscamerasdk"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+8-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.READ_SETTINGS" />
+11-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:7:5-72
+11-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:7:22-69
+12    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+12-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:8:5-84
+12-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:8:22-81
+13    <uses-permission android:name="android.permission.REORDER_TASKS" />
+13-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:9:5-72
+13-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:9:22-69
+14    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+14-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:10:5-79
+14-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:10:22-76
+15    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+15-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:11:5-81
+15-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:11:22-78
+16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+16-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:12:5-80
+16-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:12:22-77
+17    <uses-permission android:name="android.permission.VIBRATE" />
+17-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:13:5-66
+17-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:13:22-63
+18    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+18-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:14:5-71
+18-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:14:22-68
+19    <uses-permission android:name="android.permission.WAKE_LOCK" />
+19-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:15:5-68
+19-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:15:22-65
+20    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+20-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:16:5-75
+20-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:16:22-72
+21    <uses-permission android:name="android.permission.CAMERA" />
+21-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:17:5-65
+21-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:17:22-62
+22    <uses-permission android:name="android.permission.FLASHLIGHT" />
+22-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:18:5-69
+22-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:18:22-66
+23    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+23-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:19:5-80
+23-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:19:22-77
+24    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+24-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:20:5-85
+24-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:20:22-82
+25    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" /> <!-- 这个权限用于进行网络定位 -->
+25-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:21:5-75
+25-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:21:22-72
+26
+27    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+27-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:23:5-77
+27-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:23:22-74
+28
+29    <uses-feature android:name="android.hardware.camera.autofocus" />
+29-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:24:5-70
+29-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:24:19-67
+30    <uses-feature android:name="android.hardware.camera" />
+30-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:25:5-60
+30-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:25:19-57
+31
+32    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+32-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:27:5-83
+32-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:27:22-80
+33    <uses-permission android:name="com.nursinghome.monitor..permission.JPUSH_MESSAGE" />
+33-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:28:5-89
+33-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:28:22-86
+34    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" /> <!-- Optional for location -->
+34-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:29:5-79
+34-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:29:22-76
+35    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
+35-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:30:5-78
+35-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:30:22-75
+36    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+36-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:31:5-89
+36-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:31:22-86
+37    <uses-permission android:name="android.permission.GET_TASKS" /> <!-- Required -->
+37-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:32:5-68
+37-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:32:22-65
+38
+39
+40    <!-- 这个权限用于进行网络定位 -->
+41    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+41-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:35:5-81
+41-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:35:22-78
+42    <!-- 这个权限用于访问GPS定位 -->
+43    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+43-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:37:5-79
+43-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:37:22-76
+44    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+45    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+45-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:39:5-76
+45-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:39:22-73
+46    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+47    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+47-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:41:5-79
+47-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:41:22-76
+48    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+49    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+49-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:43:5-76
+49-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:43:22-73
+50    <!-- 用于读取手机当前的状态 -->
+51    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+51-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:16:5-75
+51-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:16:22-72
+52    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
+53    <!-- 访问网络，网络定位需要上网 -->
+54    <!-- SD卡读取权限，用户写入离线定位数据 -->
+55    <uses-permission android:name="android.permission.INTERNET" />
+55-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:49:5-67
+55-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:49:22-64
+56    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+56-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:50:5-81
+56-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:50:22-78
+57    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+57-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:51:5-80
+57-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:51:22-77
+58    <uses-permission android:name="com.coloros.mcs.permission.RECIEVE_MCS_MESSAGE" />
+58-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:52:5-86
+58-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:52:22-83
+59
+60    <application
+60-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:54:5-106:19
+61        android:name="org.khj.khjbasiscamerasdk.App"
+61-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:55:9-28
+62        android:allowBackup="true"
+62-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:56:9-35
+63        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+63-->[androidx.core:core:1.2.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\a402c1bcf34d7f366cd2386c28f59236\core-1.2.0\AndroidManifest.xml:24:18-86
+64        android:debuggable="true"
+65        android:fullBackupContent="true"
+65-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:57:9-41
+66        android:icon="@mipmap/khj_logo"
+66-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:58:9-40
+67        android:label="@string/app_name"
+67-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:59:9-41
+68        android:roundIcon="@mipmap/ic_launcher_round"
+68-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:60:9-54
+69        android:supportsRtl="true"
+69-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:61:9-35
+70        android:testOnly="true"
+71        android:theme="@style/AppTheme" >
+71-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:62:9-40
+72        <meta-data
+72-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:64:9-66:35
+73            android:name="android.notch_support"
+73-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:65:13-49
+74            android:value="true" />
+74-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:66:13-33
+75        <meta-data
+75-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:68:9-70:35
+76            android:name="android.max_aspect"
+76-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:69:13-46
+77            android:value="2.34" />
+77-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:70:13-33
+78        <meta-data
+78-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:72:9-74:49
+79            android:name="notch.config"
+79-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:73:13-40
+80            android:value="portrait|landscape" />
+80-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:74:13-47
+81
+82        <activity android:name="org.khj.khjbasiscamerasdk.activity.MainActivity" >
+82-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:76:9-82:20
+82-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:76:19-56
+83            <intent-filter>
+83-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:77:13-81:29
+84                <action android:name="android.intent.action.MAIN" />
+84-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:78:17-69
+84-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:78:25-66
+85
+86                <category android:name="android.intent.category.LAUNCHER" />
+86-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:80:17-77
+86-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:80:27-74
+87            </intent-filter>
+88        </activity>
+89        <activity
+89-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:84:9-87:56
+90            android:name="org.khj.khjbasiscamerasdk.activity.addDevices.AddDeviceActivity"
+90-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:85:13-66
+91            android:screenOrientation="portrait" />
+91-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:86:13-49
+92        <activity
+92-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:89:9-92:56
+93            android:name="org.khj.khjbasiscamerasdk.activity.addDevices.QrCodeConfigNetWorkActivity"
+93-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:90:13-76
+94            android:screenOrientation="portrait" />
+94-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:91:13-49
+95        <activity
+95-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:94:9-97:56
+96            android:name="org.khj.khjbasiscamerasdk.activity.addDevices.ApAddDeviceListActivity"
+96-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:95:13-72
+97            android:screenOrientation="portrait" />
+97-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:96:13-49
+98        <activity
+98-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:99:9-105:56
+99            android:name="org.khj.khjbasiscamerasdk.activity.video.WatchVideoActivity"
+99-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:100:13-62
+100            android:configChanges="keyboardHidden|screenSize|orientation"
+100-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:101:13-74
+101            android:hardwareAccelerated="true"
+101-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:102:13-47
+102            android:launchMode="singleTask"
+102-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:103:13-44
+103            android:screenOrientation="portrait" />
+103-->D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:104:13-49
+104        <activity
+104-->[cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:12:9-17:63
+105            android:name="com.uuzuche.lib_zxing.activity.CaptureActivity"
+105-->[cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:13:13-74
+106            android:configChanges="orientation|keyboardHidden"
+106-->[cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:14:13-63
+107            android:screenOrientation="portrait"
+107-->[cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:15:13-49
+108            android:theme="@style/Theme.AppCompat.NoActionBar"
+108-->[cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:16:13-63
+109            android:windowSoftInputMode="stateAlwaysHidden" />
+109-->[cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:17:13-60
+110        <activity
+110-->[com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:25:9-30:75
+111            android:name="com.yanzhenjie.permission.PermissionActivity"
+111-->[com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:26:13-72
+112            android:configChanges="keyboardHidden|orientation|screenSize"
+112-->[com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:27:13-74
+113            android:launchMode="standard"
+113-->[com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:28:13-42
+114            android:theme="@style/permission_PermissionActivity"
+114-->[com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:29:13-65
+115            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+115-->[com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:30:13-72
+116    </application>
+117
+118</manifest>

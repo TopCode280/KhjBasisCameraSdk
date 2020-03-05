@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+
+    <include layout="@layout/topbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:id="@+id/rl_GRcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/iv_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/scanning" />
+
+                <TextView
+                    android:id="@+id/tv_tip1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@id/iv_icon"
+                    android:text="@string/deviceScanAdd"
+                    android:textColor="@color/title_backBlue"
+                    android:textSize="@dimen/textsize_middle" />
+
+                <TextView
+                    android:id="@+id/tv_subTitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_tip1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@id/iv_icon"
+                    android:text="@string/deviceScanDetail"
+                    android:textColor="@color/dark_666"
+                    android:textSize="@dimen/textsize_small" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/tv_subTitle1"
+                    android:src="@drawable/img1" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_ap_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/iv_icon8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/rd" />
+
+                <TextView
+                    android:id="@+id/tv_tip8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@id/iv_icon8"
+                    android:text="@string/ApMode"
+                    android:textColor="@color/title_backBlue"
+                    android:textSize="@dimen/textsize_middle" />
+
+                <TextView
+                    android:id="@+id/tv_subTitle8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_tip8"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@id/iv_icon8"
+                    android:gravity="left"
+                    android:text="@string/ApModeDetail"
+                    android:textColor="@color/dark_666"
+                    android:textSize="@dimen/textsize_small" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/tv_subTitle8"
+                    android:src="@drawable/img3" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_wlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/iv_icon3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/wx" />
+
+                <TextView
+                    android:id="@+id/tv_tip3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@id/iv_icon3"
+                    android:text="@string/WlanConnect"
+                    android:textColor="@color/title_backBlue"
+                    android:textSize="@dimen/textsize_middle" />
+
+                <TextView
+                    android:id="@+id/tv_subTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_tip3"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@id/iv_icon3"
+                    android:gravity="left"
+                    android:text="@string/WlanConnectDetail"
+                    android:textColor="@color/dark_666"
+                    android:textSize="@dimen/textsize_small" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/tv_subTitle"
+                    android:src="@drawable/img4" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

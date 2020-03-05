@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="bg_gray">#F0F0F0</color>
+    <color name="bg_gray2">#c0c0c0</color>
+    <color name="bg_white_small">#F8F8F8</color>
+    <color name="bg_white_pressed">#AAA</color>
+    <color name="bg_navigation_gray">#F7F7F7</color>
+    <!-- 标题栏背景蓝色-->
+    <!--<color name="title_backBlue">#7DA6FF</color>-->
+    <!--<color name="title_backBlue">#F48D54</color>-->
+    <color name="title_backBlue">#27a7f7</color>
+    <color name="gradient_start">#27a7f7</color>
+    <color name="gradient_end">#0ad9ff</color>
+    <color name="gradient_iot_start">#63a3e4</color>
+    <color name="gradient_iot_end">#1fb8c1</color>
+    <!--<color name="title_backBlue">#28a4f9</color>-->
+    <!--<color name="title_backBlue">#FF6600</color>-->
+    <color name="ios_blue">#62B1FF</color>
+    <color name="white">#ffffff</color>
+    <!-- 底部选择栏字体颜色-->
+    <color name="text_black">#222222</color>
+    <color name="text_blue">#4E71F3</color>
+    <color name="start">#FF6F9FFF</color>
+    <color name="end">#FFA0B7FE</color>
+    <color name="dark_000">#000</color>
+    <color name="dark_transparent">#cc000000</color>
+    <color name="dark_666">#333</color>
+    <color name="gray_88">#88666666</color>
+    <color name="gray_back">#3f4143</color>
+    <!-- 白色背景列表分割线颜色灰-->
+    <color name="divider_gray">#777777</color>
+    <color name="btn_normal">#F48D54</color>
+    <!--<color name="btn_normal">#7DA6FF</color>-->
+    <!--<color name="btn_pressed">#303F9F</color>-->
+    <color name="btn_pressed">#a06b32</color>
+    <color name="dialog_line">#cecbce</color>
+    <color name="red">#cc0000</color>
+    <color name="orange">#F48D54</color>
+    <color name="transparent_blank">#77000000</color>
+
+    <color name="colorDialogProgressRimColor">#a9a9a9</color>
+    <color name="colorDialogWindowBg">#2a111111</color>
+    <color name="colorDialogViewBg">#a5ffffff</color>
+    <color name="colorDialogViewBg2">#ecae5700</color>
+    <color name="colorDialogTextColor">#1cb3ce</color>
+    <color name="colorDialogProgressBarColor">#c67204</color>
+
+    <color name="color_gray">#B4B4B4</color>
+    <color name="color_green">#00b4aa</color>
+    <color name="color_red">#FF6A6E</color>
+    <color name="color_red_light">#FFB4B6</color>
+    <color name="color_blue">#03A9F4</color>
+    <color name="color_gray_light">#F5F5F5</color>
+
+    <color name="line_color_blue">#3C8EAE</color>
+    <color name="color_scan">#084964</color>
+    <color name="color_scan2">#88ff4081</color>
+    <color name="translucent">#00000000</color>
+
+    <color name="black_start">#222222</color>
+    <color name="black_end">#99000000</color>
+    <color name="black">#222222</color>
+
+    <!-- common -->
+    <color name="app_color_blue">#00A8E1</color>
+    <color name="app_color_blue_disabled">#8000A8E1</color>
+    <color name="app_color_blue_pressed">#c000A8E1</color>
+
+    <color name="app_color_blue_2">#31BDF3</color>
+    <color name="app_color_blue_2_disabled">#7F31BDF3</color>
+    <color name="app_color_blue_2_pressed">#7F31BDF3</color>
+
+    <color name="app_color_blue_3">#EBF9FF</color>
+    <color name="app_color_blue_3_disabled">#7FEBF9FF</color>
+    <color name="app_color_blue_3_pressed">#7FEBF9FF</color>
+
+    <color name="app_color_theme_1">#EF5362</color> <!-- Grapefruit -->
+    <color name="app_color_theme_2">#FE6D4B</color> <!-- Bittersweet -->
+    <color name="app_color_theme_3">#FFCF47</color> <!-- Sunflower -->
+    <color name="app_color_theme_4">#9FD661</color> <!-- Grass -->
+    <color name="app_color_theme_5">#3FD0AD</color> <!-- Mint -->
+    <color name="app_color_theme_6">#2BBDF3</color> <!-- Aqua -->
+    <color name="app_color_theme_7">#5A9AEF</color> <!-- Blue Jeans -->
+    <color name="app_color_theme_8">#AC8FEF</color> <!-- Lavender -->
+    <color name="app_color_theme_9">#EE85C1</color> <!-- Pink Rose -->
+
+    <color name="app_color_description">@color/qmui_config_color_gray_5</color>
+
+    <color name="bar_divider">#D4D6D8</color>
+    <color name="tab_panel_bg">#ffffff</color>
+    <color name="tab_panel_divider">@color/bar_divider</color>
+
+    <!-- Components 组件 -->
+    <color name="radiusImageView_border_color">@color/app_color_theme_2</color>
+    <color name="radiusImageView_selected_border_color">@color/app_color_theme_1</color>
+    <color name="radiusImageView_selected_mask_color">#7FEF5362</color>
+
+    <!-- Helper 系列界面 -->
+
+    <!-- ColorHelper 颜色工具 -->
+    <color name="colorHelper_square_alpha_background">@color/app_color_theme_4</color>
+    <color name="colorHelper_square_from_ratio_background">@color/app_color_blue</color>
+    <color name="colorHelper_square_to_ratio_background">@color/app_color_theme_3</color>
+</resources>

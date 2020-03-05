@@ -1,0 +1,452 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:2:1-109:12
+INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:2:1-109:12
+INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:2:1-109:12
+INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:2:1-109:12
+MERGED from [com.qmuiteam:qmui:2.0.0-alpha02] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\ad316ac2ff8273264ee45006f11ea267\qmui-2.0.0-alpha02\AndroidManifest.xml:2:1-9:12
+MERGED from [com.yinglan.alphatabs:library:1.0.8] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\c270df5dadcb7baf55c48855f75408b2\jetified-library-1.0.8\AndroidManifest.xml:2:1-17:12
+MERGED from [cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:2:1-20:12
+MERGED from [com.google.android.material:material:1.2.0-alpha02] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\42af994d6472e66c58d62658b609cb98\material-1.2.0-alpha02\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\cf429aa4d7ca5701e07f5c5164eda340\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core-ktx:1.2.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\cba38d8d11c8cf49726656d3499995ad\jetified-core-ktx-1.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\73f9b4622c19eb7380f52b52c8bcde35\constraintlayout-1.1.3\AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.GrenderG:Toasty:1.3.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\4926f425616ce893e5510271b4c36aea\jetified-Toasty-1.3.0\AndroidManifest.xml:2:1-11:12
+MERGED from [com.vise.xiaoyaoyou:viselog:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\483f8c5acd4d234f99cb3a0c9dc2f3c6\viselog-1.0.0\AndroidManifest.xml:2:1-17:12
+MERGED from [com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:17:1-33:12
+MERGED from [com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e3a38c1826e7ffa3de195340a9a74fab\jetified-SmartRefreshLayout-1.1.0-alpha-3\AndroidManifest.xml:2:1-17:12
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\dfc5bf8f566dc2cb21dbbc9616b54376\rxandroid-2.0.1\AndroidManifest.xml:15:1-21:12
+MERGED from [com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\093a29d3e0a5aca61c42232c3faed2fd\jetified-SwipeDelMenuLayout-V1.3.0\AndroidManifest.xml:2:1-13:12
+MERGED from [com.wang.avi:library:2.1.3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\d2392c1b3d6c0a6df397a2dce141a91c\library-2.1.3\AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.36] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\692e111d8d087c1cffbf4b14c57572da\jetified-BaseRecyclerViewAdapterHelper-2.9.36\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0-rc01] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\b3e68e546d4c8f7f7b6ae241d0e84943\viewpager2-1.0.0-rc01\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0-rc01] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\9dd810b47ee52de91545e435bfe12fbe\recyclerview-1.1.0-rc01\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\8dc58f9b441811b21b65233e0c96a8ac\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\d8b08cd32960bec125b624c0f33686aa\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\dcfc6d6ca5513b880c2ae373a9cf9456\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\cd84c89d977f5b7c1d1dee952ecb2922\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\f642df126fdcdf3dbc46540fe8f41599\appcompat-resources-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\56dc30348256adb1a1c8434ae08fa98e\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\f5d91b637cf0c27ecdcc0e7e2cc510cd\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\bbc3e2fa3ab7ae6f1641f7ede9201214\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\48e5871651444683c51614521b93acbf\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\a12763e1f2cd6e30677c9d129739bee3\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\afb8fc0a3f58a5f5cb4c3d3840db0860\activity-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\069af834d702555e07e367446bd047e4\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\124ed9b5723e304c50650dac49d7204e\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-rc01] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\5a9805d995657ee19e495116695f646e\coordinatorlayout-1.1.0-rc01\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\9ec6ae9e89ed18c17bb25c10382f2397\slidingpanelayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\f4afb5e55f02af58410e86744803ffc6\customview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.2.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\62bef11a050df18e731ada048d64598d\transition-1.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media:media:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\559d6836f22712b50c5f2addcdb6f411\media-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\fd22dcf7db64d9e59ca93fddb322c1da\asynclayoutinflater-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.2.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\a402c1bcf34d7f366cd2386c28f59236\core-1.2.0\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\0f9854df3dc8dbe09605500fc4c343de\versionedparcelable-1.1.0\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\ec450a02f96d0d4bf5716d0f5a020dd1\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\41ab726b44e5b36a8205ae6b73dcd854\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\1d6ed40c2be8539300df023244a5aa79\lifecycle-runtime-2.1.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\2f41d83448692d2e7e0d8e57116b8111\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\18167bd56b2cc5565d019e8f91f77d03\savedstate-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\276e8c529a52d96b4a47ee55bd36ac54\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\fb58f2e73d24c9828e98ff3e594b6ad0\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\26a8493c940082ad527466f7e3f54390\print-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\258f94a075e317f701616023c3b46391\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\509fc8ac9de9e5ed1712aa742c239d05\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e765227cbb77cbd30a69002a118f2e7b\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
+INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:2:1-109:12
+INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:2:1-109:12
+INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:2:1-109:12
+	package
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:4:5-40
+		INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:2:1-109:12
+		INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:2:1-109:12
+		INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.READ_SETTINGS
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:7:5-72
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:7:22-69
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:8:5-84
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:8:22-81
+uses-permission#android.permission.REORDER_TASKS
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:9:5-72
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:9:22-69
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:10:5-79
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:10:22-76
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:11:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:12:5-80
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:12:22-77
+uses-permission#android.permission.VIBRATE
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:13:5-66
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:13:22-63
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:14:5-71
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:14:22-68
+uses-permission#android.permission.WAKE_LOCK
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:15:5-68
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:15:22-65
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:16:5-75
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:16:22-72
+uses-permission#android.permission.CAMERA
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:17:5-65
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:17:22-62
+uses-permission#android.permission.FLASHLIGHT
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:18:5-69
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:18:22-66
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:19:5-80
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:19:22-77
+uses-permission#com.android.launcher.permission.READ_SETTINGS
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:20:5-85
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:20:22-82
+uses-permission#android.permission.DISABLE_KEYGUARD
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:21:5-75
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:21:22-72
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:23:5-77
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:23:22-74
+uses-feature#android.hardware.camera.autofocus
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:24:5-70
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:24:19-67
+uses-feature#android.hardware.camera
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:25:5-60
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:25:19-57
+uses-permission#android.permission.REQUEST_INSTALL_PACKAGES
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:27:5-83
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:27:22-80
+uses-permission#com.nursinghome.monitor..permission.JPUSH_MESSAGE
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:28:5-89
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:28:22-86
+uses-permission#android.permission.RECEIVE_USER_PRESENT
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:29:5-79
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:29:22-76
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:30:5-78
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:30:22-75
+uses-permission#android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:31:5-89
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:31:22-86
+uses-permission#android.permission.GET_TASKS
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:32:5-68
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:32:22-65
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:35:5-81
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:35:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:37:5-79
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:37:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:39:5-76
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:39:22-73
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:41:5-79
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:41:22-76
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:43:5-76
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:43:22-73
+uses-permission#android.permission.INTERNET
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:49:5-67
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:49:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:50:5-81
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:50:22-78
+uses-permission#android.permission.SYSTEM_OVERLAY_WINDOW
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:51:5-80
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:51:22-77
+uses-permission#com.coloros.mcs.permission.RECIEVE_MCS_MESSAGE
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:52:5-86
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:52:22-83
+application
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:54:5-106:19
+MERGED from [com.yinglan.alphatabs:library:1.0.8] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\c270df5dadcb7baf55c48855f75408b2\jetified-library-1.0.8\AndroidManifest.xml:11:5-15:19
+MERGED from [com.yinglan.alphatabs:library:1.0.8] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\c270df5dadcb7baf55c48855f75408b2\jetified-library-1.0.8\AndroidManifest.xml:11:5-15:19
+MERGED from [cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:11:5-18:19
+MERGED from [cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:11:5-18:19
+MERGED from [com.google.android.material:material:1.2.0-alpha02] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\42af994d6472e66c58d62658b609cb98\material-1.2.0-alpha02\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.2.0-alpha02] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\42af994d6472e66c58d62658b609cb98\material-1.2.0-alpha02\AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\73f9b4622c19eb7380f52b52c8bcde35\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\73f9b4622c19eb7380f52b52c8bcde35\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
+MERGED from [com.vise.xiaoyaoyou:viselog:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\483f8c5acd4d234f99cb3a0c9dc2f3c6\viselog-1.0.0\AndroidManifest.xml:11:5-15:19
+MERGED from [com.vise.xiaoyaoyou:viselog:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\483f8c5acd4d234f99cb3a0c9dc2f3c6\viselog-1.0.0\AndroidManifest.xml:11:5-15:19
+MERGED from [com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:24:5-31:19
+MERGED from [com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:24:5-31:19
+MERGED from [com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e3a38c1826e7ffa3de195340a9a74fab\jetified-SmartRefreshLayout-1.1.0-alpha-3\AndroidManifest.xml:11:5-15:19
+MERGED from [com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e3a38c1826e7ffa3de195340a9a74fab\jetified-SmartRefreshLayout-1.1.0-alpha-3\AndroidManifest.xml:11:5-15:19
+MERGED from [com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\093a29d3e0a5aca61c42232c3faed2fd\jetified-SwipeDelMenuLayout-V1.3.0\AndroidManifest.xml:11:5-20
+MERGED from [com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\093a29d3e0a5aca61c42232c3faed2fd\jetified-SwipeDelMenuLayout-V1.3.0\AndroidManifest.xml:11:5-20
+MERGED from [androidx.core:core:1.2.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\a402c1bcf34d7f366cd2386c28f59236\core-1.2.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.2.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\a402c1bcf34d7f366cd2386c28f59236\core-1.2.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\0f9854df3dc8dbe09605500fc4c343de\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\0f9854df3dc8dbe09605500fc4c343de\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.2.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\a402c1bcf34d7f366cd2386c28f59236\core-1.2.0\AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:61:9-35
+	android:label
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:59:9-41
+	android:fullBackupContent
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:57:9-41
+	android:roundIcon
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:60:9-54
+	android:icon
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:58:9-40
+	android:allowBackup
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:56:9-35
+	android:theme
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:62:9-40
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:55:9-28
+meta-data#android.notch_support
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:64:9-66:35
+	android:value
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:66:13-33
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:65:13-49
+meta-data#android.max_aspect
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:68:9-70:35
+	android:value
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:70:13-33
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:69:13-46
+meta-data#notch.config
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:72:9-74:49
+	android:value
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:74:13-47
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:73:13-40
+activity#org.khj.khjbasiscamerasdk.activity.MainActivity
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:76:9-82:20
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:76:19-56
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:77:13-81:29
+action#android.intent.action.MAIN
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:78:17-69
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:78:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:80:17-77
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:80:27-74
+activity#org.khj.khjbasiscamerasdk.activity.addDevices.AddDeviceActivity
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:84:9-87:56
+	android:screenOrientation
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:86:13-49
+	tools:ignore
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:87:13-53
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:85:13-66
+activity#org.khj.khjbasiscamerasdk.activity.addDevices.QrCodeConfigNetWorkActivity
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:89:9-92:56
+	android:screenOrientation
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:91:13-49
+	tools:ignore
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:92:13-53
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:90:13-76
+activity#org.khj.khjbasiscamerasdk.activity.addDevices.ApAddDeviceListActivity
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:94:9-97:56
+	android:screenOrientation
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:96:13-49
+	tools:ignore
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:97:13-53
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:95:13-72
+activity#org.khj.khjbasiscamerasdk.activity.video.WatchVideoActivity
+ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:99:9-105:56
+	android:screenOrientation
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:104:13-49
+	android:launchMode
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:103:13-44
+	android:hardwareAccelerated
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:102:13-47
+	tools:ignore
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:105:13-53
+	android:configChanges
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:101:13-74
+	android:name
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml:100:13-62
+uses-sdk
+INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+MERGED from [com.qmuiteam:qmui:2.0.0-alpha02] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\ad316ac2ff8273264ee45006f11ea267\qmui-2.0.0-alpha02\AndroidManifest.xml:5:5-7:41
+MERGED from [com.qmuiteam:qmui:2.0.0-alpha02] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\ad316ac2ff8273264ee45006f11ea267\qmui-2.0.0-alpha02\AndroidManifest.xml:5:5-7:41
+MERGED from [com.yinglan.alphatabs:library:1.0.8] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\c270df5dadcb7baf55c48855f75408b2\jetified-library-1.0.8\AndroidManifest.xml:7:5-9:41
+MERGED from [com.yinglan.alphatabs:library:1.0.8] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\c270df5dadcb7baf55c48855f75408b2\jetified-library-1.0.8\AndroidManifest.xml:7:5-9:41
+MERGED from [cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:7:5-9:41
+MERGED from [cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.material:material:1.2.0-alpha02] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\42af994d6472e66c58d62658b609cb98\material-1.2.0-alpha02\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.2.0-alpha02] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\42af994d6472e66c58d62658b609cb98\material-1.2.0-alpha02\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\cf429aa4d7ca5701e07f5c5164eda340\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\cf429aa4d7ca5701e07f5c5164eda340\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-ktx:1.2.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\cba38d8d11c8cf49726656d3499995ad\jetified-core-ktx-1.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.2.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\cba38d8d11c8cf49726656d3499995ad\jetified-core-ktx-1.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\73f9b4622c19eb7380f52b52c8bcde35\constraintlayout-1.1.3\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\73f9b4622c19eb7380f52b52c8bcde35\constraintlayout-1.1.3\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.GrenderG:Toasty:1.3.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\4926f425616ce893e5510271b4c36aea\jetified-Toasty-1.3.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.GrenderG:Toasty:1.3.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\4926f425616ce893e5510271b4c36aea\jetified-Toasty-1.3.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.vise.xiaoyaoyou:viselog:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\483f8c5acd4d234f99cb3a0c9dc2f3c6\viselog-1.0.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.vise.xiaoyaoyou:viselog:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\483f8c5acd4d234f99cb3a0c9dc2f3c6\viselog-1.0.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:20:5-22:41
+MERGED from [com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:20:5-22:41
+MERGED from [com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e3a38c1826e7ffa3de195340a9a74fab\jetified-SmartRefreshLayout-1.1.0-alpha-3\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e3a38c1826e7ffa3de195340a9a74fab\jetified-SmartRefreshLayout-1.1.0-alpha-3\AndroidManifest.xml:7:5-9:41
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\dfc5bf8f566dc2cb21dbbc9616b54376\rxandroid-2.0.1\AndroidManifest.xml:19:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\dfc5bf8f566dc2cb21dbbc9616b54376\rxandroid-2.0.1\AndroidManifest.xml:19:5-43
+MERGED from [com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\093a29d3e0a5aca61c42232c3faed2fd\jetified-SwipeDelMenuLayout-V1.3.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\093a29d3e0a5aca61c42232c3faed2fd\jetified-SwipeDelMenuLayout-V1.3.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.wang.avi:library:2.1.3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\d2392c1b3d6c0a6df397a2dce141a91c\library-2.1.3\AndroidManifest.xml:7:5-9:41
+MERGED from [com.wang.avi:library:2.1.3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\d2392c1b3d6c0a6df397a2dce141a91c\library-2.1.3\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.36] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\692e111d8d087c1cffbf4b14c57572da\jetified-BaseRecyclerViewAdapterHelper-2.9.36\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.36] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\692e111d8d087c1cffbf4b14c57572da\jetified-BaseRecyclerViewAdapterHelper-2.9.36\AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0-rc01] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\b3e68e546d4c8f7f7b6ae241d0e84943\viewpager2-1.0.0-rc01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0-rc01] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\b3e68e546d4c8f7f7b6ae241d0e84943\viewpager2-1.0.0-rc01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0-rc01] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\9dd810b47ee52de91545e435bfe12fbe\recyclerview-1.1.0-rc01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0-rc01] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\9dd810b47ee52de91545e435bfe12fbe\recyclerview-1.1.0-rc01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\8dc58f9b441811b21b65233e0c96a8ac\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\8dc58f9b441811b21b65233e0c96a8ac\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\d8b08cd32960bec125b624c0f33686aa\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\d8b08cd32960bec125b624c0f33686aa\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\dcfc6d6ca5513b880c2ae373a9cf9456\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\dcfc6d6ca5513b880c2ae373a9cf9456\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\cd84c89d977f5b7c1d1dee952ecb2922\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\cd84c89d977f5b7c1d1dee952ecb2922\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\f642df126fdcdf3dbc46540fe8f41599\appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\f642df126fdcdf3dbc46540fe8f41599\appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\56dc30348256adb1a1c8434ae08fa98e\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\56dc30348256adb1a1c8434ae08fa98e\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\f5d91b637cf0c27ecdcc0e7e2cc510cd\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\f5d91b637cf0c27ecdcc0e7e2cc510cd\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\bbc3e2fa3ab7ae6f1641f7ede9201214\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\bbc3e2fa3ab7ae6f1641f7ede9201214\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\48e5871651444683c51614521b93acbf\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\48e5871651444683c51614521b93acbf\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\a12763e1f2cd6e30677c9d129739bee3\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\a12763e1f2cd6e30677c9d129739bee3\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\afb8fc0a3f58a5f5cb4c3d3840db0860\activity-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\afb8fc0a3f58a5f5cb4c3d3840db0860\activity-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\069af834d702555e07e367446bd047e4\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\069af834d702555e07e367446bd047e4\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\124ed9b5723e304c50650dac49d7204e\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\124ed9b5723e304c50650dac49d7204e\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-rc01] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\5a9805d995657ee19e495116695f646e\coordinatorlayout-1.1.0-rc01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-rc01] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\5a9805d995657ee19e495116695f646e\coordinatorlayout-1.1.0-rc01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\9ec6ae9e89ed18c17bb25c10382f2397\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\9ec6ae9e89ed18c17bb25c10382f2397\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\f4afb5e55f02af58410e86744803ffc6\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\f4afb5e55f02af58410e86744803ffc6\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.2.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\62bef11a050df18e731ada048d64598d\transition-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\62bef11a050df18e731ada048d64598d\transition-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\559d6836f22712b50c5f2addcdb6f411\media-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\559d6836f22712b50c5f2addcdb6f411\media-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\fd22dcf7db64d9e59ca93fddb322c1da\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\fd22dcf7db64d9e59ca93fddb322c1da\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.2.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\a402c1bcf34d7f366cd2386c28f59236\core-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.2.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\a402c1bcf34d7f366cd2386c28f59236\core-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\0f9854df3dc8dbe09605500fc4c343de\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\0f9854df3dc8dbe09605500fc4c343de\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\ec450a02f96d0d4bf5716d0f5a020dd1\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\ec450a02f96d0d4bf5716d0f5a020dd1\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\41ab726b44e5b36a8205ae6b73dcd854\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\41ab726b44e5b36a8205ae6b73dcd854\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\1d6ed40c2be8539300df023244a5aa79\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\1d6ed40c2be8539300df023244a5aa79\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\2f41d83448692d2e7e0d8e57116b8111\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\2f41d83448692d2e7e0d8e57116b8111\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\18167bd56b2cc5565d019e8f91f77d03\savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\18167bd56b2cc5565d019e8f91f77d03\savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\276e8c529a52d96b4a47ee55bd36ac54\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\276e8c529a52d96b4a47ee55bd36ac54\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\fb58f2e73d24c9828e98ff3e594b6ad0\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\fb58f2e73d24c9828e98ff3e594b6ad0\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\26a8493c940082ad527466f7e3f54390\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\26a8493c940082ad527466f7e3f54390\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\258f94a075e317f701616023c3b46391\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\258f94a075e317f701616023c3b46391\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\509fc8ac9de9e5ed1712aa742c239d05\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\509fc8ac9de9e5ed1712aa742c239d05\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e765227cbb77cbd30a69002a118f2e7b\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e765227cbb77cbd30a69002a118f2e7b\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
+INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+		ADDED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AsProject\KhjBasisCameraSdk\app\src\main\AndroidManifest.xml
+activity#com.uuzuche.lib_zxing.activity.CaptureActivity
+ADDED from [cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:12:9-17:63
+	android:screenOrientation
+		ADDED from [cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:15:13-49
+	android:windowSoftInputMode
+		ADDED from [cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:17:13-60
+	android:configChanges
+		ADDED from [cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:14:13-63
+	android:theme
+		ADDED from [cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:16:13-63
+	android:name
+		ADDED from [cn.yipianfengye.android:zxing-library:2.2] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\e78ec357f2aeb41b284b9a0d057f6bc3\jetified-zxing-library-2.2\AndroidManifest.xml:13:13-74
+activity#com.yanzhenjie.permission.PermissionActivity
+ADDED from [com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:25:9-30:75
+	android:launchMode
+		ADDED from [com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:28:13-42
+	android:windowSoftInputMode
+		ADDED from [com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:30:13-72
+	android:configChanges
+		ADDED from [com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:27:13-74
+	android:theme
+		ADDED from [com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:29:13-65
+	android:name
+		ADDED from [com.yanzhenjie:permission:2.0.0-rc3] C:\Users\huangmin\.gradle\caches\transforms-2\files-2.1\6ede62df037b3330646e756c10f4e1eb\jetified-permission-2.0.0-rc3\AndroidManifest.xml:26:13-72

@@ -1,0 +1,4 @@
+#Thu Mar 05 17:34:14 CST 2020
+base.0=D\:\\AsProject\\KhjBasisCameraSdk\\app\\build\\intermediates\\dex\\debug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

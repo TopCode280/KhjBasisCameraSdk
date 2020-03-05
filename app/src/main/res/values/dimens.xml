@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="sp14">14sp</dimen>
+    <dimen name="dp5">5dp</dimen>
+    <dimen name="record_size">50dp</dimen>
+    <dimen name="record_size2">35dp</dimen>
+    <dimen name="textsize_small">14dp</dimen>
+    <dimen name="textsize_middle">16dp</dimen>
+    <dimen name="textsize_large">18dp</dimen>
+    <dimen name="textsize_larger">20dp</dimen>
+    <dimen name="textsize_very_large">22dp</dimen>
+    <dimen name="textsize_largest">24dp</dimen>
+    <dimen name="textsize_very_small">12dp</dimen>
+    <dimen name="textsize_little_small">10dp</dimen>
+    <dimen name="textsize_smallest">8dp</dimen>
+    <dimen name="divider_height">8dp</dimen>
+    <dimen name="padding_start">15dp</dimen>
+    <dimen name="padding_start_small">10dp</dimen>
+    <dimen name="common_item_height">45dp</dimen>
+    <dimen name="common_item_height_small">42dp</dimen>
+    <dimen name="topBar_height">48dp</dimen>
+    <dimen name="topbarHeight">48dp</dimen>
+
+    <dimen name="btn_direction">42dp</dimen>
+</resources>
