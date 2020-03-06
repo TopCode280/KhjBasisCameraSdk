@@ -4,6 +4,8 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.util.Log
+import com.uuzuche.lib_zxing.ZApplication
+import com.uuzuche.lib_zxing.activity.ZXingLibrary.initDisplayOpinion
 import com.vise.log.ViseLog
 import com.vise.log.inner.DefaultTree
 import java.util.*
@@ -20,6 +22,7 @@ class App : Application() {
         super.onCreate()
         context = this
         userAccount = "15111520684"
+        initDisplayOpinion(context) // zxing 二维码扫描界面需要此处初始化
     }
 
     companion object {

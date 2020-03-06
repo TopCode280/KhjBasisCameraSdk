@@ -1,15 +1,21 @@
 package org.khj.khjbasiscamerasdk.base
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog
 import com.vise.log.ViseLog
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import org.greenrobot.eventbus.EventBus
+import org.khj.khjbasiscamerasdk.App
+import org.khj.khjbasiscamerasdk.R
 import org.khj.khjbasiscamerasdk.activity.MainActivity
-import org.khjsdk.com.khjsdk_2020.utils.AppStatusManager
 import org.khjsdk.com.khjsdk_2020.value.AppStatusConstant
 
 abstract class BaseActivity : AppCompatActivity() {
@@ -17,6 +23,7 @@ abstract class BaseActivity : AppCompatActivity() {
     var AppStatusConstant: AppStatusConstant = AppStatusConstant()
     var mContext: Context = this
     protected var mDisposable: CompositeDisposable? = null
+    protected var tipDialog: QMUITipDialog? = null
 
     protected abstract fun getContentViewLayoutID(): Int
 
@@ -69,6 +76,44 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+    protected open fun showLoading() {
+        tipDialog = QMUITipDialog(mContext)
+        tipDialog!!.setCanceledOnTouchOutside(false)
+        val inflate = View.inflate(App.context, R.layout.dialog_loading, null)
+        tipDialog!!.setContentView(
+            inflate,
+            ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+        )
+        tipDialog!!.setCancelable(true)
+        tipDialog!!.setOnCancelListener { dialog: DialogInterface? -> mDisposable!!.dispose() }
+        tipDialog!!.show()
+    }
+
+    open fun showLoading(disposable: Disposable?) {
+        tipDialog = QMUITipDialog(mContext)
+        tipDialog?.run {
+            setCanceledOnTouchOutside(false)
+            setContentView(R.layout.dialog_loading)
+            setCancelable(true)
+            setOnCancelListener {
+                disposable?.dispose()
+            }
+            show()
+        }
+    }
+
+    open fun dismissLoading() {
+        tipDialog?.let {
+            if (it.isShowing) {
+                it.dismiss()
+                tipDialog = null
+            }
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         if (useEventbus()) {
@@ -78,5 +123,6 @@ abstract class BaseActivity : AppCompatActivity() {
             mDisposable!!.dispose()
             mDisposable!!.clear()
         }
+        dismissLoading()
     }
 }

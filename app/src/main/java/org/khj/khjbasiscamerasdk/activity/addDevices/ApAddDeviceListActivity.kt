@@ -124,8 +124,9 @@ class ApAddDeviceListActivity : BaseActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { disposable: Disposable? ->
                 mDisposable?.add(disposable!!)
+                showLoading(disposable)
             }
-            .doFinally {  }
+            .doFinally { dismissLoading() }
             .subscribe { aBoolean: Boolean? ->
                 if (isFinishing) {
                     return@subscribe

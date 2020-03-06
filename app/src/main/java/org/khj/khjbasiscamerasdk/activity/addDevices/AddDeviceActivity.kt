@@ -30,6 +30,7 @@ class AddDeviceActivity : AppCompatActivity(), View.OnClickListener {
         topbar.addLeftBackImageButton().setOnClickListener { finish() }
         rl_GRcode.setOnClickListener(this)
         rl_ap_mode.setOnClickListener(this)
+        rl_wlan.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
@@ -37,8 +38,11 @@ class AddDeviceActivity : AppCompatActivity(), View.OnClickListener {
             R.id.rl_GRcode -> {
                 GotoQrCode()
             }
-            R.id.rl_ap_mode ->{
+            R.id.rl_ap_mode -> {
                 GotoApAddList()
+            }
+            R.id.rl_wlan -> {
+                GotoLanAdd()
             }
         }
     }
@@ -53,7 +57,7 @@ class AddDeviceActivity : AppCompatActivity(), View.OnClickListener {
             }).start()
     }
 
-    fun GotoApAddList(){
+    fun GotoApAddList() {
         AndPermission.with(this)
             .permission(*Permission.Group.LOCATION)
             .onGranted(Action {
@@ -61,9 +65,19 @@ class AddDeviceActivity : AppCompatActivity(), View.OnClickListener {
                     ViseLog.i("用户没有开启GPS")
                     val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                     startActivityForResult(intent, 0)
-                }else{
-                    startActivity(Intent(this,ApAddDeviceListActivity::class.java))
+                } else {
+                    startActivity(Intent(this, ApAddDeviceListActivity::class.java))
                 }
+            }).onDenied(Action {
+                Toasty.error(App.instance, getString(R.string.refuseAuthorize)).show()
+            }).start()
+    }
+
+    fun GotoLanAdd() {
+        AndPermission.with(this)
+            .permission(*Permission.Group.CAMERA)
+            .onGranted(Action {
+                startActivity(Intent(this, LanAddDeviceActivity::class.java))
             }).onDenied(Action {
                 Toasty.error(App.instance, getString(R.string.refuseAuthorize)).show()
             }).start()
