@@ -712,4 +712,6 @@
     <string name="startRecordingVideo">开始录制视频</string>
     <string name="closeRecordingVideo">结束录制视频</string>
     <string name="clickListSelectDevice">点击下放列表选择设备</string>
+    <string name="playBackVideo">回放录像</string>
+    <string name="closePlayBack">结束回放</string>
 </resources>

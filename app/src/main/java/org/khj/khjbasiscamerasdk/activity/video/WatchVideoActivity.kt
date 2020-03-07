@@ -15,40 +15,42 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.khj.Camera
 import com.khj.Camera.*
 import com.khj.Muxing
 import com.khj.glVideoDecodec
-import com.qmuiteam.qmui.widget.popup.QMUIPopup
 import com.vise.log.ViseLog
 import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.Permission
+import es.dmoral.toasty.Toasty
 import io.reactivex.Observable
+import io.reactivex.ObservableEmitter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_watchervideo.*
 import kotlinx.android.synthetic.main.topbar.*
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.App.Companion.context
 import org.khj.khjbasiscamerasdk.R
-import org.khj.khjbasiscamerasdk.adapter.DpiAdapter
+import org.khj.khjbasiscamerasdk.adapter.PlaybackVideoAdapter
 import org.khj.khjbasiscamerasdk.av_modle.CameraManager
 import org.khj.khjbasiscamerasdk.av_modle.CameraWrapper
+import org.khj.khjbasiscamerasdk.base.BaseActivity
 import org.khj.khjbasiscamerasdk.database.entity.DeviceEntity
-import org.khj.khjbasiscamerasdk.utils.AACDecoderUtil
-import org.khj.khjbasiscamerasdk.utils.AACEncoderUtil
-import org.khj.khjbasiscamerasdk.utils.TimeUtil
-import org.khj.khjbasiscamerasdk.utils.ToastUtil
+import org.khj.khjbasiscamerasdk.utils.*
+import org.khj.khjbasiscamerasdk.view.SimpleMiddleDividerItemDecoration
 import org.khjsdk.com.khjsdk_2020.value.MyConstans
 import java.io.File
 import java.lang.ref.WeakReference
+import java.util.*
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 
-class WatchVideoActivity : AppCompatActivity(), Camera.successCallback, Camera.onOffLineCallback,
+class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
     AdapterView.OnItemSelectedListener {
 
     private var videoDecodec: glVideoDecodec? = null
@@ -75,15 +77,21 @@ class WatchVideoActivity : AppCompatActivity(), Camera.successCallback, Camera.o
     private var deviceFolder: File? = null
     private var constans = MyConstans()
     private var delayStopSendAudioSub: Disposable? = null
-    protected var mDisposable: CompositeDisposable? = null
     private var isSendAudioOn: Boolean = false
     private var isReceiveAudio = false
     private var dpis = context.resources.getStringArray(R.array.videoRecordQuality)
-    private var dpiAdapter = DpiAdapter(context)
     private var currentDpi = -1
-    private var mNormalPopup: QMUIPopup? = null
     private var mp4Path: String? = null
+    private var isPlayBackVideo: Boolean = false
+    private var currentTimeMillis = System.currentTimeMillis()
+    private var startToDayMillis = DateUtils.getTodayStart(System.currentTimeMillis())
     private val isRecordingMP4WithAudio = AtomicBoolean(false)
+    private var playbackAdapter: PlaybackVideoAdapter? = null
+    private var playBackSubcrition: Disposable? = null
+    private var fileTimeInfoArrayList: List<fileTimeInfo> = ArrayList()
+    private var temFrameCount = 0
+    private var playSDSub: Disposable? = null
+    private var delayToPlaySdSub: Disposable? = null
 
     private class WeakHandler(activity: WatchVideoActivity) : Handler() {
         private val mWeakReference: WeakReference<Activity>
@@ -91,7 +99,6 @@ class WatchVideoActivity : AppCompatActivity(), Camera.successCallback, Camera.o
         init {
             this.mWeakReference = WeakReference(activity)
         }
-
 
         override fun handleMessage(msg: Message?) {
             super.handleMessage(msg)
@@ -106,65 +113,44 @@ class WatchVideoActivity : AppCompatActivity(), Camera.successCallback, Camera.o
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_watchervideo)
+    override fun getContentViewLayoutID() = R.layout.activity_watchervideo
+
+    override fun initView(savedInstanceState: Bundle?) {
         requestPerm()
         initVar()
         initVideo()
-        initView()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        if (videoDecodec == null) {
-            videoDecodec = glVideoDecodec()
-        }
-        if (mSurface != null && videoDecodec != null) {
-            videoDecodec!!.videoDecodecStart(mSurface)
-            startVideo()
-            ViseLog.w("onStart" + "startVideo")
-        }
-    }
-
-    fun initVar() {
-        mDisposable = CompositeDisposable()
-        deviceUid = this.intent.extras?.get("uid").toString()
-        isApMode = this.intent.extras?.getBoolean("ap", false)
-        deviceFolder = File(constans.KanHuJiaPath + App.userAccount)
-        deviceFolder!!.run {
-            if (!exists()) {
-                mkdirs()
-            }
-        }
-    }
-
-    fun initView() {
         topbar?.setTitle(deviceUid)
         topbar?.addLeftBackImageButton()?.setOnClickListener {
             finish()
         }
         btn_direction_up?.setOnClickListener {
+            // 方向盘 上
             turnCamera(AVIOCTRL_PTZ_UP)
         }
         btn_direction_left?.setOnClickListener {
+            // 方向盘 左
             turnCamera(AVIOCTRL_PTZ_LEFT)
         }
         btn_direction_right?.setOnClickListener {
+            // 方向盘 右
             turnCamera(AVIOCTRL_PTZ_RIGHT)
         }
         btn_direction_down?.setOnClickListener {
+            // 方向盘 下
             turnCamera(AVIOCTRL_PTZ_DOWN)
         }
         cbx_changelight?.setOnCheckedChangeListener { buttonView, isChecked ->
+            // 白光灯
             if (!ignore) {
                 cameraWrapper?.ChangeWitchLightStatus(isChecked)
             }
         }
         btn_screenshot?.setOnClickListener {
+            // 截图
             taskPhoto()
         }
         btn_sendvoice.setOnTouchListener { view, motionEvent ->
+            //发送音频
             try {
                 return@setOnTouchListener sendAudio(motionEvent)
             } catch (e: Exception) {
@@ -172,13 +158,8 @@ class WatchVideoActivity : AppCompatActivity(), Camera.successCallback, Camera.o
             }
             return@setOnTouchListener true
         }
-
-        val adapter = ArrayAdapter(this, R.layout.simple_list_item, dpis)
-        adapter.setDropDownViewResource(R.layout.simple_list_item)
-        sp_dpi.adapter = adapter
-        sp_dpi.setOnItemSelectedListener(this)
-
         tv_recordVideo?.setOnClickListener {
+            // 录制视频
             if (isRecordingMP4.get()) {
                 closeRecordFile()
                 tv_recordVideo.text = getString(R.string.startRecordingVideo)
@@ -214,6 +195,70 @@ class WatchVideoActivity : AppCompatActivity(), Camera.successCallback, Camera.o
         cameraWrapper?.let {
             if (it.getDevCap(CameraWrapper.Capability.WHITE_LIGHT)) {
                 cbx_changelight?.visibility = View.VISIBLE
+            }
+        }
+        tv_PlaybackVideo.setOnClickListener {
+            if (isPlayBackVideo) {
+                rv_basicFunction.visibility = View.VISIBLE
+                rv_playbackVideo.visibility = View.GONE
+                tv_PlaybackVideo.text = getString(R.string.playBackVideo)
+                cameraWrapper!!.playBackVideoStop()
+                delayToPlaySdSub?.dispose()
+                video_loading.show()
+                startVideo()
+            } else {
+                rv_basicFunction.visibility = View.GONE
+                rv_playbackVideo.visibility = View.VISIBLE
+                tv_PlaybackVideo.text = getString(R.string.closePlayBack)
+                queryRecordVideo()
+            }
+            isPlayBackVideo = !isPlayBackVideo
+        }
+
+        val adapter = ArrayAdapter(this, R.layout.simple_list_item, dpis)
+        adapter.setDropDownViewResource(R.layout.simple_list_item)
+        sp_dpi.adapter = adapter
+        sp_dpi.setOnItemSelectedListener(this) // 切换视频清晰度
+
+        playbackAdapter = PlaybackVideoAdapter()
+        playbackAdapter!!.setOnItemClickListener { adapter, view, position ->
+            ViseLog.i("去播放视频")
+            video_loading.show()
+            cameraWrapper!!.playBackVideoStop()
+            playBackSubcrition = Observable.timer(800, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { aLong: Long? ->
+                    ViseLog.e("开始回放" + DateUtils.getDateTime(fileTimeInfoArrayList.get(position).videofiletime))
+                    playBack(fileTimeInfoArrayList.get(position), position)
+                }
+        }
+        recyclerview_playbackVideo?.run {
+            setLayoutManager(LinearLayoutManager(context))
+            addItemDecoration(SimpleMiddleDividerItemDecoration(context))
+            setAdapter(playbackAdapter)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (videoDecodec == null) {
+            videoDecodec = glVideoDecodec()
+        }
+        if (mSurface != null && videoDecodec != null) {
+            videoDecodec!!.videoDecodecStart(mSurface)
+            startVideo()
+            ViseLog.w("onStart" + "startVideo")
+        }
+    }
+
+    fun initVar() {
+        mDisposable = CompositeDisposable()
+        deviceUid = this.intent.extras?.get("uid").toString()
+        isApMode = this.intent.extras?.getBoolean("ap", false)
+        deviceFolder = File(constans.KanHuJiaPath + App.userAccount)
+        deviceFolder!!.run {
+            if (!exists()) {
+                mkdirs()
             }
         }
     }
@@ -717,5 +762,157 @@ class WatchVideoActivity : AppCompatActivity(), Camera.successCallback, Camera.o
             }
             mp4Path = ""
         }
+    }
+
+    @SuppressLint("CheckResult")
+    fun queryRecordVideo() {
+        ViseLog.i("$startToDayMillis 开始查询 $currentTimeMillis")
+        if (!cameraWrapper!!.deviceInfo.hasSdcard) {
+            return
+        }
+        val fileTimeInfos = cameraWrapper!!.deviceMap[startToDayMillis]
+        if (fileTimeInfos == null) {
+            Observable.create { emitter: ObservableEmitter<ArrayList<fileTimeInfo>> ->
+                cameraWrapper!!.getmCamera()
+                    .getVideoFiletime(startToDayMillis / 1000) { i, arrayList ->
+                        // 获取今天的所有视频录像片段数据  i 为 0成功 否则失败
+                        if (i == 0) {
+                            ViseLog.i(arrayList)
+                            emitter.onNext(arrayList)
+                            emitter.onComplete()
+                        } else {
+                            emitter.tryOnError(Throwable("$i"))
+                        }
+                    }
+            }.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { disposable: Disposable? ->
+                    mDisposable?.add(disposable!!)
+                    showLoading(disposable)
+                }.doFinally {
+                    dismissLoading()
+                }.subscribe({
+                    fileTimeInfoArrayList = it
+                    if (it.size == 0) {
+                        cameraWrapper!!.deviceMap[startToDayMillis] = ArrayList()
+                        ToastUtil.showToast(context, context.getString(R.string.noVideosToday))
+                    } else {
+                        playbackAdapter!!.setNewData(it)
+                        cameraWrapper!!.deviceMap[startToDayMillis] = it
+                    }
+                }, {
+                    ViseLog.e("查询出错")
+                    val msg = it.message
+                    if (msg.equals("1")) {
+                        Toasty.error(context, getString(R.string.sdcardNotAvailable)).show()
+                    } else {
+                        Toasty.error(context, getString(R.string.queryError) + msg).show()
+                    }
+                }, {
+
+                }, {
+
+                })
+        } else {
+            fileTimeInfoArrayList = fileTimeInfos
+            playbackAdapter!!.setNewData(fileTimeInfos)
+        }
+    }
+
+    @SuppressLint("CheckResult")
+    fun playBack(fileInfo: fileTimeInfo, index: Int) {
+        val duration: Long = fileInfo.playbackTotalTime * 1000.toLong() //
+        ViseLog.i("duration", fileInfo.playbackTotalTime)
+        val initTime: Long = fileInfo.videofiletime * 1000
+        val fileName = DateUtils.getDateTime2(fileInfo.videofiletime * 1000).toString() + ".mp4"
+        ViseLog.e("开始回放" + fileName + DateUtils.getDateTime2(initTime))
+        setSpeakerphoneOn(context, true)
+        if (decoderUtil == null) {
+            decoderUtil = AACDecoderUtil()
+        }
+        Observable.create { emitter: ObservableEmitter<Long> ->
+            cameraWrapper!!.getmCamera()
+                .playBackVideoStart(fileName, 0, { i, bytes, total, current, b ->
+                    if (i == 0) {   //第一帧开始
+                        videoDecodec?.let {
+                            if (isPlayBackVideo) {
+                                it.videoDecodec(bytes, 0)
+                                totalVideo.set(totalVideo.get() + bytes.size)
+                            }
+                        }
+                        muxing?.let {
+                            if (isRecordingMP4.get()) {
+                                it.write(bytes, false)
+                            }
+                        }
+                        var playedMills = (current * duration / total) + 1
+                        temFrameCount++
+                        if (temFrameCount % 10 == 0) {
+                            emitter.onNext(playedMills)
+                            temFrameCount = 0
+                        }
+                        if (current >= total) {
+                            emitter.onComplete()
+                        }
+                    } else {
+                        ViseLog.e("错误回放码 $i")
+                        emitter.tryOnError(Throwable("$i"))
+                    }
+                }, { bytes, l ->
+                    decoderUtil?.let {
+                        it.decodePCM(bytes, 0, bytes.size)
+                        muxing?.let {
+                            if (isRecordingMP4.get()) {
+                                it.write(bytes, true)
+                            }
+                        }
+                    }
+                })
+        }.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { disposable: Disposable? ->
+
+            }.doFinally {
+                video_loading.hide()
+                dismissLoading()
+            }.subscribe({
+                decoderUtil?.let {
+                    if (cbx_receiveAudio.isChecked) {
+                        it.replay()
+                    } else {
+                        it.pause()
+                    }
+                }
+                if (video_loading.isShown) {
+                    video_loading.smoothToHide()
+                }
+                temFrameCount++
+
+            }, {
+                cameraWrapper?.run {
+                    if (getmCamera() != null) {
+                        playBackVideoStop();
+                    }
+                }
+                Toasty.error(context, context.getString(R.string.playbackError)).show()
+            }, {
+                cameraWrapper?.run {
+                    if (getmCamera() != null) {
+                        playBackVideoStop();
+                    }
+                }
+                delayToPlaySdSub = Observable.timer(1, TimeUnit.SECONDS)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe { aLong: Long? ->
+                        if (index + 1 <= fileTimeInfoArrayList.size - 1 && isPlayBackVideo) {
+                            playBack(fileTimeInfoArrayList[index + 1] ,index + 1)
+                            ViseLog.e("查找下一个$$$$$$$$$$$$$$$$$$$$$$$ 录像" +
+                                    DateUtils.getDateTime2(fileTimeInfoArrayList[index + 1].videofiletime * 1000))
+                        }
+                    }
+            }, {
+                playSDSub = it
+                mDisposable!!.add(it)
+            })
     }
 }
