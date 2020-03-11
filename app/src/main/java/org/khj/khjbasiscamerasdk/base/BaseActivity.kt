@@ -3,24 +3,30 @@ package org.khj.khjbasiscamerasdk.base
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import com.qmuiteam.qmui.util.QMUIStatusBarHelper
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import com.githang.statusbar.StatusBarCompat
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog
-import com.vise.log.ViseLog
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import org.greenrobot.eventbus.EventBus
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.R
-import org.khj.khjbasiscamerasdk.activity.MainActivity
-import org.khjsdk.com.khjsdk_2020.value.AppStatusConstant
+import org.khjsdk.com.khjsdk_2020.value.MyConstans
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    var AppStatusConstant: AppStatusConstant = AppStatusConstant()
+    val myConstans: MyConstans by lazy{
+        MyConstans()
+    }
+
     var mContext: Context = this
     protected var mDisposable: CompositeDisposable? = null
     protected var tipDialog: QMUITipDialog? = null
@@ -34,21 +40,22 @@ abstract class BaseActivity : AppCompatActivity() {
         if (useEventbus()) {
             EventBus.getDefault().register(this)
         }
-        if (usetranslucent()) {
-            QMUIStatusBarHelper.translucent(this)
-        }
-        beforeInit()
         if (getContentViewLayoutID() != 0) {
             setContentView(getContentViewLayoutID())
             initView(savedInstanceState)
         }
     }
 
-    /**
-     * 界面初始化前期准备
-     */
-    protected fun beforeInit() {
-
+    fun setStatusBar(lightStatusBar: Boolean)
+    {
+        if (Build.VERSION.SDK_INT >= 21)
+        {
+            val decorView = window.decorView
+            val option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+            decorView.systemUiVisibility = option
+            window.statusBarColor = Color.TRANSPARENT
+            StatusBarCompat.setStatusBarColor(this, Color.TRANSPARENT, lightStatusBar)
+        }
     }
 
     abstract fun initView(savedInstanceState: Bundle?)
@@ -56,17 +63,6 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected fun useEventbus(): Boolean {
         return false
-    }
-
-    protected fun usetranslucent(): Boolean {
-        return true
-    }
-
-    protected fun protectApp() {
-        ViseLog.e("APP被强杀了")
-        val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra(AppStatusConstant.KEY_HOME_ACTION, AppStatusConstant.ACTION_RESTART_APP)
-        startActivity(intent)
     }
 
     protected fun removeFragmentState(savedInstanceState: Bundle?) {
@@ -112,6 +108,18 @@ abstract class BaseActivity : AppCompatActivity() {
                 tipDialog = null
             }
         }
+    }
+
+    inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> FragmentTransaction) {
+        beginTransaction().func().commit()
+    }
+
+    fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int) {
+        supportFragmentManager.inTransaction { add(frameId, fragment) }
+    }
+
+    fun AppCompatActivity.replaceFragment(fragment: Fragment, frameId: Int) {
+        supportFragmentManager.inTransaction { replace(frameId, fragment) }
     }
 
     override fun onDestroy() {

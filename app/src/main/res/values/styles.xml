@@ -159,4 +159,27 @@
         <item name="android:windowExitAnimation">@anim/dialog_exit</item>
     </style>
 
+    <style name="item_textview">
+        <item name="android:paddingLeft">@dimen/padding_start_small</item>
+        <item name="android:paddingRight">@dimen/padding_start_small</item>
+        <item name="android:background">@drawable/selector_item_white</item>
+        <item name="android:drawablePadding">@dimen/padding_start_small</item>
+        <item name="android:textSize">@dimen/textsize_very_small</item>
+        <item name="android:drawableRight">@drawable/ic_right_arrow</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/common_item_height_small</item>
+    </style>
+
+    <style name="btn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/common_item_height</item>
+        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginRight">25dp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:background">@drawable/selector_btn_next</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">@dimen/textsize_middle</item>
+    </style>
 </resources>

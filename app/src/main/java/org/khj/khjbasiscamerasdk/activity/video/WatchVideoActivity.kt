@@ -3,6 +3,7 @@ package org.khj.khjbasiscamerasdk.activity.video
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.SurfaceTexture
 import android.media.AudioManager
 import android.os.Bundle
@@ -20,6 +21,7 @@ import com.khj.Camera
 import com.khj.Camera.*
 import com.khj.Muxing
 import com.khj.glVideoDecodec
+import com.qmuiteam.qmui.util.QMUIViewHelper
 import com.vise.log.ViseLog
 import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.Permission
@@ -35,6 +37,7 @@ import kotlinx.android.synthetic.main.topbar.*
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.App.Companion.context
 import org.khj.khjbasiscamerasdk.R
+import org.khj.khjbasiscamerasdk.activity.FragmentLoadActivity
 import org.khj.khjbasiscamerasdk.adapter.PlaybackVideoAdapter
 import org.khj.khjbasiscamerasdk.av_modle.CameraManager
 import org.khj.khjbasiscamerasdk.av_modle.CameraWrapper
@@ -119,10 +122,17 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
         requestPerm()
         initVar()
         initVideo()
-        topbar?.setTitle(deviceUid)
-        topbar?.addLeftBackImageButton()?.setOnClickListener {
+        topbar.setTitle(deviceUid)
+        topbar.addLeftBackImageButton()?.setOnClickListener {
             finish()
         }
+        topbar.addRightImageButton(R.drawable.shezhi, QMUIViewHelper.generateViewId())
+            .setOnClickListener {
+                val intent = Intent(this@WatchVideoActivity, FragmentLoadActivity::class.java)
+                intent.putExtra(myConstans.FragmentLoadActivityTagDeviceUid,deviceUid)
+                intent.putExtra(myConstans.FragmentLoadActivityFragmentTag,1)
+                startActivity(intent)
+            }
         btn_direction_up?.setOnClickListener {
             // 方向盘 上
             turnCamera(AVIOCTRL_PTZ_UP)
@@ -905,9 +915,11 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe { aLong: Long? ->
                         if (index + 1 <= fileTimeInfoArrayList.size - 1 && isPlayBackVideo) {
-                            playBack(fileTimeInfoArrayList[index + 1] ,index + 1)
-                            ViseLog.e("查找下一个$$$$$$$$$$$$$$$$$$$$$$$ 录像" +
-                                    DateUtils.getDateTime2(fileTimeInfoArrayList[index + 1].videofiletime * 1000))
+                            playBack(fileTimeInfoArrayList[index + 1], index + 1)
+                            ViseLog.e(
+                                "查找下一个$$$$$$$$$$$$$$$$$$$$$$$ 录像" +
+                                        DateUtils.getDateTime2(fileTimeInfoArrayList[index + 1].videofiletime * 1000)
+                            )
                         }
                     }
             }, {

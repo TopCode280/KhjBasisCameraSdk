@@ -26,7 +26,7 @@ class AddDeviceActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun initView() {
-        topbar!!.setTitle(R.string.deviceList)
+        topbar.setTitle(R.string.deviceList)
         topbar.addLeftBackImageButton().setOnClickListener { finish() }
         rl_GRcode.setOnClickListener(this)
         rl_ap_mode.setOnClickListener(this)

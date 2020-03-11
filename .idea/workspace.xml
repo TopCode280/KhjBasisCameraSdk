@@ -6,15 +6,22 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="jerr" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="jerry" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4375a2c-fd94-40fd-aeda-4e3ac710418e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/adapter/PlaybackVideoAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/utils/DateUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_playbackvideo.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/LifeCycle.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/activity/FragmentLoadActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/eventbus/DevicesListRefresEvent.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/fragment/setting/DevicesSettingFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/view/DrawableText.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_night_vision.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/nightmode_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/selector_cbx_common.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_devicesetting.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_fragment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
@@ -29,9 +36,26 @@
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/App.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/activity/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/activity/addDevices/AddDeviceActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/activity/addDevices/AddDeviceActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/activity/addDevices/LanAddDeviceActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/activity/addDevices/LanAddDeviceActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/activity/addDevices/QrCodeConfigNetWorkActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/activity/addDevices/QrCodeConfigNetWorkActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/activity/video/WatchVideoActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/activity/video/WatchVideoActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/base/BaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/base/BaseActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/base/BaseFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/base/BaseFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/fragment/DevicesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/fragment/DevicesFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/value/MyConstans.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/value/MyConstans.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_qrcodeconfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_qrcodeconfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_watchervideo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_watchervideo.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/topbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/topbar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/theme.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/theme.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/config.gradle" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,10 +80,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Gradle Kotlin DSL Build Script" />
-        <option value="Kotlin Class" />
-        <option value="layoutResourceFile" />
         <option value="Kotlin File" />
         <option value="Class" />
+        <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -74,24 +98,28 @@
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="org.khj.khjbasiscamerasdk" />
     </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="org.khj.khjbasiscamerasdk.activity" />
+      <recent name="org.khj.khjbasiscamerasdk" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.khj.khjbasiscamerasdk.view" />
       <recent name="org.khj.khjbasiscamerasdk.utils" />
       <recent name="org.khj.khjbasiscamerasdk.adapter" />
-      <recent name="org.khj.khjbasiscamerasdk.view" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\res\layout" />
+      <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\res\drawable-xhdpi" />
       <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\res\drawable" />
+      <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\res\layout" />
       <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\java\org\khj\khjbasiscamerasdk" />
       <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\java\org\khj\khjbasiscamerasdk\view" />
-      <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\java\org\khj\khjbasiscamerasdk\base" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -184,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583485405021</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="SD 卡回放功能完成">
+      <created>1583572786090</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1583572786090</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -202,6 +237,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="有线连接设备完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="有线连接设备完成" />
+    <MESSAGE value="SD 卡回放功能完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="SD 卡回放功能完成" />
   </component>
 </project>

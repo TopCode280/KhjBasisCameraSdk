@@ -8,6 +8,18 @@
         <attr name="right_bottom_radius" format="dimension" />
         <attr name="left_bottom_radius" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="ImageTextButton">
+        <attr name="leftDrawable"/>
+        <attr name="drawableWidth"/>
+        <attr name="drawableHeight"/>
+    </declare-styleable>
+
+
     <attr name="app_primary_color" format="color" /> <!-- topbar -->
     <attr name="app_content_bg_color" format="color" /> <!-- content-->
+    <attr name="leftDrawable" format="reference"/>
+    <attr name="drawableWidth" format="dimension"/>
+    <attr name="drawableHeight" format="dimension"/>
+
 </resources>

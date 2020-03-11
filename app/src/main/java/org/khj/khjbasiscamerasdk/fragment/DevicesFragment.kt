@@ -18,6 +18,8 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_devices.*
 import kotlinx.android.synthetic.main.fragment_devices.view.*
 import kotlinx.android.synthetic.main.topbar.*
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.R
 import org.khj.khjbasiscamerasdk.activity.addDevices.AddDeviceActivity
@@ -25,35 +27,37 @@ import org.khj.khjbasiscamerasdk.activity.video.WatchVideoActivity
 import org.khj.khjbasiscamerasdk.adapter.DeviceListAdapter
 import org.khj.khjbasiscamerasdk.av_modle.CameraManager
 import org.khj.khjbasiscamerasdk.av_modle.CameraWrapper
+import org.khj.khjbasiscamerasdk.base.BaseFragment
 import org.khj.khjbasiscamerasdk.database.EntityManager
 import org.khj.khjbasiscamerasdk.database.entity.DeviceEntity
+import org.khj.khjbasiscamerasdk.eventbus.DevicesListRefreshEvent
 import org.khj.khjbasiscamerasdk.greendao.DeviceEntityDao
 import org.khj.khjbasiscamerasdk.view.MyLinearLayoutManager
 import org.khj.khjbasiscamerasdk.view.SimpleDividerItemDecoration
+import org.khjsdk.com.khjsdk_2020.eventbus.CameraStatusEvent
+import org.khjsdk.com.khjsdk_2020.eventbus.CheckOnLineEvent
 
-class DevicesFragment : Fragment(), OnRefreshListener {
+class DevicesFragment : BaseFragment(), OnRefreshListener {
 
-    protected var mDisposable: CompositeDisposable? = null
     private var deviceListAdapter: DeviceListAdapter? = null
     private var deviceList: MutableList<CameraWrapper>? = ArrayList()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = LayoutInflater.from(activity).inflate(R.layout.fragment_devices, null)
-        return view
-    }
+    override fun userEventbus() = true
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        initView()
-        initObject()
-    }
+    override fun contentViewId() = R.layout.fragment_devices
 
-    fun initView() {
+    override fun initView() {
         topbar.setTitle(R.string.deviceList)
+        deviceList = CameraManager.getInstance().cameras
+        deviceListAdapter = DeviceListAdapter(deviceList)
+        refreshLayout.setEnableLoadMore(false)
+        recyclerView.setLayoutManager(MyLinearLayoutManager(context))
+        recyclerView.setAdapter(deviceListAdapter)
+        recyclerView.addItemDecoration(SimpleDividerItemDecoration(context))
+        refreshLayout.autoRefresh()
+    }
+
+    override fun setListeners() {
         topbar.addRightImageButton(R.mipmap.add, QMUIViewHelper.generateViewId())
             .setOnClickListener { v ->
                 val intent = Intent(activity, AddDeviceActivity::class.java)
@@ -65,12 +69,6 @@ class DevicesFragment : Fragment(), OnRefreshListener {
             val intent = Intent(activity, AddDeviceActivity::class.java)
             startActivity(intent)
         }
-        deviceList = CameraManager.getInstance().cameras
-        deviceListAdapter = DeviceListAdapter(deviceList)
-        refreshLayout.setEnableLoadMore(false)
-        recyclerView.setLayoutManager(MyLinearLayoutManager(context))
-        recyclerView.setAdapter(deviceListAdapter)
-        recyclerView.addItemDecoration(SimpleDividerItemDecoration(context))
         deviceListAdapter!!.setOnItemChildClickListener { adapter, view, position ->
             if (position >= deviceListAdapter!!.getData().size) {
                 return@setOnItemChildClickListener
@@ -86,8 +84,10 @@ class DevicesFragment : Fragment(), OnRefreshListener {
                     R.id.btnDelete -> {
                         deviceListAdapter!!.data.clear()
                         deviceList!!.clear()
-                        CameraManager.getInstance().removeCamera(cameraWrapper.deviceEntity.getDeviceUid())
-                        EntityManager.getInstance().deviceEntityDao.deleteByKey(cameraWrapper.deviceEntity.id)
+                        CameraManager.getInstance()
+                            .removeCamera(cameraWrapper.deviceEntity.getDeviceUid())
+                        EntityManager.getInstance()
+                            .deviceEntityDao.deleteByKey(cameraWrapper.deviceEntity.id)
                         refreshLayout.autoRefresh()
                     }
                 }
@@ -96,12 +96,14 @@ class DevicesFragment : Fragment(), OnRefreshListener {
             }
         }
         refreshLayout.setOnRefreshListener(this)
-        refreshLayout.autoRefresh()
     }
 
-    fun initObject() {
-        mDisposable = CompositeDisposable()
+    override fun initData() {
     }
+
+    override fun loadData() {
+    }
+
 
     override fun onRefresh(refreshLayout: RefreshLayout) {
         val localDisposable = Observable.create<List<DeviceEntity>> {
@@ -127,7 +129,7 @@ class DevicesFragment : Fragment(), OnRefreshListener {
                 }
             }
         mDisposable!!.add(localDisposable)
-        view!!.refreshLayout.finishRefresh()
+        view.refreshLayout.finishRefresh()
     }
 
     private fun getLocalDeviceList(deviceEntityList: List<DeviceEntity>) {
@@ -143,5 +145,27 @@ class DevicesFragment : Fragment(), OnRefreshListener {
         mDisposable?.let {
             mDisposable!!.dispose()
         }
+    }
+
+
+    @Subscribe
+    fun ListRefresh(refreshEvent: DevicesListRefreshEvent?) {
+        refreshLayout?.autoRefresh()
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun checkOnLineStatus(checkOnLineEvent: CheckOnLineEvent) {
+        ViseLog.i("checkOnline eventbus 发出消息 刷新 ${checkOnLineEvent.uid} 状态")
+        for (index in 0 until deviceListAdapter!!.data.size) {
+            if (deviceListAdapter!!.data[index].uid.equals(checkOnLineEvent.uid)) {
+                deviceListAdapter!!.notifyItemChanged(index)
+            }
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onCameraStausChanged(statusEvent: CameraStatusEvent) { //        if (!App.isIsRunInBackground()) {
+        ViseLog.i("收到刷新设备列表EventBus消息")
+        deviceListAdapter!!.notifyDataSetChanged()
     }
 }

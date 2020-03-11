@@ -1,34 +1,66 @@
 package org.khj.khjbasiscamerasdk.base
 
-import android.app.Fragment
 import android.content.Context
 import android.os.Bundle
-import org.khj.khjbasiscamerasdk.base.BaseActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import io.reactivex.disposables.CompositeDisposable
+import org.greenrobot.eventbus.EventBus
 
-open class BaseFragment : Fragment() {
+abstract class BaseFragment : Fragment() {
 
-    protected var mActivity: BaseActivity? = null
+    private lateinit var provider: ViewModelProvider
+    private lateinit var contentView: View
+    lateinit var mContext: Context
+    protected var mDisposable: CompositeDisposable? = null
 
-    override fun onAttach(context: Context?) {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        if (!::contentView.isInitialized) {
+            if (userEventbus()) {
+                EventBus.getDefault().register(this)
+            }
+            mDisposable = CompositeDisposable()
+            contentView = inflater.inflate(contentViewId(), null)
+            provider = ViewModelProviders.of(this)
+            mContext = contentView.context
+            initView()
+            setListeners()
+            initData()
+            loadData()
+        }
+        return contentView
+    }
+
+    lateinit var mActivity: BaseActivity
+    override fun onAttach(context: Context) {
         super.onAttach(context)
-        mActivity  = context as BaseActivity;
+        mActivity = context as BaseActivity
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    override fun getView() = contentView
+    abstract fun contentViewId(): Int
+    abstract fun initView()
+    abstract fun setListeners()
+    abstract fun initData()
+    abstract fun loadData()
 
-    /**
-     * 1. 初始化数据，包括上个页面传递过来的数据在这个方法做
-     */
-    protected fun initData(savedInstanceState: Bundle?) {
+    open fun finish() = mActivity.finish()
 
-    }
+    protected open fun userEventbus() = false
 
-    /**
-     * 1. 需要使用eventbug 重写 return true
-     */
-    protected fun userEventbus(): Boolean {
-        return false
+    override fun onDestroyView() {
+        super.onDestroyView()
+        if (userEventbus()) {
+            EventBus.getDefault().unregister(this)
+        }
+        mDisposable?.dispose()
     }
 }

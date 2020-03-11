@@ -10,53 +10,21 @@ import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.Permission
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.R
+import org.khj.khjbasiscamerasdk.base.BaseActivity
 import org.khjsdk.com.khjsdk_2020.mvvm.view.fragment.DevicesFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     var createTime: Long = 0   //主界面启动的时间,启动后的10秒内，不处理网络改变的通知，因为如果4G网络进来，会立马收到断网的通知，导致设备断线重连
-    var deivcesFragment: DevicesFragment? = null
+    var deivcesFragment: DevicesFragment = DevicesFragment()
+    override fun getContentViewLayoutID() =  R.layout.activity_main
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        deivcesFragment = DevicesFragment()
+    override fun initView(savedInstanceState: Bundle?) {
         initVar()
-        initView()
+        addFragment(deivcesFragment, R.id.content)
     }
 
     fun initVar() {
         createTime = System.currentTimeMillis()
-    }
-
-    fun initView() {
-        addFragment(deivcesFragment!!, R.id.content)
-    }
-
-
-    inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> FragmentTransaction) {
-        beginTransaction().func().commit()
-    }
-
-    fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int) {
-        supportFragmentManager.inTransaction { add(frameId, fragment) }
-    }
-
-    fun AppCompatActivity.replaceFragment(fragment: Fragment, frameId: Int) {
-        supportFragmentManager.inTransaction { replace(frameId, fragment) }
-    }
-
-    private fun requestPerm() {
-        AndPermission.with(this)
-                .permission(
-                        Permission.Group.MICROPHONE,
-                        Permission.Group.STORAGE,
-                        Permission.Group.CAMERA,
-                        Permission.Group.LOCATION
-                ).onGranted { permissions ->
-
-                }.onDenied { permissions -> Toast.makeText(App.context, R.string.denyPermissionLedTo, Toast.LENGTH_SHORT).show() }
-                .start()
     }
 }

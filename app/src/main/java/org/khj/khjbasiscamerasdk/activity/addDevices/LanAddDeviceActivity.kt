@@ -23,6 +23,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_lanadddevice.*
 import kotlinx.android.synthetic.main.topbar.*
+import org.greenrobot.eventbus.EventBus
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.R
 import org.khj.khjbasiscamerasdk.av_modle.CameraManager
@@ -31,6 +32,7 @@ import org.khj.khjbasiscamerasdk.bean.MulticastBean
 import org.khj.khjbasiscamerasdk.bean.SearchDeviceInfoBean
 import org.khj.khjbasiscamerasdk.database.EntityManager
 import org.khj.khjbasiscamerasdk.database.entity.DeviceEntity
+import org.khj.khjbasiscamerasdk.eventbus.DevicesListRefreshEvent
 import org.khj.khjbasiscamerasdk.greendao.DeviceEntityDao
 import org.khj.khjbasiscamerasdk.utils.MulticastServer
 import org.khj.khjbasiscamerasdk.view.dialogfragment.SelectUidDialogFragment
@@ -242,6 +244,7 @@ class LanAddDeviceActivity : BaseActivity(), View.OnClickListener,
         deviceentity.deviceName = "test_camera_" + CameraManager.getInstance().getCameras().size + 1
         deviceentity.isAdmin = true
         deviceEntityDao!!.insertOrReplace(deviceentity)
+        EventBus.getDefault().post(DevicesListRefreshEvent()) // 通知设备列表刷新
         finish()
     }
 

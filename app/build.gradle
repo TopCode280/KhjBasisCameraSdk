@@ -76,6 +76,10 @@ dependencies {
     implementation(rootProject.ext.dependencies["rxandroid2"]) // rxjava
     implementation rootProject.ext.dependencies["SwipeDelMenuLayout"] //侧滑删除
     implementation rootProject.ext.dependencies["LodingView"] //加载转动
+    implementation rootProject.ext.dependencies["kotlinx-coroutines-core"] //协程
+    implementation rootProject.ext.dependencies["kotlinx-coroutines-android"] //协程
+    implementation rootProject.ext.dependencies["status-bar-compat"] //状态栏控制
+    implementation rootProject.ext.dependencies["lifecycle"]
     implementation(rootProject.ext.dependencies["BRVAH"]) {
         exclude module: 'recyclerview-v7'
     }

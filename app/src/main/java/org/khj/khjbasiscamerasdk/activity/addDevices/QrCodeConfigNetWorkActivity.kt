@@ -14,12 +14,15 @@ import com.google.gson.JsonSyntaxException
 import com.uuzuche.lib_zxing.activity.CodeUtils
 import com.vise.log.ViseLog
 import kotlinx.android.synthetic.main.activity_qrcodeconfig.*
+import kotlinx.android.synthetic.main.topbar.*
+import org.greenrobot.eventbus.EventBus
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.R
 import org.khj.khjbasiscamerasdk.av_modle.CameraManager
 import org.khj.khjbasiscamerasdk.bean.MulticastBean
 import org.khj.khjbasiscamerasdk.database.EntityManager
 import org.khj.khjbasiscamerasdk.database.entity.DeviceEntity
+import org.khj.khjbasiscamerasdk.eventbus.DevicesListRefreshEvent
 import org.khj.khjbasiscamerasdk.greendao.DeviceEntityDao
 import org.khj.khjbasiscamerasdk.isOpenGPS
 import org.khj.khjbasiscamerasdk.utils.MulticastServer
@@ -46,6 +49,8 @@ class QrCodeConfigNetWorkActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qrcodeconfig)
+        topbar.setTitle(R.string.scanErweima)
+        topbar.addLeftBackImageButton().setOnClickListener { finish() }
         tv_selectWifi!!.setOnClickListener(this)
         btn_createQRcode!!.setOnClickListener(this)
         btn_deviceConnectSuccess!!.setOnClickListener(this)
@@ -138,8 +143,7 @@ class QrCodeConfigNetWorkActivity : AppCompatActivity(), View.OnClickListener {
         deviceentity.deviceName = "test_camera_" + CameraManager.getInstance().getCameras().size + 1
         deviceentity.isAdmin = true
         deviceEntityDao!!.insertOrReplace(deviceentity)
-        ViseLog.i("查询插入数据")
-        ViseLog.i(deviceEntityDao.queryBuilder().where(DeviceEntityDao.Properties.DeviceUid.eq(multicastBean!!.uid)).list())
+        EventBus.getDefault().post(DevicesListRefreshEvent()) // 通知设备列表刷新
         finish()
     }
 
