@@ -1,11 +1,10 @@
 package org.khj.khjbasiscamerasdk.activity
 
 import android.os.Bundle
-import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.R
 import org.khj.khjbasiscamerasdk.base.BaseActivity
 import org.khj.khjbasiscamerasdk.fragment.setting.DevicesSettingFragment
-import org.khjsdk.com.khjsdk_2020.value.MyConstans
+import org.khj.khjbasiscamerasdk.utils.FragmentHelper
 
 class FragmentLoadActivity : BaseActivity() {
 
@@ -18,12 +17,16 @@ class FragmentLoadActivity : BaseActivity() {
 
     override fun initView(savedInstanceState: Bundle?) {
         val extras = intent.extras
+        fragmentHelper = FragmentHelper(supportFragmentManager, R.id.fragment_content)
         extras?.apply {
             uid = getString(myConstans.FragmentLoadActivityTagDeviceUid)
             val tagget = getInt(myConstans.FragmentLoadActivityFragmentTag, -1)
-            when (tagget) {
-                1 -> {
-                    addFragment(deviceSetting, R.id.fragment_content)
+            fragmentHelper?.run {
+                when (tagget) {
+                    1 -> {
+                        addFragment(deviceSetting)
+                        addToStack(deviceSetting)
+                    }
                 }
             }
         }

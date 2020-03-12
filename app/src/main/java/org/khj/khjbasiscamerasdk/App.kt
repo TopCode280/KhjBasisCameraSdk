@@ -2,6 +2,7 @@ package org.khj.khjbasiscamerasdk
 
 import android.app.Application
 import android.util.Log
+import androidx.multidex.MultiDex
 import com.uuzuche.lib_zxing.activity.ZXingLibrary.initDisplayOpinion
 import com.vise.log.ViseLog
 import com.vise.log.inner.DefaultTree
@@ -16,6 +17,7 @@ class App : Application() {
         super.onCreate()
         context = this
         userAccount = "15111520684"
+        MultiDex.install(context)
         initDisplayOpinion(context) // zxing 二维码扫描界面需要此处初始化
         registerActivityLifecycleCallbacks(LifeCycle)
     }

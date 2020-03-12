@@ -262,7 +262,6 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
     }
 
     fun initVar() {
-        mDisposable = CompositeDisposable()
         deviceUid = this.intent.extras?.get("uid").toString()
         isApMode = this.intent.extras?.getBoolean("ap", false)
         deviceFolder = File(constans.KanHuJiaPath + App.userAccount)

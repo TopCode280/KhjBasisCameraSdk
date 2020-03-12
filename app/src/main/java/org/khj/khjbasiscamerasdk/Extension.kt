@@ -1,7 +1,13 @@
 package org.khj.khjbasiscamerasdk
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.location.LocationManager
+import com.khj.Camera
+import com.vise.log.ViseLog
+import io.reactivex.Observable
+import io.reactivex.ObservableEmitter
+import io.reactivex.android.schedulers.AndroidSchedulers
 
 /**
  * 判断GPS是否开启，GPS或者AGPS开启一个就认为是开启的
@@ -16,4 +22,34 @@ fun isOpenGPS(context: Context): Boolean {
     // 通过WLAN或移动网络(3G/2G)确定的位置（也称作AGPS，辅助GPS定位。主要用于在室内或遮盖物（建筑群或茂密的深林等）密集的地方定位）
     val network = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
     return gps || network
+}
+
+@SuppressLint("CheckResult")
+fun Camera.getFlipStatus(result: (Boolean) -> Unit) {
+    Observable.create { emitter: ObservableEmitter<Boolean> ->
+        getFlipping {
+            emitter.onNext(it)
+            emitter.onComplete()
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it)
+        }, {
+            ViseLog.e(it.cause)
+        })
+}
+
+@SuppressLint("CheckResult")
+fun Camera.getDeviceVolume(result: (Int) -> Unit){
+    Observable.create { emitter: ObservableEmitter<Int> ->
+        getDeviceVolume {
+            emitter.onNext(it)
+            emitter.onComplete()
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it)
+        }, {
+            ViseLog.e(it.cause)
+        })
 }

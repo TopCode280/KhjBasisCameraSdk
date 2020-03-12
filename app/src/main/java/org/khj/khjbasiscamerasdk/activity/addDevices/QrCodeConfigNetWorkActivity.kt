@@ -140,7 +140,7 @@ class QrCodeConfigNetWorkActivity : AppCompatActivity(), View.OnClickListener {
         deviceentity.userId = App.userAccount.toLong()
         deviceentity.devicePwd = "888888"
         deviceentity.deviceAccount = "admin"
-        deviceentity.deviceName = "test_camera_" + CameraManager.getInstance().getCameras().size + 1
+        deviceentity.deviceName = "test_camera_${CameraManager.getInstance().getCameras().size}"
         deviceentity.isAdmin = true
         deviceEntityDao!!.insertOrReplace(deviceentity)
         EventBus.getDefault().post(DevicesListRefreshEvent()) // 通知设备列表刷新

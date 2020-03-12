@@ -38,45 +38,6 @@
                 android:visibility="invisible" />
         </RelativeLayout>
 
-
-        <TextView
-            android:id="@+id/tv_share"
-            style="@style/item_textview"
-            android:drawableLeft="@drawable/share2"
-            android:text="@string/shareDevice" />
-
-        <RelativeLayout
-            android:id="@+id/rl_cloudService"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/common_item_height_small"
-            android:background="@drawable/selector_item_white"
-            android:paddingLeft="@dimen/padding_start_small"
-            android:paddingRight="@dimen/padding_start_small">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:drawableLeft="@drawable/icon_cloud"
-                android:drawablePadding="@dimen/padding_start_small"
-                android:gravity="center"
-                android:text="@string/cloudService"
-                android:textSize="@dimen/textsize_very_small" />
-
-            <TextView
-                android:id="@+id/tv_days"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:drawableEnd="@drawable/ic_right_arrow"
-                android:drawablePadding="@dimen/padding_start_small"
-                android:minWidth="60dp"
-                android:textColor="@color/red"
-                android:textSize="@dimen/textsize_very_small" />
-        </RelativeLayout>
-
-
-
         <RelativeLayout
             android:id="@+id/rl_choosePath"
             android:layout_width="match_parent"
@@ -316,36 +277,6 @@
 
             <CheckBox
                 android:id="@+id/cbx_vision"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:button="@drawable/selector_cbx_common" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rl_tianMaoSpiritSwitch"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/common_item_height_small"
-            android:background="@drawable/selector_item_white"
-            android:paddingLeft="@dimen/padding_start_small"
-            android:paddingRight="@dimen/padding_start_small"
-            android:visibility="gone">
-
-            <org.khj.khjbasiscamerasdk.view.DrawableText
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:drawablePadding="@dimen/padding_start_small"
-                android:gravity="center"
-                android:text="@string/isTianMaoSpirit"
-                android:textSize="@dimen/textsize_very_small"
-                app:drawableHeight="4dp"
-                app:drawableWidth="6dp"
-                app:leftDrawable="@drawable/ic_tmjl"
-                tools:ignore="RelativeOverlap" />
-
-            <CheckBox
-                android:id="@+id/cbx_tianMaoSpirit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"

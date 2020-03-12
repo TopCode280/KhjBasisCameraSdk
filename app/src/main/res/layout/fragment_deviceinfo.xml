@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:divider="@drawable/shape_divider"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <include layout="@layout/topbar" />
+
+    <RelativeLayout
+        android:id="@+id/rl_nickname"
+        style="@style/item_relative_click"
+        android:layout_marginTop="@dimen/padding_start">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/deviceNickname"
+            android:textSize="@dimen/textsize_very_small" />
+
+        <TextView
+            android:id="@+id/tv_deviceName"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_item_height_small"
+            android:layout_alignParentEnd="true"
+            android:drawableRight="@drawable/ic_right_arrow"
+            android:drawablePadding="@dimen/padding_start_small"
+            android:gravity="center"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_very_small" />
+
+    </RelativeLayout>
+
+    <RelativeLayout style="@style/item_relative">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/deviceUID"
+            android:textSize="@dimen/textsize_very_small" />
+
+        <TextView
+            android:id="@+id/tv_deviceUID"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_item_height_small"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_very_small" />
+
+    </RelativeLayout>
+
+    <RelativeLayout style="@style/item_relative"
+        android:visibility="visible">
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/textsize_very_small"
+            android:text="@string/sdStatus"
+            android:gravity="center"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tv_SDstatus"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/text_blue"
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/textsize_very_small"
+            android:gravity="center"
+            android:layout_height="@dimen/common_item_height_small"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout style="@style/item_relative">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/deviceType"
+            android:textSize="@dimen/textsize_very_small" />
+
+        <TextView
+            android:id="@+id/tv_deviceType"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_item_height_small"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_very_small" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_version"
+        style="@style/item_relative_click">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/firmwareVersion"
+            android:textSize="@dimen/textsize_very_small" />
+
+        <TextView
+            android:id="@+id/tv_firmware"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_item_height_small"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_very_small" />
+
+
+        <ImageView
+            android:id="@+id/iv_newTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/tv_firmware"
+            android:src="@drawable/new_icon"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <RelativeLayout style="@style/item_relative">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/ip"
+            android:textSize="@dimen/textsize_very_small" />
+
+        <TextView
+            android:id="@+id/tv_ip"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_item_height_small"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_very_small" />
+
+    </RelativeLayout>
+
+    <RelativeLayout style="@style/item_relative">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/mac"
+            android:textSize="@dimen/textsize_very_small" />
+
+        <TextView
+            android:id="@+id/tv_mac"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_item_height_small"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_very_small" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/item_relative"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/sdcardCapacity"
+            android:textSize="@dimen/textsize_very_small" />
+
+        <TextView
+            android:id="@+id/tv_sdCapacity"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_item_height_small"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_very_small" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/item_relative"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_item_height_small"
+            android:gravity="center"
+            android:text="@string/sdcardFree"
+            android:textSize="@dimen/textsize_very_small" />
+
+        <TextView
+            android:id="@+id/tv_sdFreeSize"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_item_height_small"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_very_small" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_formatSdcard"
+        style="@style/item_relative_click">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_item_height_small"
+            android:gravity="center"
+            android:text="@string/formatSdcard"
+            android:textSize="@dimen/textsize_very_small" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_item_height_small"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:src="@drawable/next"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_very_small" />
+    </RelativeLayout>
+
+</LinearLayout>

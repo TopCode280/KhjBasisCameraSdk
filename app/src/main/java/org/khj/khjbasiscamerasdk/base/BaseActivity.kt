@@ -2,7 +2,6 @@ package org.khj.khjbasiscamerasdk.base
 
 import android.content.Context
 import android.content.DialogInterface
-import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -19,24 +18,31 @@ import io.reactivex.disposables.Disposable
 import org.greenrobot.eventbus.EventBus
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.R
+import org.khj.khjbasiscamerasdk.utils.FragmentHelper
 import org.khjsdk.com.khjsdk_2020.value.MyConstans
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    val myConstans: MyConstans by lazy{
+    val myConstans: MyConstans by lazy {
         MyConstans()
     }
 
+    protected val mDisposable: CompositeDisposable by lazy {
+        CompositeDisposable()
+    }
+    protected var fragmentHelper: FragmentHelper? = null
     var mContext: Context = this
-    protected var mDisposable: CompositeDisposable? = null
     protected var tipDialog: QMUITipDialog? = null
+
+    open fun getFragmentHelp(): FragmentHelper? {
+        return fragmentHelper
+    }
 
     protected abstract fun getContentViewLayoutID(): Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
         removeFragmentState(savedInstanceState)
         super.onCreate(savedInstanceState)
-        mDisposable = CompositeDisposable()
         if (useEventbus()) {
             EventBus.getDefault().register(this)
         }
@@ -46,10 +52,8 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun setStatusBar(lightStatusBar: Boolean)
-    {
-        if (Build.VERSION.SDK_INT >= 21)
-        {
+    fun setStatusBar(lightStatusBar: Boolean) {
+        if (Build.VERSION.SDK_INT >= 21) {
             val decorView = window.decorView
             val option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
             decorView.systemUiVisibility = option

@@ -182,4 +182,21 @@
         <item name="android:textColor">#fff</item>
         <item name="android:textSize">@dimen/textsize_middle</item>
     </style>
+
+    <style name="item_relative_click">
+        <item name="android:paddingStart">@dimen/padding_start</item>
+        <item name="android:paddingEnd">@dimen/padding_start</item>
+        <item name="android:background">@drawable/selector_item_white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/common_item_height_small</item>
+    </style>
+
+    <style name="item_relative">
+        <item name="android:paddingStart">@dimen/padding_start</item>
+        <item name="android:paddingEnd">@dimen/padding_start</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/common_item_height_small</item>
+    </style>
+
 </resources>
