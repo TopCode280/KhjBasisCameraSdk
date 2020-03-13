@@ -76,7 +76,7 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-    protected open fun showLoading() {
+    open fun showLoading() {
         tipDialog = QMUITipDialog(mContext)
         tipDialog!!.setCanceledOnTouchOutside(false)
         val inflate = View.inflate(App.context, R.layout.dialog_loading, null)

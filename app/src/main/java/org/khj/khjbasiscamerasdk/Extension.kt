@@ -24,32 +24,5 @@ fun isOpenGPS(context: Context): Boolean {
     return gps || network
 }
 
-@SuppressLint("CheckResult")
-fun Camera.getFlipStatus(result: (Boolean) -> Unit) {
-    Observable.create { emitter: ObservableEmitter<Boolean> ->
-        getFlipping {
-            emitter.onNext(it)
-            emitter.onComplete()
-        }
-    }.observeOn(AndroidSchedulers.mainThread())
-        .subscribe({
-            result(it)
-        }, {
-            ViseLog.e(it.cause)
-        })
-}
 
-@SuppressLint("CheckResult")
-fun Camera.getDeviceVolume(result: (Int) -> Unit){
-    Observable.create { emitter: ObservableEmitter<Int> ->
-        getDeviceVolume {
-            emitter.onNext(it)
-            emitter.onComplete()
-        }
-    }.observeOn(AndroidSchedulers.mainThread())
-        .subscribe({
-            result(it)
-        }, {
-            ViseLog.e(it.cause)
-        })
-}
+

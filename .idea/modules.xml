@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KhjBasisCameraSdk.iml" filepath="$PROJECT_DIR$/KhjBasisCameraSdk.iml" group="KhjBasisCameraSdk" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="KhjBasisCameraSdk/app" />
+      <module fileurl="file://$PROJECT_DIR$/lib-ios-dialog/lib-ios-dialog.iml" filepath="$PROJECT_DIR$/lib-ios-dialog/lib-ios-dialog.iml" group="KhjBasisCameraSdk/lib-ios-dialog" />
     </modules>
   </component>
 </project>

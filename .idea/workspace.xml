@@ -11,20 +11,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4375a2c-fd94-40fd-aeda-4e3ac710418e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/base/BaseDeviceFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/fragment/setting/DeviceInfoFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/utils/FragmentHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/viewmodel/DeviceInfoViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/viewmodel/DeviceSettingViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_left.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_right.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_out_left.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_out_right.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_divider.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_deviceinfo.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/values.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/CameraExtension.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/java/com/adorkable/iosdialog/BottomSheetDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/java/com/adorkable/iosdialog/IOSAlertDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/java/com/adorkable/iosdialog/onDismissListen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/anim/actionsheet_dialog_in.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/anim/actionsheet_dialog_out.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_bottom_normal.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_bottom_pressed.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_middle_normal.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_middle_pressed.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_single_normal.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_single_pressed.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_top_normal.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_top_pressed.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/alert_bg.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/alert_btn_left_pressed.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/alert_btn_right_pressed.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/alert_btn_single_pressed.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/trans_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable/actionsheet_bottom_selector.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable/actionsheet_middle_selector.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable/actionsheet_single_selector.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable/actionsheet_top_selector.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable/alertdialog_left_selector.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable/alertdialog_right_selector.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable/alertdialog_single_selector.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/layout/view_actionsheet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/layout/view_alertdialog.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/values-en/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/values/color.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/values/dimens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/values/styles.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
@@ -37,21 +60,31 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/libs/cameralib.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/libs/cameralib.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/App.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/Extension.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/Extension.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/activity/FragmentLoadActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/activity/FragmentLoadActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/activity/video/WatchVideoActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/activity/video/WatchVideoActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/base/BaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/base/BaseActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/base/BaseFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/base/BaseFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/fragment/setting/DevicesSettingFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/fragment/setting/DevicesSettingFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/armeabi-v7a/libp2plib.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/armeabi-v7a/libp2plib.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_devicesetting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_devicesetting.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/config.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/fragment/setting/DeviceInfoFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/fragment/setting/DeviceInfoFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/viewmodel/DeviceInfoViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/viewmodel/DeviceInfoViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/viewmodel/DeviceSettingViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/viewmodel/DeviceSettingViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libKHJMediaPlayer.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libKHJMediaPlayer.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libdownload.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libdownload.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libmuxing.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libmuxing.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libp2plib.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libp2plib.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libvideoDecodec.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libvideoDecodec.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/armeabi-v7a/libKHJMediaPlayer.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/armeabi-v7a/libKHJMediaPlayer.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/armeabi-v7a/libdownload.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/armeabi-v7a/libdownload.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/armeabi-v7a/libmuxing.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/armeabi-v7a/libmuxing.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libKHJMediaPlayer.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libKHJMediaPlayer.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libdownload.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libdownload.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libmuxing.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libmuxing.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libp2plib.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libp2plib.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libvideoDecodec.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libvideoDecodec.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +130,10 @@
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/jniLibs" />
+    <property name="project.structure.last.edited" value="Dependencies" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
@@ -114,11 +150,11 @@
       <recent name="org.khj.khjbasiscamerasdk.adapter" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\res\drawable" />
       <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\jniLibs" />
+      <recent name="D:\AsProject\KhjBasisCameraSdk" />
+      <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\res\drawable" />
       <recent name="D:\AsProject\KhjBasisCameraSdk\app\libs" />
       <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\res\drawable-xhdpi" />
-      <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\res\layout" />
     </key>
   </component>
   <component name="RunDashboard">

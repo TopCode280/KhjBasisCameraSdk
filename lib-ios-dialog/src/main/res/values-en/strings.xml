@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">IOSDialog</string>
+    <string name="tips">Tips</string>
+
+    <string name="commit">Confirm</string>
+    <string name="cancel">Cancel</string>
+</resources>

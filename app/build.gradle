@@ -91,4 +91,5 @@ dependencies {
         exclude module: 'support-annotations'
         exclude module: 'support-v4'
     }
+    implementation project(path: ':lib-ios-dialog')
 }

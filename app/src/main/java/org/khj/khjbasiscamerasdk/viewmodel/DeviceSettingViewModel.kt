@@ -7,6 +7,7 @@ import com.vise.log.ViseLog
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.khj.khjbasiscamerasdk.av_modle.CameraWrapper
+import org.khj.khjbasiscamerasdk.getDevVolume
 import org.khj.khjbasiscamerasdk.getFlipStatus
 
 class DeviceSettingViewModel : ViewModel() {
@@ -42,7 +43,7 @@ class DeviceSettingViewModel : ViewModel() {
     }
 
     fun getDeviceVolume() {
-        camera?.getDeviceVolume {
+        camera?.getDevVolume {
             ViseLog.i("getDeviceVolume it = $it")
             deviceVolume.postValue(it)
         }
