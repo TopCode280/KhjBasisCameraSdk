@@ -28,6 +28,7 @@ class DeviceInfoFragment : BaseDeviceFragment(), View.OnClickListener {
         topbar.setTitle(getString(R.string.deviceInfo))
         topbar.addLeftBackImageButton().setOnClickListener { back() }
         tv_deviceName.setBackgroundResource(R.drawable.selector_item_white)
+        tv_deviceUID.text = cameraWrapper?.deviceEntity?.deviceUid ?: "获取失败"
     }
 
     @SuppressLint("SetTextI18n")
@@ -64,6 +65,9 @@ class DeviceInfoFragment : BaseDeviceFragment(), View.OnClickListener {
                 tv_ip.text = it["IP"]
                 tv_mac.text = it["MAC"]
             })
+            showToast.observe(this@DeviceInfoFragment, Observer {
+                changeResultToast(it)
+            })
         }
     }
 
@@ -84,8 +88,7 @@ class DeviceInfoFragment : BaseDeviceFragment(), View.OnClickListener {
         when (v?.id) {
             R.id.rl_formatSdcard -> {
                 if (!cameraWrapper!!.deviceInfo.hasSdcard) {
-                    Toasty.error(App.context, App.context.getString(R.string.sdcardNotAvailable))
-                        .show()
+                    Toasty.error(App.context, App.context.getString(R.string.sdcardNotAvailable)).show()
                     return
                 }
                 viewModel?.showFormatDialog(mActivity)

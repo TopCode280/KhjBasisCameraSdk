@@ -3,6 +3,7 @@ package org.khj.khjbasiscamerasdk.fragment.setting
 import android.annotation.SuppressLint
 import android.view.View
 import androidx.lifecycle.Observer
+import com.khj.Camera
 import com.vise.log.ViseLog
 import kotlinx.android.synthetic.main.fragment_devicesetting.*
 import kotlinx.android.synthetic.main.topbar.*
@@ -42,7 +43,8 @@ class DevicesSettingFragment : BaseDeviceFragment(), View.OnClickListener {
         viewModel?.run {
             setCamera(
                 this@DevicesSettingFragment.cameraWrapper!!,
-                this@DevicesSettingFragment.camera!!
+                this@DevicesSettingFragment.camera!!,
+                mActivity
             )
             isPictureFlip.observe(this@DevicesSettingFragment, Observer {
                 ignore = true
@@ -57,8 +59,11 @@ class DevicesSettingFragment : BaseDeviceFragment(), View.OnClickListener {
                 cbx_vision.setChecked(it == 2)
                 ignore = false
             })
-            settingSucess.observe(this@DevicesSettingFragment, Observer {
+            showToast.observe(this@DevicesSettingFragment, Observer {
                 changeResultToast(it)
+            })
+            timeZone.observe(this@DevicesSettingFragment, Observer {
+                tv_currentTimeZone.text = "UTC $it"
             })
         }
     }
@@ -85,16 +90,26 @@ class DevicesSettingFragment : BaseDeviceFragment(), View.OnClickListener {
             }
         }
         rl_deviceInfo.setOnClickListener(this)
+        rl_timeZoneSetting.setOnClickListener(this)
+        tv_selfCheck.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         ViseLog.i("View ID = ${v!!.id}")
-        fragmentHelp?.run {
+        fragmentHelp?.apply {
             when (v.id) {
                 R.id.rl_deviceInfo -> {
                     val infoFragment = DeviceInfoFragment()
                     addToStack(infoFragment)
                     switchFragment(infoFragment, true)
+                }
+                R.id.rl_timeZoneSetting -> {
+                    viewModel?.showTimeSettingDialogFragment()
+                }
+                R.id.tv_selfCheck ->{
+                    camera?.setPtz(Camera.AVIOCTRL_MOTOR_RESET_POSITION, 0)
+                } else -> {
+                    ViseLog.i("点了个寂寞")
                 }
             }
         }

@@ -165,7 +165,7 @@
         <item name="android:background">@drawable/selector_item_white</item>
         <item name="android:drawablePadding">@dimen/padding_start_small</item>
         <item name="android:textSize">@dimen/textsize_very_small</item>
-        <item name="android:drawableRight">@drawable/ic_right_arrow</item>
+        <item name="android:drawableEnd">@drawable/ic_right_arrow</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/common_item_height_small</item>

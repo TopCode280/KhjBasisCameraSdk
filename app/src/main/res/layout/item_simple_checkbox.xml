@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/common_item_height"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:background="@drawable/selector_item_white"
+
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_timezone"
+        android:textSize="@dimen/textsize_middle"
+        android:text="UTC-1"
+        android:gravity="center_vertical"
+        android:layout_height="match_parent" />
+    <CheckBox
+        android:id="@+id/cbx_time"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:clickable="false"
+        android:button="@drawable/selector_cbx_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="1px"
+        android:background="@color/divider_gray"/>
+
+</RelativeLayout>

@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:divider="@color/gray_88"
         android:orientation="vertical"
         android:showDividers="middle">
@@ -24,7 +24,7 @@
             <TextView
                 android:id="@+id/tv_deviceInfo"
                 style="@style/item_textview"
-                android:drawableLeft="@drawable/device_information"
+                android:drawableStart="@drawable/device_information"
                 android:text="@string/deviceInfo" />
 
             <ImageView
@@ -81,11 +81,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:drawableLeft="@drawable/rotate_icon"
+                android:drawableStart="@drawable/rotate_icon"
                 android:drawablePadding="@dimen/padding_start_small"
                 android:gravity="center"
                 android:text="@string/stopUpload"
-                android:textSize="@dimen/textsize_very_small" />
+                android:textSize="@dimen/textsize_very_small"
+                tools:ignore="SpUsage" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -99,26 +100,36 @@
         <TextView
             android:id="@+id/tv_selfCheck"
             style="@style/item_textview"
-            android:drawableLeft="@drawable/calibration_icon"
+            android:drawableStart="@drawable/calibration_icon"
             android:text="@string/selfCheck" />
 
-        <TextView
-            android:id="@+id/tv_timeSet"
-            style="@style/item_textview"
-            android:drawableLeft="@drawable/ic_ctl_time"
-            android:text="@string/timeSet" />
+        <RelativeLayout
+            android:id="@+id/rl_timeZoneSetting"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_item_height_small"
+            android:background="@drawable/selector_item_white">
+
+            <TextView
+                style="@style/item_textview"
+                android:drawableStart="@drawable/ic_ctl_time"
+                android:text="@string/timeSet" />
+
+            <TextView
+                android:id="@+id/tv_currentTimeZone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/black"
+                android:layout_marginEnd="30dp"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/tv_media"
             style="@style/item_textview"
-            android:drawableLeft="@drawable/media2"
+            android:drawableStart="@drawable/media2"
             android:text="@string/videoAndVoice" />
-
-        <TextView
-            android:id="@+id/tv_net"
-            style="@style/item_textview"
-            android:drawableLeft="@drawable/internet"
-            android:text="@string/netSet" />
 
         <RelativeLayout
             android:id="@+id/rl_volume"
@@ -149,29 +160,30 @@
                 android:textSize="@dimen/textsize_very_small" />
         </RelativeLayout>
 
+
         <TextView
             android:id="@+id/tv_alarm"
             style="@style/item_textview"
-            android:drawableLeft="@drawable/alarm3"
+            android:drawableStart="@drawable/alarm3"
             android:text="@string/alarmSet" />
 
         <TextView
             android:id="@+id/tv_recordVideo"
             style="@style/item_textview"
-            android:drawableLeft="@drawable/lux"
+            android:drawableStart="@drawable/lux"
             android:text="@string/recordSet" />
 
         <TextView
             android:id="@+id/tv_autoCruise"
             style="@style/item_textview"
-            android:drawableLeft="@drawable/ic_ctl_record"
+            android:drawableStart="@drawable/ic_ctl_record"
             android:text="@string/autoCruise"
             android:visibility="gone" />
 
         <TextView
             android:id="@+id/tv_onOff"
             style="@style/item_textview"
-            android:drawableLeft="@drawable/open2"
+            android:drawableStart="@drawable/open2"
             android:text="@string/deviceOnOff" />
 
 
@@ -188,7 +200,7 @@
                 android:id="@+id/tv_nightmode"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:drawableLeft="@drawable/nightmode_icon"
+                android:drawableStart="@drawable/nightmode_icon"
                 android:drawablePadding="@dimen/padding_start_small"
                 android:gravity="center"
                 android:text="@string/nightMode"
@@ -204,27 +216,28 @@
                 android:drawablePadding="@dimen/padding_start_small"
                 android:minWidth="30dp"
                 android:textColor="@color/red"
-                android:textSize="@dimen/textsize_very_small" />
+                android:textSize="@dimen/textsize_very_small"
+                tools:ignore="SpUsage" />
         </RelativeLayout>
 
         <TextView
             android:id="@+id/tv_sensor"
             style="@style/item_textview"
-            android:drawableLeft="@drawable/tj"
+            android:drawableStart="@drawable/tj"
             android:text="@string/addSensor"
             android:visibility="gone" />
 
         <TextView
             android:id="@+id/tv_offlineUpdate"
             style="@style/item_textview"
-            android:drawableLeft="@drawable/ic_upgrade"
+            android:drawableStart="@drawable/ic_upgrade"
             android:text="@string/offlineUpdate"
             android:visibility="gone" />
 
         <TextView
             android:id="@+id/tv_downloadFirmware"
             style="@style/item_textview"
-            android:drawableLeft="@drawable/ic_upgrade"
+            android:drawableStart="@drawable/ic_upgrade"
             android:text="@string/downloadFirmware"
             android:visibility="gone" />
 
@@ -240,11 +253,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:drawableLeft="@drawable/rotate_icon"
+                android:drawableStart="@drawable/rotate_icon"
                 android:drawablePadding="@dimen/padding_start_small"
                 android:gravity="center"
                 android:text="@string/reverseScreen"
-                android:textSize="@dimen/textsize_very_small" />
+                android:textSize="@dimen/textsize_very_small"
+                tools:ignore="SpUsage" />
 
             <CheckBox
                 android:id="@+id/cbx_reverse"
@@ -273,7 +287,8 @@
                 android:textSize="@dimen/textsize_very_small"
                 app:drawableHeight="5dp"
                 app:drawableWidth="7dp"
-                app:leftDrawable="@drawable/ic_night_vision" />
+                app:leftDrawable="@drawable/ic_night_vision"
+                tools:ignore="SpUsage" />
 
             <CheckBox
                 android:id="@+id/cbx_vision"
@@ -293,13 +308,11 @@
             <Button
                 android:id="@+id/btn_reboot"
                 style="@style/btn"
-                android:layout_alignParentBottom="true"
                 android:text="@string/reboot" />
 
             <Button
                 android:id="@+id/btn_unbind"
                 style="@style/btn"
-                android:layout_alignParentBottom="true"
                 android:layout_marginBottom="30dp"
                 android:text="@string/unbindAndDelete" />
         </LinearLayout>
