@@ -81,6 +81,8 @@ dependencies {
     implementation rootProject.ext.dependencies["status-bar-compat"] //状态栏控制
     implementation rootProject.ext.dependencies["lifecycle"]
     implementation rootProject.ext.dependencies["multidex"]
+    implementation rootProject.ext.dependencies["compressor"]
+    implementation rootProject.ext.dependencies["seekbar"]
     implementation(rootProject.ext.dependencies["BRVAH"]) {
         exclude module: 'recyclerview-v7'
     }

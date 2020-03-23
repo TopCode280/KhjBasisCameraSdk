@@ -7,6 +7,7 @@ import org.khj.khjbasiscamerasdk.activity.FragmentLoadActivity
 import org.khj.khjbasiscamerasdk.av_modle.CameraManager
 import org.khj.khjbasiscamerasdk.av_modle.CameraWrapper
 import org.khj.khjbasiscamerasdk.utils.WiFiUtil
+import org.khjsdk.com.khjsdk_2020.value.MyConstans
 
 open class BaseDeviceFragment : BaseFragment() {
 
@@ -15,6 +16,9 @@ open class BaseDeviceFragment : BaseFragment() {
     protected var ssid: String? = null
     protected var apMode = false
     protected var uid: String? = null
+    protected val myconstans: MyConstans by lazy {
+        MyConstans()
+    }
 
     override fun contentViewId() = 0
 

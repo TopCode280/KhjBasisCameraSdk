@@ -6,48 +6,32 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4375a2c-fd94-40fd-aeda-4e3ac710418e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/CameraExtension.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/java/com/adorkable/iosdialog/BottomSheetDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/java/com/adorkable/iosdialog/IOSAlertDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/java/com/adorkable/iosdialog/onDismissListen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/anim/actionsheet_dialog_in.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/anim/actionsheet_dialog_out.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_bottom_normal.9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_bottom_pressed.9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_middle_normal.9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_middle_pressed.9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_single_normal.9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_single_pressed.9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_top_normal.9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/actionsheet_top_pressed.9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/alert_bg.9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/alert_btn_left_pressed.9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/alert_btn_right_pressed.9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/alert_btn_single_pressed.9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable-hdpi/trans_bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable/actionsheet_bottom_selector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable/actionsheet_middle_selector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable/actionsheet_single_selector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable/actionsheet_top_selector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable/alertdialog_left_selector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable/alertdialog_right_selector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/drawable/alertdialog_single_selector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/layout/view_actionsheet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/layout/view_alertdialog.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/values-en/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/values/color.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/values/dimens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib-ios-dialog/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/adapter/SDVideoAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/bean/FileInfoWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/bean/ImageFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/bean/ListVideoFileBean.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/fragment/setting/MediaFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/fragment/setting/MoveDetectFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/utils/CommonUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/utils/FileUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/viewmodel/MediaViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/viewmodel/MoveDetectViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/selector_cbx_left.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/selector_cbx_right.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/selector_iv_close.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/selector_iv_next.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/selector_iv_prev.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mediapicture.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_movedetect.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_sdcard_video.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
@@ -60,31 +44,20 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_1_0_rc01_aar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/Extension.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/Extension.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/base/BaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/base/BaseActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/fragment/setting/DeviceInfoFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/fragment/setting/DeviceInfoFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/CameraExtension.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/CameraExtension.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/base/BaseDeviceFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/base/BaseDeviceFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/base/BaseViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/base/BaseViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/fragment/setting/DevicesSettingFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/fragment/setting/DevicesSettingFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/viewmodel/DeviceInfoViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/viewmodel/DeviceInfoViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/viewmodel/DeviceSettingViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/viewmodel/DeviceSettingViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libKHJMediaPlayer.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libKHJMediaPlayer.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libdownload.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libdownload.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libmuxing.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libmuxing.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libp2plib.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libp2plib.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libvideoDecodec.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/arm64-v8a/libvideoDecodec.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/armeabi-v7a/libKHJMediaPlayer.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/armeabi-v7a/libKHJMediaPlayer.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/armeabi-v7a/libdownload.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/armeabi-v7a/libdownload.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/armeabi-v7a/libmuxing.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/armeabi-v7a/libmuxing.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libKHJMediaPlayer.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libKHJMediaPlayer.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libdownload.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libdownload.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libmuxing.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libmuxing.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libp2plib.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libp2plib.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libvideoDecodec.so" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/jniLibs/x86/libvideoDecodec.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_devices.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_devices.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_devicesetting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_devicesetting.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/config.gradle" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +74,12 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
@@ -110,12 +88,13 @@
       <list>
         <option value="Gradle Kotlin DSL Build Script" />
         <option value="Class" />
-        <option value="layoutResourceFile" />
-        <option value="Kotlin Class" />
-        <option value="layoutResourceFile_vertical" />
         <option value="valueResourceFile" />
         <option value="resourceFile" />
+        <option value="layoutResourceFile_vertical" />
+        <option value="Kotlin Interface" />
         <option value="Kotlin File" />
+        <option value="layoutResourceFile" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -130,13 +109,20 @@
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/jniLibs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\res\layout" />
+      <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\res\drawable" />
+      <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\jniLibs" />
+      <recent name="D:\AsProject\KhjBasisCameraSdk" />
+      <recent name="D:\AsProject\KhjBasisCameraSdk\app\libs" />
+    </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="org.khj.khjbasiscamerasdk" />
     </key>
@@ -146,15 +132,13 @@
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.khj.khjbasiscamerasdk.utils" />
-      <recent name="org.khj.khjbasiscamerasdk.view" />
+      <recent name="org.khj.khjbasiscamerasdk.bean" />
       <recent name="org.khj.khjbasiscamerasdk.adapter" />
+      <recent name="org.khj.khjbasiscamerasdk.view.dialogfragment" />
+      <recent name="org.khj.khjbasiscamerasdk.view" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\jniLibs" />
-      <recent name="D:\AsProject\KhjBasisCameraSdk" />
-      <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\res\drawable" />
-      <recent name="D:\AsProject\KhjBasisCameraSdk\app\libs" />
-      <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\res\drawable-xhdpi" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\AsProject\KhjBasisCameraSdk\app\src\main\res\layout" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -254,7 +238,21 @@
       <option name="project" value="LOCAL" />
       <updated>1583572786090</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="更新64位库文件，设备信息fragment未完成，合并提交">
+      <created>1584069625969</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1584069625969</updated>
+    </task>
+    <task id="LOCAL-00004" summary="3.13 设置部分功能完成">
+      <created>1584091152356</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1584091152356</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -273,6 +271,19 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="有线连接设备完成" />
     <MESSAGE value="SD 卡回放功能完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="SD 卡回放功能完成" />
+    <MESSAGE value="更新64位库文件，设备信息fragment未完成，合并提交" />
+    <MESSAGE value="3.13 设置部分功能完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="3.13 设置部分功能完成" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/org/khj/khjbasiscamerasdk/CameraExtension.kt</url>
+          <line>122</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

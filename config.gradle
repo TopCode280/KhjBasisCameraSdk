@@ -32,6 +32,8 @@ ext {
             "kotlinx-coroutines-android": "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1",   // 协程
             "status-bar-compat"         : "com.githang:status-bar-compat:0.5.3",// 状态栏控制
             "lifecycle"                 : "android.arch.lifecycle:extensions:1.1.1",
-            "multidex"                 : "com.android.support:multidex:1.0.3",
+            "multidex"                  : "com.android.support:multidex:1.0.3",
+            "compressor"                : "id.zelory:compressor:2.1.0",
+            "seekbar"                  : "com.xw.repo:bubbleseekbar:3.17",//
     ]
 }

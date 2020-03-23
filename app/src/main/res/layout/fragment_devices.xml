@@ -47,12 +47,12 @@
                 android:id="@+id/emptyView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="gone">
+               android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/iv_empty"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     android:scaleType="centerCrop"
                     android:src="@mipmap/device_bg_orange" />
 

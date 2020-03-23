@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:divider="@drawable/shape_divider"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <include layout="@layout/topbar" />
+
+    <RelativeLayout
+        android:id="@+id/rl_defend"
+        style="@style/relative_setting_item"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/padding_start">
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/defence" />
+
+        <CheckBox
+            android:id="@+id/cbx_defend"
+            style="@style/relative_setting_item_cbx" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_deviceSound"
+        style="@style/relative_setting_item"
+        >
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/deviceSound" />
+
+        <CheckBox
+            android:id="@+id/cbx_deviceSound"
+            style="@style/relative_setting_item_cbx" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_alarm_ring"
+        style="@style/relative_setting_item">
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/alarmRing" />
+
+        <TextView
+            android:id="@+id/tv_alarm_ring"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:drawableEnd="@drawable/next"
+            android:gravity="center_vertical"
+            android:src="@drawable/next"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_small" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/rl_alarm_interval"
+        style="@style/relative_setting_item">
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/alarmInterval" />
+
+        <TextView
+            android:id="@+id/tv_alarm_interval"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:drawableEnd="@drawable/next"
+            android:gravity="center_vertical"
+            android:src="@drawable/next"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_small" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_receiveAlarm"
+        style="@style/relative_setting_item"
+        >
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/receiveAlarm" />
+
+        <CheckBox
+            android:id="@+id/cbx_receiveAlarm"
+            style="@style/relative_setting_item_cbx" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_email"
+        style="@style/relative_setting_item">
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/emailAlarm" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:drawableEnd="@drawable/next"
+            android:gravity="center_vertical"
+            android:src="@drawable/next"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_small" />
+
+    </RelativeLayout>
+    <RelativeLayout
+
+        android:id="@+id/rl_voiceDetect"
+        style="@style/relative_setting_item">
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/voiceDetect" />
+
+        <CheckBox
+            android:id="@+id/cbx_voiceDetect"
+            style="@style/relative_setting_item_cbx" />
+
+    </RelativeLayout>
+    <RelativeLayout
+
+        android:id="@+id/rl_moveDetect"
+
+        style="@style/relative_setting_item">
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/moveDetect" />
+
+        <CheckBox
+            android:id="@+id/cbx_moveDetect"
+            style="@style/relative_setting_item_cbx" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:id="@+id/rl_cryDetect"
+        android:visibility="gone"
+        style="@style/relative_setting_item">
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/cry" />
+
+        <CheckBox
+            android:id="@+id/cbx_cryDetect"
+            style="@style/relative_setting_item_cbx" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_objectDetect"
+        android:visibility="gone"
+        style="@style/relative_setting_item">
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/object" />
+
+        <CheckBox
+            android:id="@+id/cbx_objectDetect"
+            style="@style/relative_setting_item_cbx" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_faceDetect"
+        android:visibility="gone"
+        style="@style/relative_setting_item">
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/faceDetect" />
+
+        <CheckBox
+            android:id="@+id/cbx_faceDetect"
+            style="@style/relative_setting_item_cbx" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_peopleDetect"
+        android:visibility="gone"
+        style="@style/relative_setting_item">
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/peopleDetect" />
+
+        <CheckBox
+            android:id="@+id/cbx_peopleDetect"
+            style="@style/relative_setting_item_cbx" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_tip"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_item_height"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/padding_start"
+        android:text="@string/setMoveSensitive"
+        android:textColor="@color/dark_666"
+        android:textSize="@dimen/textsize_small" />
+
+    <com.xw.repo.BubbleSeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:visibility="gone" />
+
+</LinearLayout>

@@ -38,36 +38,6 @@
                 android:visibility="invisible" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/rl_choosePath"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/common_item_height_small"
-            android:background="@drawable/selector_item_white"
-            android:paddingLeft="@dimen/padding_start_small"
-            android:paddingRight="@dimen/padding_start_small"
-            android:visibility="gone">
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:drawableLeft="@drawable/luj_icon"
-                android:drawablePadding="@dimen/padding_start_small"
-                android:gravity="center"
-                android:text="@string/recordPath"
-                android:textSize="@dimen/textsize_very_small" />
-
-            <TextView
-                android:id="@+id/tv_videoPath"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:drawableEnd="@drawable/ic_right_arrow"
-                android:minWidth="60dp"
-                android:textColor="@color/text_blue"
-                android:textSize="@dimen/textsize_very_small" />
-        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/rl_reverseScreen"

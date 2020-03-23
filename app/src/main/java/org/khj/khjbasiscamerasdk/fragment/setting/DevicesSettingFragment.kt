@@ -92,6 +92,8 @@ class DevicesSettingFragment : BaseDeviceFragment(), View.OnClickListener {
         rl_deviceInfo.setOnClickListener(this)
         rl_timeZoneSetting.setOnClickListener(this)
         tv_selfCheck.setOnClickListener(this)
+        tv_media.setOnClickListener(this)
+        tv_alarm.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -108,8 +110,16 @@ class DevicesSettingFragment : BaseDeviceFragment(), View.OnClickListener {
                 }
                 R.id.tv_selfCheck ->{
                     camera?.setPtz(Camera.AVIOCTRL_MOTOR_RESET_POSITION, 0)
-                } else -> {
-                    ViseLog.i("点了个寂寞")
+                }
+                R.id.tv_media->{
+                    val mediaPictureFragment = MediaFragment()
+                    addToStack(mediaPictureFragment)
+                    switchFragment(mediaPictureFragment, true)
+                }
+                R.id.tv_alarm->{
+                    val mediaPictureFragment = MediaFragment()
+                    addToStack(mediaPictureFragment)
+                    switchFragment(mediaPictureFragment, true)
                 }
             }
         }

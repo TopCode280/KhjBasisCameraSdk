@@ -8,18 +8,16 @@ import com.khj.Camera
 import org.khj.khjbasiscamerasdk.*
 import org.khj.khjbasiscamerasdk.av_modle.CameraWrapper
 import org.khj.khjbasiscamerasdk.base.BaseActivity
-import org.khj.khjbasiscamerasdk.base.BaseViewModel
+import org.khj.khjbasiscamerasdk.base.DeviceBaseViewModel
 
-class DeviceInfoViewModel : BaseViewModel() {
+class DeviceInfoViewModel : DeviceBaseViewModel() {
 
     var deviceName = MutableLiveData<String>()
     var deviceType = MutableLiveData<Int>()
     var deviceInfo = MutableLiveData<ArrayList<String>>()
     var devMacIP = MutableLiveData<HashMap<String, String>>()
-    var cameraWrapper: CameraWrapper? = null
-    var camera: Camera? = null
 
-    fun setCamera(cameraWrapper: CameraWrapper, camera: Camera) {
+    override fun setCamera(cameraWrapper: CameraWrapper, camera: Camera,vararg args: Any) {
         this.cameraWrapper = cameraWrapper
         this.camera = camera
         deviceType.postValue(camera.devcieType)

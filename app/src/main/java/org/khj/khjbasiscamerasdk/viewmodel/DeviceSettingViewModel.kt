@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.av_modle.CameraWrapper
 import org.khj.khjbasiscamerasdk.base.BaseActivity
-import org.khj.khjbasiscamerasdk.base.BaseViewModel
+import org.khj.khjbasiscamerasdk.base.DeviceBaseViewModel
 import org.khj.khjbasiscamerasdk.getDevVolume
 import org.khj.khjbasiscamerasdk.getFlipStatus
 import org.khj.khjbasiscamerasdk.getTimeZoneExtension
@@ -19,20 +19,18 @@ import org.khj.khjbasiscamerasdk.view.dialogfragment.TimeZoneDialog
 import org.khj.khjbasiscamerasdk.view.dialogfragment.callBackInterface.SettingTimeZoneCallBack
 import java.text.DecimalFormat
 
-class DeviceSettingViewModel : BaseViewModel(),SettingTimeZoneCallBack {
+class DeviceSettingViewModel : DeviceBaseViewModel(),SettingTimeZoneCallBack {
 
-    var cameraWrapper: CameraWrapper? = null
-    var camera: Camera? = null
     var activity: BaseActivity? = null
     val isPictureFlip = MutableLiveData<Boolean>()
     val deviceVolume = MutableLiveData<Int>()
     val visionMode = MutableLiveData<Int>()
     val timeZone = MutableLiveData<String>()
 
-    fun setCamera(cameraWrapper: CameraWrapper, camera: Camera, activity: BaseActivity) {
+    override fun setCamera(cameraWrapper: CameraWrapper, camera: Camera, vararg args: Any) {
         this.cameraWrapper = cameraWrapper
         this.camera = camera
-        this.activity = activity
+        this.activity = args[0] as BaseActivity
         getPictureFlipStatus()
         getDeviceVolume()
         getNigheSwitch()
@@ -111,4 +109,6 @@ class DeviceSettingViewModel : BaseViewModel(),SettingTimeZoneCallBack {
 
     override fun onFailure() {
     }
+
+
 }

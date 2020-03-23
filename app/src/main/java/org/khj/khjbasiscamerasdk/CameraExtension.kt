@@ -2,11 +2,11 @@ package org.khj.khjbasiscamerasdk
 
 import android.annotation.SuppressLint
 import com.khj.Camera
-import com.khj.Camera.successCallbackI
 import com.vise.log.ViseLog
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.android.schedulers.AndroidSchedulers
+import org.khj.khjbasiscamerasdk.bean.ListVideoFileBean
 
 
 /**
@@ -80,7 +80,7 @@ fun Camera.getDevMacIP(result: (HashMap<String, String>) -> Unit) {
 }
 
 @SuppressLint("CheckResult")
-fun Camera.formatSdCardExtension(result: (Int) -> Unit,dismissDialog: () -> Unit) {
+fun Camera.formatSdCardExtension(result: (Int) -> Unit, dismissDialog: () -> Unit) {
     Observable.create { emitter: ObservableEmitter<Int> ->
         formatSdcard {
             emitter.onNext(it)
@@ -92,7 +92,7 @@ fun Camera.formatSdCardExtension(result: (Int) -> Unit,dismissDialog: () -> Unit
         }, {
             ViseLog.e(it.cause)
             dismissDialog()
-        },{
+        }, {
             dismissDialog()
         })
 }
@@ -108,5 +108,201 @@ fun Camera.getTimeZoneExtension(result: (Int) -> Unit) {
             result(it)
         }, {
             ViseLog.e(it.cause)
+        })
+}
+
+@SuppressLint("CheckResult")
+fun Camera.getListvideoFileExtension(
+    end: Long,
+    result: (ArrayList<Camera.fileInfo>?, Boolean?) -> Unit,
+    error: (String) -> Unit
+) {
+    //result 0: 后面还有文件 1:最后一个文件后面没有了 2：文件目录发生变化，请重新开始
+    Observable.create { emitter: ObservableEmitter<ListVideoFileBean> ->
+        listvideoFile(end) { result, info ->
+            if (result < 2) {
+                if (info != null) {
+                    val cameraFileInfos = mutableListOf(info)
+                    emitter.onNext(
+                        ListVideoFileBean(
+                            cameraFileInfos as ArrayList<Camera.fileInfo>,
+                            result == 1
+                        )
+                    )
+                } else {
+                    emitter.tryOnError(Throwable("0"))
+                }
+            } else {
+                emitter.tryOnError(Throwable("4"))
+            }
+        }
+    }.subscribeOn(AndroidSchedulers.mainThread())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it.info, it.result)
+        }, {
+            if (it.equals("0")) {
+                error(App.context.getString(R.string.noRecorderVideo))
+            } else {
+                error("文件目录发生变化,请重试!")
+            }
+        })
+}
+
+// 移动侦测开关
+@SuppressLint("CheckResult")
+fun Camera.getAlarmSwitchExtension(result: (Boolean) -> Unit) {
+    Observable.create { emitter: ObservableEmitter<Boolean> ->
+        getAlarmSwitch {
+            emitter.onNext(it)
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it)
+        }, {
+            ViseLog.e("${this.javaClass.name} ---- ${it.cause}")
+        })
+}
+
+// 移动侦测灵敏值
+@SuppressLint("CheckResult")
+fun Camera.getMotionDetectExtension(result: (Int) -> Unit) {
+    Observable.create { emitter: ObservableEmitter<Int> ->
+        getMotionDetect {
+            emitter.onNext(it)
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it)
+        }, {
+            ViseLog.e("${this.javaClass.name} ---- ${it.cause}")
+        })
+}
+
+//声音侦测开关
+@SuppressLint("CheckResult")
+fun Camera.geteSoundAlarmExtension(result: (Boolean) -> Unit) {
+    Observable.create { emitter: ObservableEmitter<Boolean> ->
+        geteSoundAlarm {
+            emitter.onNext(it)
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it)
+        }, {
+            ViseLog.e("${this.javaClass.name} ---- ${it.cause}")
+        })
+}
+
+// 设备报警声音开关
+@SuppressLint("CheckResult")
+fun Camera.getAlarmVolumeExtension(result: (Boolean) -> Unit) {
+    Observable.create { emitter: ObservableEmitter<Boolean> ->
+        geteSoundAlarm {
+            emitter.onNext(it)
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it)
+        }, {
+            ViseLog.e("${this.javaClass.name} ---- ${it.cause}")
+        })
+}
+
+// 人脸检测开关 Int == 1
+@SuppressLint("CheckResult")
+fun Camera.getFtgAlarmExtension(result: (Int) -> Unit) {
+    Observable.create { emitter: ObservableEmitter<Int> ->
+        getFtgAlarm {
+            emitter.onNext(it)
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it)
+        }, {
+            ViseLog.e("${this.javaClass.name} ---- ${it.cause}")
+        })
+}
+
+// 人形检测开关  Int == 1
+@SuppressLint("CheckResult")
+fun Camera.getPdAlarmExtension(result: (Int) -> Unit) {
+    Observable.create { emitter: ObservableEmitter<Int> ->
+        getPdAlarm {
+            emitter.onNext(it)
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it)
+        }, {
+            ViseLog.e("${this.javaClass.name} ---- ${it.cause}")
+        })
+}
+
+//查询报警间隔
+@SuppressLint("CheckResult")
+fun Camera.sendCommonBufferNineExtension(result: (String) -> Unit) {
+    Observable.create { emitter: ObservableEmitter<String> ->
+        sendCommonBuffer(9.toByte(), "") { i, b, s ->
+            s?.let {
+                emitter.onNext(it)
+            }
+            emitter.onComplete()
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it)
+        }, {
+            ViseLog.e("${this.javaClass.name} ---- ${it.cause}")
+        })
+}
+
+//设置移动侦测灵敏度
+@SuppressLint("CheckResult")
+fun Camera.setMotionDetectExtension(progress: Int, result: (Boolean) -> Unit) {
+    Observable.create { emitter: ObservableEmitter<Boolean> ->
+        setMotionDetect(progress) {
+            emitter.onNext(it)
+            emitter.onComplete()
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it)
+        }, {
+            ViseLog.e("${this.javaClass.name} ---- ${it.cause}")
+        })
+}
+
+// 设备报警声音开关
+@SuppressLint("CheckResult")
+fun Camera.setAlarmVolumeExtension(isChecked: Boolean, result: (Boolean) -> Unit) {
+    Observable.create { emitter: ObservableEmitter<Boolean> ->
+        setAlarmVolume(isChecked) {
+            emitter.onNext(it)
+            emitter.onComplete()
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it)
+        }, {
+            ViseLog.e("${this.javaClass.name} ---- ${it.cause}")
+        })
+}
+
+// 设置报警间隔时间
+@SuppressLint("CheckResult")
+fun Camera.sendCommonBufferEightExtension(selector: String, result: (String) -> Unit) {
+    Observable.create { emitter: ObservableEmitter<String> ->
+        sendCommonBuffer(9.toByte(), selector) { i, b, s ->
+            s?.let {
+                emitter.onNext(it)
+            }
+            emitter.onComplete()
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it)
+        }, {
+            ViseLog.e("${this.javaClass.name} ---- ${it.cause}")
         })
 }
