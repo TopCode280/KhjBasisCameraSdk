@@ -94,6 +94,7 @@ class DevicesSettingFragment : BaseDeviceFragment(), View.OnClickListener {
         tv_selfCheck.setOnClickListener(this)
         tv_media.setOnClickListener(this)
         tv_alarm.setOnClickListener(this)
+        tv_onOff.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -108,15 +109,20 @@ class DevicesSettingFragment : BaseDeviceFragment(), View.OnClickListener {
                 R.id.rl_timeZoneSetting -> {
                     viewModel?.showTimeSettingDialogFragment()
                 }
-                R.id.tv_selfCheck ->{
+                R.id.tv_selfCheck -> {
                     camera?.setPtz(Camera.AVIOCTRL_MOTOR_RESET_POSITION, 0)
                 }
-                R.id.tv_media->{
+                R.id.tv_media -> {
                     val mediaPictureFragment = MediaFragment()
                     addToStack(mediaPictureFragment)
                     switchFragment(mediaPictureFragment, true)
                 }
-                R.id.tv_alarm->{
+                R.id.tv_alarm -> {
+                    val mediaPictureFragment = MediaFragment()
+                    addToStack(mediaPictureFragment)
+                    switchFragment(mediaPictureFragment, true)
+                }
+                R.id.tv_onOff -> {
                     val mediaPictureFragment = MediaFragment()
                     addToStack(mediaPictureFragment)
                     switchFragment(mediaPictureFragment, true)

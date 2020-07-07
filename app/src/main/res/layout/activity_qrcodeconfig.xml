@@ -28,9 +28,11 @@
     <ImageView
         android:id="@+id/iv_QrCode"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="80dp" />
+        android:layout_margin="@dimen/padding_start"
+        android:keepScreenOn="true"
+        android:scaleType="centerInside"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btn_deviceConnectSuccess"

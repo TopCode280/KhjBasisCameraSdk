@@ -11,6 +11,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
+import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.uuzuche.lib_zxing.activity.CodeUtils
 import com.vise.log.ViseLog
 import kotlinx.android.synthetic.main.activity_qrcodeconfig.*
@@ -23,7 +24,6 @@ import org.khj.khjbasiscamerasdk.bean.MulticastBean
 import org.khj.khjbasiscamerasdk.database.EntityManager
 import org.khj.khjbasiscamerasdk.database.entity.DeviceEntity
 import org.khj.khjbasiscamerasdk.eventbus.DevicesListRefreshEvent
-import org.khj.khjbasiscamerasdk.greendao.DeviceEntityDao
 import org.khj.khjbasiscamerasdk.isOpenGPS
 import org.khj.khjbasiscamerasdk.utils.MulticastServer
 import org.khj.khjbasiscamerasdk.utils.WiFiUtil
@@ -104,11 +104,9 @@ class QrCodeConfigNetWorkActivity : AppCompatActivity(), View.OnClickListener {
         val builder = StringBuilder()
         val wifiString = builder.append("S=").append(ssid).append(",")
                 .append("P=").append(pwd).append(",")
-                .append("A=").append(App.userAccount).append(",")//任意字符串或者用户app账号
-                .append("U=").append("abc").append(",")//填一个任意字符串
                 .append("T=").append(wifiType)
                 .toString()
-        val with = 800
+        val with = QMUIDisplayHelper.getScreenWidth(App.context)
         val mBitmap = CodeUtils.createImage(wifiString, with, with, null)
         iv_QrCode!!.setImageBitmap(mBitmap)
         Thread(Runnable { this.receiveMulticast() }).start()
@@ -122,7 +120,7 @@ class QrCodeConfigNetWorkActivity : AppCompatActivity(), View.OnClickListener {
         try {
             multicastBean = gson.fromJson(s1, MulticastBean::class.java)
             ViseLog.e("收到组播消息:" + multicastBean.toString())
-        } catch (e: JsonSyntaxException) {
+        } catch (e: Throwable) {
             e.printStackTrace()
         }
         ViseLog.e("收到组播消息:$s1")

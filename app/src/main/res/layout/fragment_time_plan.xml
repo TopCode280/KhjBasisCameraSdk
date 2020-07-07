@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:divider="@drawable/shape_divider"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <include layout="@layout/topbar" />
+
+    <RelativeLayout
+        android:id="@+id/rl_closeTime"
+        style="@style/relative_setting_item">
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/closeTime" />
+
+        <TextView
+            android:id="@+id/tv_closeTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="80dp"
+            android:minWidth="50dp"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_middle" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/icon_right_blue" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_openTime"
+        style="@style/relative_setting_item">
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/openTime" />
+
+        <TextView
+            android:id="@+id/tv_openTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="80dp"
+            android:minWidth="50dp"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_middle" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/icon_right_blue" />
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_item_height"
+        android:layout_margin="20dp"
+        android:background="@drawable/selector_btn_next"
+        android:gravity="center"
+        android:text="@string/deletePlan"
+        android:textSize="18dp" />
+</LinearLayout>
