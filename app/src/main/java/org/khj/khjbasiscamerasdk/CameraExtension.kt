@@ -1,6 +1,7 @@
 package org.khj.khjbasiscamerasdk
 
 import android.annotation.SuppressLint
+import androidx.lifecycle.MutableLiveData
 import com.khj.Camera
 import com.vise.log.ViseLog
 import io.reactivex.Observable
@@ -301,6 +302,113 @@ fun Camera.sendCommonBufferEightExtension(selector: String, result: (String) -> 
         }
     }.observeOn(AndroidSchedulers.mainThread())
         .subscribe({
+            result(it)
+        }, {
+            ViseLog.e("${this.javaClass.name} ---- ${it.cause}")
+        })
+}
+
+/**
+ * 查询当前录制视频质量
+ */
+@SuppressLint("CheckResult")
+fun Camera.getRecordVideoQualityExtension(result: (Int) -> Unit) {
+    Observable.create { emitter: ObservableEmitter<Int> ->
+        getRecordVideoQuality {
+            emitter.onNext(it)
+            emitter.onComplete()
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it)
+        }, {
+            ViseLog.e("${this.javaClass.name} ---- ${it.cause}")
+        })
+}
+
+/**
+ * 查询当前录制视频模式
+ */
+@SuppressLint("CheckResult")
+fun Camera.getVideoRecordTypeExtension(result: (Int) -> Unit) {
+    Observable.create { emitter: ObservableEmitter<Int> ->
+        getVideoRecordType {
+            emitter.onNext(it)
+            emitter.onComplete()
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it)
+        }, {
+            ViseLog.e("${this.javaClass.name} ---- ${it.cause}")
+        })
+}
+
+/**
+ * 获取定时录像任务
+ */
+@SuppressLint("CheckResult")
+fun Camera.getTimedRecordVideoTaskExtension(result: (String) -> Unit) {
+    Observable.create { emitter: ObservableEmitter<String> ->
+        getTimedRecordVideoTask {
+            emitter.onNext(it)
+            emitter.onComplete()
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .subscribe({
+            result(it)
+        }, {
+            ViseLog.e("${this.javaClass.name} ---- ${it.cause}")
+        })
+}
+
+/**
+ * 设置定时录像类型
+ */
+@SuppressLint("CheckResult")
+fun Camera.setVideoRecordTypeExtension(
+    loaddingStatus: MutableLiveData<Boolean>,
+    type: Int,
+    result: (Boolean) -> Unit
+) {
+    Observable.create { emitter: ObservableEmitter<Boolean> ->
+        setVideoRecordType(type) {
+            emitter.onNext(it)
+            emitter.onComplete()
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .doOnSubscribe {
+            loaddingStatus.postValue(true)
+        }.doFinally {
+            loaddingStatus.postValue(false)
+        }.subscribe({
+            result(it)
+        }, {
+            ViseLog.e("${this.javaClass.name} ---- ${it.cause}")
+        })
+}
+
+/**
+ * 设置定时录像类型
+ */
+@SuppressLint("CheckResult")
+fun Camera.setRecordVideoQualityExtension(
+    loaddingStatus: MutableLiveData<Boolean>,
+    type: Int,
+    result: (Boolean) -> Unit
+) {
+
+    Observable.create { emitter: ObservableEmitter<Boolean> ->
+        setRecordVideoQuality(type + 1) {
+            emitter.onNext(it)
+            emitter.onComplete()
+        }
+    }.observeOn(AndroidSchedulers.mainThread())
+        .doOnSubscribe {
+            loaddingStatus.postValue(true)
+        }.doFinally {
+            loaddingStatus.postValue(false)
+        }.subscribe({
             result(it)
         }, {
             ViseLog.e("${this.javaClass.name} ---- ${it.cause}")

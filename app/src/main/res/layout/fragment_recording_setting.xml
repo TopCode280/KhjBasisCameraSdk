@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:divider="@drawable/shape_divider"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <include layout="@layout/topbar" />
+
+    <RelativeLayout
+        style="@style/item_relative"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/sdStatus"
+            android:textSize="@dimen/textsize_very_small" />
+
+        <TextView
+            android:id="@+id/tv_sdCapacity"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_item_height_small"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_very_small" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/item_relative"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_item_height_small"
+            android:gravity="center"
+            android:text="@string/sdcardFree"
+            android:textSize="@dimen/textsize_very_small" />
+
+        <TextView
+            android:id="@+id/tv_sdFreeSize"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_item_height_small"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_very_small" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_formatSdcard"
+        style="@style/item_relative_click">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_item_height_small"
+            android:gravity="center"
+            android:text="@string/formatSdcard"
+            android:textSize="@dimen/textsize_very_small" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:drawableEnd="@drawable/ic_right_arrow"
+            android:drawablePadding="@dimen/padding_start_small"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_very_small" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_videoQuality"
+        style="@style/relative_setting_item">
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/videoQuality" />
+
+        <TextView
+            android:id="@+id/tvVideoQuality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:drawableEnd="@drawable/ic_right_arrow"
+            android:drawablePadding="@dimen/padding_start_small"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_very_small" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_recording"
+        style="@style/relative_setting_item">
+
+        <TextView
+            style="@style/relative_setting_item_textview"
+            android:text="@string/recordMode" />
+
+        <TextView
+            android:id="@+id/tv_record_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:drawableEnd="@drawable/ic_right_arrow"
+            android:drawablePadding="@dimen/padding_start_small"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/textsize_very_small" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_tip_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="60dp"
+        android:text="@string/deviceWillRecord"
+        android:textSize="@dimen/textsize_middle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_record"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:showDividers="middle"
+    android:divider="@drawable/shape_divider"
+    android:background="@color/bg_gray"
+    >
+
+    <include layout="@layout/topbar"/>
+    <RelativeLayout
+        android:id="@+id/rl_startRecord"
+        style="@style/relative_setting_item">
+        <TextView
+            android:text="@string/startRecord"
+            style="@style/relative_setting_item_textview" />
+        <TextView
+            android:id="@+id/tv_startRecord"
+            android:layout_width="wrap_content"
+            android:minWidth="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="80dp"
+            android:textSize="@dimen/textsize_middle"
+            android:textColor="@color/text_blue"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/icon_right_blue"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_stopRecord"
+        style="@style/relative_setting_item">
+        <TextView
+            android:text="@string/stopRecord"
+            style="@style/relative_setting_item_textview" />
+        <TextView
+            android:id="@+id/tv_stopRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/textsize_middle"
+            android:layout_marginEnd="80dp"
+            android:textColor="@color/text_blue"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/icon_right_blue"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+
+
+    <Button
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:id="@+id/btn_delete"
+        android:text="@string/deletePlan"
+        android:textSize="18dp"
+        android:background="@drawable/selector_btn_next"
+        android:gravity="center"
+        android:layout_height="@dimen/common_item_height" />
+</LinearLayout>

@@ -91,6 +91,7 @@ class DevicesSettingFragment : BaseDeviceFragment(), View.OnClickListener {
         }
         rl_deviceInfo.setOnClickListener(this)
         rl_timeZoneSetting.setOnClickListener(this)
+        tv_recordVideo.setOnClickListener(this)
         tv_selfCheck.setOnClickListener(this)
         tv_media.setOnClickListener(this)
         tv_alarm.setOnClickListener(this)
@@ -126,6 +127,11 @@ class DevicesSettingFragment : BaseDeviceFragment(), View.OnClickListener {
                     val mediaPictureFragment = MediaFragment()
                     addToStack(mediaPictureFragment)
                     switchFragment(mediaPictureFragment, true)
+                }
+                R.id.tv_recordVideo->{
+                    val recordVideoSettingFragment = RecordVideoSettingFragment()
+                    addToStack(recordVideoSettingFragment)
+                    switchFragment(recordVideoSettingFragment, true)
                 }
             }
         }

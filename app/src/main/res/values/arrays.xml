@@ -6,6 +6,13 @@
         <item>高清</item>
     </string-array>
 
+    <string-array name="recordMode">
+        <item>关闭录像</item>
+        <item>连续录像 </item>
+        <item>定时计划</item>
+        <item>报警录像 </item>
+    </string-array>
+
     <string-array name="timeZone">
         <item>-11</item>
         <item>-10</item>

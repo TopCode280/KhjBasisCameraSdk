@@ -1,6 +1,7 @@
 package org.khj.khjbasiscamerasdk.base
 
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog
 import es.dmoral.toasty.Toasty
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import org.greenrobot.eventbus.EventBus
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.R
@@ -23,9 +26,10 @@ abstract class BaseFragment : Fragment() {
     lateinit var mContext: Context
     protected var mDisposable: CompositeDisposable? = null
     private var showToastTime: Long = 0
-    protected var fragmentHelp:FragmentHelper? = null
-
+    protected var fragmentHelp: FragmentHelper? = null
+    protected var tipDialog: QMUITipDialog? = null
     lateinit var mActivity: BaseActivity
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mActivity = context as BaseActivity
@@ -84,5 +88,45 @@ abstract class BaseFragment : Fragment() {
             EventBus.getDefault().unregister(this)
         }
         mDisposable?.dispose()
+    }
+
+    open fun showLoading(disposable: Disposable?) {
+        if (isAdded) {
+            tipDialog = QMUITipDialog(mActivity)
+            tipDialog?.apply {
+                setCanceledOnTouchOutside(false)
+                setContentView(R.layout.dialog_loading)
+                setCancelable(true)
+                setOnCancelListener { dialog: DialogInterface? ->
+                    disposable?.dispose()
+                }
+                show()
+            }
+        }
+    }
+
+    open fun showLoading() {
+        if (isAdded) {
+            tipDialog = QMUITipDialog(mActivity)
+            tipDialog?.apply {
+                setCanceledOnTouchOutside(false)
+                setContentView(R.layout.dialog_loading)
+                setCancelable(true)
+                setOnCancelListener { dialog: DialogInterface? ->
+
+                }
+                show()
+            }
+        }
+    }
+
+
+    open fun dismissLoading() {
+        if (isAdded) {
+            if (tipDialog != null && tipDialog!!.isShowing) {
+                tipDialog!!.dismiss()
+                tipDialog = null
+            }
+        }
     }
 }
