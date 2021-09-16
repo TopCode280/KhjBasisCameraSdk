@@ -26,6 +26,7 @@ class GetInitString private constructor() {
             "KEU" -> initString = initstring.EUR_INIT //欧洲
             "KUS" -> initString = initstring.USA_INIT //北美
             "KBR" -> initString = initstring.KBR_INIT //南美巴西
+            "KLP","KLB" -> initString = initstring.KLP_INIT //南美巴西
             else -> initString = initstring.CN_INIT
         }
         return ",$initString"

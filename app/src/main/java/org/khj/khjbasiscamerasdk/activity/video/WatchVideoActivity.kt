@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.khj.Camera
 import com.khj.Camera.*
 import com.khj.Muxing
-import com.khj.glVideoDecodec
+import com.khj.glVideoDecodec2
 import com.qmuiteam.qmui.util.QMUIViewHelper
 import com.vise.log.ViseLog
 import com.yanzhenjie.permission.AndPermission
@@ -56,7 +56,6 @@ import java.util.concurrent.atomic.AtomicInteger
 class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
     AdapterView.OnItemSelectedListener {
 
-    private var videoDecodec: glVideoDecodec? = null
     private var muxing: Muxing? = null
     private var deviceUid: String? = null
     private var isApMode: Boolean? = null
@@ -120,6 +119,8 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
 
     override fun initView(savedInstanceState: Bundle?) {
         requestPerm()
+        App.videoDecode.reInit()
+        App.videoDecode.hw = false // false 软解码 true 硬解码
         initVar()
         initVideo()
         topbar.setTitle(deviceUid)
@@ -189,7 +190,7 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnSubscribe { disposable: Disposable? ->
                             tv_recordVideo.setEnabled(false)
-                            mDisposable!!.add(disposable!!)
+                            mDisposable.add(disposable!!)
                         }.subscribe { aLong: Long? ->
                             tv_recordVideo.setEnabled(true)
                         }
@@ -251,11 +252,9 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
 
     override fun onStart() {
         super.onStart()
-        if (videoDecodec == null) {
-            videoDecodec = glVideoDecodec()
-        }
-        if (mSurface != null && videoDecodec != null) {
-            videoDecodec!!.videoDecodecStart(mSurface)
+        if (mSurface != null ) {
+            App.videoDecode.videoDecodecCreateSurface(mSurface)
+            App.videoDecode.videoDecodecChangeSurface(mSurface)
             startVideo()
             ViseLog.w("onStart" + "startVideo")
         }
@@ -273,7 +272,6 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
     }
 
     fun initVideo() {
-        videoDecodec = glVideoDecodec()
         muxing = Muxing()
         textureView!!.surfaceTextureListener = object : TextureView.SurfaceTextureListener {
             override fun onSurfaceTextureAvailable(
@@ -282,7 +280,10 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                 height: Int
             ) {
                 mSurface = Surface(surface)
-                videoDecodec!!.videoDecodecStart(mSurface)
+                App.videoDecode.apply {
+                    videoDecodecCreateSurface(mSurface)
+                    videoDecodecChangeSurface(mSurface)
+                }
             }
 
             override fun onSurfaceTextureSizeChanged(
@@ -290,13 +291,16 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                 width: Int,
                 height: Int
             ) {
-                val surface1 = Surface(surface)
-                videoDecodec!!.videoDecodecStart(surface1)
+                mSurface = Surface(surface)
+                App.videoDecode.apply {
+                    videoDecodecCreateSurface(mSurface)
+                    videoDecodecChangeSurface(mSurface)
+                }
             }
 
             override fun onSurfaceTextureDestroyed(surface: SurfaceTexture): Boolean {
-                if (videoDecodec != null) {
-                    videoDecodec!!.videoDecodecStop()
+                App.videoDecode.apply {
+                    videoDecodecDestorySurface(mSurface)
                 }
                 return false
             }
@@ -449,11 +453,11 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                     ViseLog.e(cameraWrapper!!.getUid())
                     cameraWrapper!!.reconnect()
                 }
-            if (videoDecodec == null) {
-                videoDecodec = glVideoDecodec()
-            }
-            if (mSurface != null) {
-                videoDecodec!!.videoDecodecStart(mSurface)
+            mSurface?.let {
+                App.videoDecode.apply {
+                    videoDecodecCreateSurface(mSurface)
+                    videoDecodecChangeSurface(mSurface)
+                }
             }
             cameraWrapper!!.startRecvVideo { bytes, pts, keyframe ->
                 totalVideo.set(totalVideo.get() + bytes.size) // 接收到的视频数据总长
@@ -466,8 +470,8 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                     initDifference =
                         System.currentTimeMillis() - java.lang.Long.parseLong(pts.toString() + "")
                     isRunning.set(true)
-                    videoDecodec!!.let {
-                        videoDecodec!!.videoDecodec(bytes, pts)
+                    App.videoDecode.apply {
+                        videoDecodec(bytes, pts)
                     }
                 } else if (isRunning.get()) {
                     if (keyframe == 1) {
@@ -492,8 +496,8 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                             ViseLog.e(cameraWrapper!!.getUid() + "延迟超过5秒啦，清空缓存***************")
                         }
                     }
-                    videoDecodec?.let {
-                        videoDecodec!!.videoDecodec(bytes, pts)
+                    App.videoDecode.apply {
+                        videoDecodec(bytes, pts)
                     }
                 }
             }
@@ -528,11 +532,12 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
             encoderUtil!!.release()
             encoderUtil = null
         }
-        videoDecodec?.let {
-            videoDecodec!!.videoDecodecStop()
-            videoDecodec!!.release()
+        App.videoDecode.apply {
+            speed = 1 // 倍数调回一倍
+            mSurface?.let {
+                videoDecodecDestorySurface(it);
+            }
             ViseLog.e("onDestroy释放videoDecodec")
-            videoDecodec = null
         }
         decoderUtil?.run {
             stop()
@@ -554,11 +559,11 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
         val jpgPath = deviceFolder?.getAbsolutePath() + "/"
         val name = TimeUtil.getCurrDateTime() + deviceInfoId + ".jpg"
         try {
-            videoDecodec!!.takeJpeg(jpgPath + name) { b ->
+            App.videoDecode.takeJpeg(jpgPath + name) {s, b ->
                 Observable.just(b)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe { aBoolean ->
-                        if (aBoolean!!) {
+                        if (aBoolean) {
                             ToastUtil.showToast(context, getString(R.string.savePath))
                         }
                     }
@@ -669,6 +674,7 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
         }
     }
 
+    @SuppressLint("CheckResult")
     fun replayAudio() {
         Observable.timer(1, TimeUnit.SECONDS)
             .subscribe { aLong ->
@@ -843,7 +849,7 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
             cameraWrapper!!.getmCamera()
                 .playBackVideoStart(fileName, 0, { i, bytes, total, current, b ->
                     if (i == 0) {   //第一帧开始
-                        videoDecodec?.let {
+                        App.videoDecode.let {
                             if (isPlayBackVideo) {
                                 it.videoDecodec(bytes, 0)
                                 totalVideo.set(totalVideo.get() + bytes.size)
@@ -923,7 +929,7 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                     }
             }, {
                 playSDSub = it
-                mDisposable!!.add(it)
+                mDisposable.add(it)
             })
     }
 }

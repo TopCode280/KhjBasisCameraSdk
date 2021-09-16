@@ -15,7 +15,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk {
-            abiFilters "armeabi-v7a"  //可以适当补填其他 "armeabi-v7a" , "arm64-v8a", "x86"
+            abiFilters "armeabi-v7a","arm64-v8a" //可以适当补填其他 "armeabi-v7a" , "arm64-v8a", "x86"
         }
     }
     compileOptions {

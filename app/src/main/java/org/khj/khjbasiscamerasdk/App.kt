@@ -3,6 +3,7 @@ package org.khj.khjbasiscamerasdk
 import android.app.Application
 import android.util.Log
 import androidx.multidex.MultiDex
+import com.khj.glVideoDecodec2
 import com.uuzuche.lib_zxing.activity.ZXingLibrary.initDisplayOpinion
 import com.vise.log.ViseLog
 import com.vise.log.inner.DefaultTree
@@ -13,6 +14,13 @@ class App : Application() {
         initLog()
     }
 
+    companion object {
+        lateinit var instance: App
+        lateinit var context: App
+        lateinit var userAccount: String
+        var videoDecode = glVideoDecodec2()
+    }
+
     override fun onCreate() {
         super.onCreate()
         context = this
@@ -20,12 +28,6 @@ class App : Application() {
         MultiDex.install(context)
         initDisplayOpinion(context) // zxing 二维码扫描界面需要此处初始化
         registerActivityLifecycleCallbacks(LifeCycle)
-    }
-
-    companion object {
-        lateinit var instance: App
-        lateinit var context: App
-        lateinit var userAccount: String
     }
 
     fun initLog() {

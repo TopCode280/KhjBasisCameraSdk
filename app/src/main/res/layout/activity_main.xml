@@ -36,16 +36,16 @@
             app:textColorNormal="@color/text_black"
             app:textColorSelected="@color/title_backBlue" />
 
-        <com.yinglan.alphatabs.AlphaTabView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="@dimen/dp5"
-            app:tabIconNormal="@mipmap/home_"
-            app:tabIconSelected="@mipmap/home"
-            app:tabText="@string/me"
-            app:tabTextSize="@dimen/sp14"
-            app:textColorNormal="@color/text_black"
-            app:textColorSelected="@color/title_backBlue" />
+<!--        <com.yinglan.alphatabs.AlphaTabView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:padding="@dimen/dp5"-->
+<!--            app:tabIconNormal="@mipmap/home_"-->
+<!--            app:tabIconSelected="@mipmap/home"-->
+<!--            app:tabText="@string/me"-->
+<!--            app:tabTextSize="@dimen/sp14"-->
+<!--            app:textColorNormal="@color/text_black"-->
+<!--            app:textColorSelected="@color/title_backBlue" />-->
     </com.yinglan.alphatabs.AlphaTabsIndicator>
 </LinearLayout>
