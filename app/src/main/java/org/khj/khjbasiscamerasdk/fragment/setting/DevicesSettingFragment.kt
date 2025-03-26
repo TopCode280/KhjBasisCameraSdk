@@ -1,20 +1,24 @@
 package org.khj.khjbasiscamerasdk.fragment.setting
 
 import android.annotation.SuppressLint
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.khj.Camera
 import com.vise.log.ViseLog
-import kotlinx.android.synthetic.main.fragment_devicesetting.*
-import kotlinx.android.synthetic.main.topbar.*
 import org.khj.khjbasiscamerasdk.R
 import org.khj.khjbasiscamerasdk.av_modle.CameraWrapper
 import org.khj.khjbasiscamerasdk.base.BaseDeviceFragment
+import org.khj.khjbasiscamerasdk.databinding.FragmentDevicesBinding
+import org.khj.khjbasiscamerasdk.databinding.FragmentDevicesettingBinding
+import org.khj.khjbasiscamerasdk.databinding.FragmentTimePlanBinding
 import org.khj.khjbasiscamerasdk.viewmodel.DeviceSettingViewModel
 
 // 注 有部分设备因为固件问题会有设置上的不同，具体需要单独区分，更具设备类型或者Uid等。更具功能隐藏某项设置
 // 若有一些设置无反应，需要检查设备,网络连接情况或者说设备固件不支持此功能
-class DevicesSettingFragment : BaseDeviceFragment(), View.OnClickListener {
+class DevicesSettingFragment:
+    BaseDeviceFragment<FragmentDevicesettingBinding>(), View.OnClickListener {
 
     var ignore = true
 
@@ -24,15 +28,18 @@ class DevicesSettingFragment : BaseDeviceFragment(), View.OnClickListener {
 
     private var viewModel: DeviceSettingViewModel? = null
 
-    override fun contentViewId() = R.layout.fragment_devicesetting
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentDevicesettingBinding =
+        { inflater, container, attachToParent ->
+            FragmentDevicesettingBinding.inflate(inflater, container, attachToParent)
+        }
 
     override fun initView() {
         super.initView()
-        topbar.setTitle(R.string.deviceSetting)
-        topbar.addLeftBackImageButton().setOnClickListener { finish() }
+        topBarBinding.topbar.setTitle(R.string.deviceSetting)
+        topBarBinding.topbar.addLeftBackImageButton().setOnClickListener { finish() }
 
         if (cameraWrapper!!.getDevCap(CameraWrapper.Capability.WHITE_LIGHT)) {  // 如果有白关灯就有夜视功能
-            rl_vision.visibility = View.VISIBLE
+            binding.rlVision.visibility = View.VISIBLE
         }
     }
 
@@ -48,34 +55,34 @@ class DevicesSettingFragment : BaseDeviceFragment(), View.OnClickListener {
             )
             isPictureFlip.observe(this@DevicesSettingFragment, Observer {
                 ignore = true
-                cbx_reverse.isChecked = it
+                binding.cbxReverse.isChecked = it
                 ignore = false
             })
             deviceVolume.observe(this@DevicesSettingFragment, Observer {
-                tv_volume.text = "${it} /%"
+                binding.tvVolume.text = "${it} /%"
             })
             visionMode.observe(this@DevicesSettingFragment, Observer {
                 ignore = true
-                cbx_vision.setChecked(it == 2)
+               binding.cbxVision.setChecked(it == 2)
                 ignore = false
             })
             showToast.observe(this@DevicesSettingFragment, Observer {
                 changeResultToast(it)
             })
             timeZone.observe(this@DevicesSettingFragment, Observer {
-                tv_currentTimeZone.text = "UTC $it"
+               binding.tvCurrentTimeZone.text = "UTC $it"
             })
         }
     }
 
     override fun setListeners() {
         super.setListeners()
-        cbx_reverse.setOnCheckedChangeListener { _, isChecked ->
+       binding.cbxReverse.setOnCheckedChangeListener { _, isChecked ->
             if (!ignore) {
                 viewModel?.setPictureFlipStatus(isChecked)
             }
         }
-        cbx_vision.setOnCheckedChangeListener { _, isChecked ->
+       binding.cbxVision.setOnCheckedChangeListener { _, isChecked ->
             if (!ignore) {
                 val before = cameraWrapper!!.switchStatus
                 var after = before
@@ -89,13 +96,13 @@ class DevicesSettingFragment : BaseDeviceFragment(), View.OnClickListener {
                 viewModel?.setNigheSwitch(finalI, isChecked)
             }
         }
-        rl_deviceInfo.setOnClickListener(this)
-        rl_timeZoneSetting.setOnClickListener(this)
-        tv_recordVideo.setOnClickListener(this)
-        tv_selfCheck.setOnClickListener(this)
-        tv_media.setOnClickListener(this)
-        tv_alarm.setOnClickListener(this)
-        tv_onOff.setOnClickListener(this)
+       binding.rlDeviceInfo.setOnClickListener(this)
+       binding.rlTimeZoneSetting.setOnClickListener(this)
+       binding.tvRecordVideo.setOnClickListener(this)
+       binding.tvSelfCheck.setOnClickListener(this)
+       binding.tvMedia.setOnClickListener(this)
+       binding.tvAlarm.setOnClickListener(this)
+       binding.tvOnOff.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -107,28 +114,34 @@ class DevicesSettingFragment : BaseDeviceFragment(), View.OnClickListener {
                     addToStack(infoFragment)
                     switchFragment(infoFragment, true)
                 }
+
                 R.id.rl_timeZoneSetting -> {
                     viewModel?.showTimeSettingDialogFragment()
                 }
+
                 R.id.tv_selfCheck -> {
                     camera?.setPtz(Camera.AVIOCTRL_MOTOR_RESET_POSITION, 0)
                 }
+
                 R.id.tv_media -> {
                     val mediaPictureFragment = MediaFragment()
                     addToStack(mediaPictureFragment)
                     switchFragment(mediaPictureFragment, true)
                 }
+
                 R.id.tv_alarm -> {
                     val mediaPictureFragment = MediaFragment()
                     addToStack(mediaPictureFragment)
                     switchFragment(mediaPictureFragment, true)
                 }
+
                 R.id.tv_onOff -> {
                     val mediaPictureFragment = MediaFragment()
                     addToStack(mediaPictureFragment)
                     switchFragment(mediaPictureFragment, true)
                 }
-                R.id.tv_recordVideo->{
+
+                R.id.tv_recordVideo -> {
                     val recordVideoSettingFragment = RecordVideoSettingFragment()
                     addToStack(recordVideoSettingFragment)
                     switchFragment(recordVideoSettingFragment, true)

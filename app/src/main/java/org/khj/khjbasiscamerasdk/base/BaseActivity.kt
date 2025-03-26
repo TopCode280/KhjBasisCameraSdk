@@ -5,27 +5,41 @@ import android.content.DialogInterface
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.viewbinding.ViewBinding
 import com.githang.statusbar.StatusBarCompat
+import com.hjq.permissions.OnPermissionCallback
+import com.hjq.permissions.XXPermissions
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog
+import com.vise.log.ViseLog
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import org.greenrobot.eventbus.EventBus
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.R
+import org.khj.khjbasiscamerasdk.databinding.ActivityMainBinding
+import org.khj.khjbasiscamerasdk.databinding.TopbarBinding
 import org.khj.khjbasiscamerasdk.utils.FragmentHelper
 import org.khjsdk.com.khjsdk_2020.value.MyConstans
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity<B : ViewBinding> : AppCompatActivity() {
+
+    protected lateinit var binding: B
+    protected lateinit var topBarBinding: TopbarBinding // 假设topbar.xml生成的Binding类是TopbarBinding
+
 
     val myConstans: MyConstans by lazy {
         MyConstans()
     }
+
+    abstract fun inflateBinding(layoutInflater: LayoutInflater): B
+
 
     protected val mDisposable: CompositeDisposable by lazy {
         CompositeDisposable()
@@ -38,28 +52,28 @@ abstract class BaseActivity : AppCompatActivity() {
         return fragmentHelper
     }
 
-    protected abstract fun getContentViewLayoutID(): Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
         removeFragmentState(savedInstanceState)
         super.onCreate(savedInstanceState)
+        binding = inflateBinding(layoutInflater)
+        setContentView(binding.root)
         if (useEventbus()) {
             EventBus.getDefault().register(this)
         }
-        if (getContentViewLayoutID() != 0) {
-            setContentView(getContentViewLayoutID())
-            initView(savedInstanceState)
+        val view = binding.root.findViewById<View>(R.id.topbar)
+        if (view != null) {
+            topBarBinding = TopbarBinding.bind(binding.root.findViewById(R.id.topbar))
         }
+        initView(savedInstanceState)
     }
 
     fun setStatusBar(lightStatusBar: Boolean) {
-        if (Build.VERSION.SDK_INT >= 21) {
-            val decorView = window.decorView
-            val option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-            decorView.systemUiVisibility = option
-            window.statusBarColor = Color.TRANSPARENT
-            StatusBarCompat.setStatusBarColor(this, Color.TRANSPARENT, lightStatusBar)
-        }
+        val decorView = window.decorView
+        val option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        decorView.systemUiVisibility = option
+        window.statusBarColor = Color.TRANSPARENT
+        StatusBarCompat.setStatusBarColor(this, Color.TRANSPARENT, lightStatusBar)
     }
 
     abstract fun initView(savedInstanceState: Bundle?)
@@ -136,5 +150,29 @@ abstract class BaseActivity : AppCompatActivity() {
             mDisposable!!.clear()
         }
         dismissLoading()
+    }
+
+    fun requestPermissions(
+        context: Context?,
+        permissionRetCall: PermissionRetCall?,
+        vararg permissions: String
+    ) {
+        if (context == null || permissionRetCall == null) {
+            return
+        }
+        XXPermissions.with(context)
+            .permission(*permissions)
+            .request(object : OnPermissionCallback {
+                override fun onGranted(list: List<String>, all: Boolean) {
+                    if (all) {
+                        permissionRetCall.onAllow()
+                    }
+                }
+
+                override fun onDenied(permissions: List<String>, never: Boolean) {
+                    dismissLoading()
+                    permissionRetCall.onRefuse(never)
+                }
+            })
     }
 }

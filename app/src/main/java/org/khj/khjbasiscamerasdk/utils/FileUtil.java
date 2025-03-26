@@ -31,23 +31,14 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-import id.zelory.compressor.Compressor;
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by ShuRun on 2018/4/9.
  */
 public class FileUtil {
     private static FileUtil fileUtil;
-    private final Compressor compressor;
 
     private FileUtil(Context context) {
-        compressor = new Compressor(context);
     }
 
     public static FileUtil getInstance(Context context) {

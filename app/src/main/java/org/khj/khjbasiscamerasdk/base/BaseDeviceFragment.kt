@@ -1,5 +1,8 @@
 package org.khj.khjbasiscamerasdk.base
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.viewbinding.ViewBinding
 import com.khj.Camera
 import com.vise.log.ViseLog
 import org.khj.khjbasiscamerasdk.App
@@ -9,7 +12,7 @@ import org.khj.khjbasiscamerasdk.av_modle.CameraWrapper
 import org.khj.khjbasiscamerasdk.utils.WiFiUtil
 import org.khjsdk.com.khjsdk_2020.value.MyConstans
 
-open class BaseDeviceFragment : BaseFragment() {
+abstract class BaseDeviceFragment<VB : ViewBinding> : BaseFragment<VB>() {
 
     protected var cameraWrapper: CameraWrapper? = null
     protected var camera: Camera? = null
@@ -20,7 +23,11 @@ open class BaseDeviceFragment : BaseFragment() {
         MyConstans()
     }
 
-    override fun contentViewId() = 0
+    protected abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> VB
+
+    override fun initBinding(inflater: LayoutInflater, container: ViewGroup?): VB {
+        return bindingInflater(inflater, container, false)
+    }
 
     override fun initView() {
     }

@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -18,17 +19,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import es.dmoral.toasty.Toasty
 import io.reactivex.disposables.Disposable
-import kotlinx.android.synthetic.main.fragment_recording_setting.*
-import kotlinx.android.synthetic.main.topbar.*
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.R
 import org.khj.khjbasiscamerasdk.adapter.RecordPlanAdapter
 import org.khj.khjbasiscamerasdk.base.BaseDeviceFragment
+import org.khj.khjbasiscamerasdk.databinding.FragmentDevicesBinding
+import org.khj.khjbasiscamerasdk.databinding.FragmentMovedetectBinding
+import org.khj.khjbasiscamerasdk.databinding.FragmentRecordingSettingBinding
 import org.khj.khjbasiscamerasdk.utils.TimePlanManager
 import org.khj.khjbasiscamerasdk.view.SimpleMiddleDividerItemDecoration
 import org.khj.khjbasiscamerasdk.viewmodel.RecordVideoSettingViewModel
 
-class RecordVideoSettingFragment : BaseDeviceFragment(), View.OnClickListener {
+class RecordVideoSettingFragment: BaseDeviceFragment<FragmentRecordingSettingBinding>(), View.OnClickListener {
 
     private val recorQualityArray: Array<String> by lazy {
         App.context.getResources().getStringArray(R.array.videoRecordQuality)
@@ -38,6 +40,11 @@ class RecordVideoSettingFragment : BaseDeviceFragment(), View.OnClickListener {
         App.context.getResources().getStringArray(R.array.recordMode)
     }
 
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentRecordingSettingBinding =
+        { inflater, container, attachToParent ->
+            FragmentRecordingSettingBinding.inflate(inflater, container, attachToParent)
+        }
+
     private val queryPlanSub: Disposable? = null
     private val currentQuality: Int = 0//当前录像质量1->3
     private val videoRecordStatus: Int = 0//1是全天录像，0是定时录像
@@ -45,18 +52,17 @@ class RecordVideoSettingFragment : BaseDeviceFragment(), View.OnClickListener {
 
     var recordVideoSettingViewModel: RecordVideoSettingViewModel? = null
 
-    override fun contentViewId() = R.layout.fragment_recording_setting
 
     override fun initView() {
         super.initView()
-        topbar.setTitle(getString(R.string.recordSet))
-        topbar.addLeftBackImageButton().setOnClickListener { back() }
+        topBarBinding.topbar.setTitle(getString(R.string.recordSet))
+        topBarBinding.topbar.addLeftBackImageButton().setOnClickListener { back() }
     }
 
     override fun setListeners() {
         super.setListeners()
-        rl_recording.setOnClickListener(this)
-        rl_videoQuality.setOnClickListener(this)
+        binding.rlRecording.setOnClickListener(this)
+       binding.rlVideoQuality.setOnClickListener(this)
     }
 
     @SuppressLint("SetTextI18n")
@@ -70,29 +76,29 @@ class RecordVideoSettingFragment : BaseDeviceFragment(), View.OnClickListener {
             )
             currentQuality.observe(this@RecordVideoSettingFragment, Observer {
                 if (it > 0) {
-                    tvVideoQuality.text = recorQualityArray[it]
+                  binding.tvVideoQuality.text = recorQualityArray[it]
                 }
             })
             videoRecordStatus.observe(this@RecordVideoSettingFragment, Observer {
                 if (it > 0) {
-                    tv_record_mode.text = recorModeArray.get(it)
+                  binding.tvRecordMode.text = recorModeArray.get(it)
                 }
             })
             showRecodPlanViews.observe(this@RecordVideoSettingFragment, Observer {
-                tv_tip_mode.visibility = if (it) View.VISIBLE else View.GONE
-                recyclerView_record.visibility = if (it) View.VISIBLE else View.GONE
+                binding.tvTipMode.visibility = if (it) View.VISIBLE else View.GONE
+                binding.recyclerViewRecord.visibility = if (it) View.VISIBLE else View.GONE
             })
             deviceInfo.observe(this@RecordVideoSettingFragment, Observer { ss ->
                 val total = ss[0]
                 val cardFree = ss[1]
                 cameraWrapper!!.deviceInfo?.run {
                     if (total.trim() == "0") {
-                        tv_sdCapacity.setText(R.string.noSDcard)
-                        tv_sdFreeSize.setText(R.string.noSDcard)
+                       binding.tvSdCapacity.setText(R.string.noSDcard)
+                       binding.tvSdFreeSize.setText(R.string.noSDcard)
                         hasSdcard = false
                     } else {
-                        tv_sdCapacity.setText(R.string.normal)
-                        tv_sdFreeSize.text = cardFree + "MB"
+                        binding.tvSdCapacity.setText(R.string.normal)
+                        binding.tvSdFreeSize.text = cardFree + "MB"
                         cameraWrapper!!.deviceInfo.let {
                             hasSdcard = true
                             sdcardTotal = total.toInt();
@@ -138,14 +144,13 @@ class RecordVideoSettingFragment : BaseDeviceFragment(), View.OnClickListener {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     fun initRecycler() {
-        recyclerView_record.layoutManager = LinearLayoutManager(
+       binding.recyclerViewRecord.layoutManager = LinearLayoutManager(
             mActivity,
             LinearLayoutManager.VERTICAL,
             false
         )
-        recyclerView_record.addItemDecoration(SimpleMiddleDividerItemDecoration(mActivity))
+        binding.recyclerViewRecord.addItemDecoration(SimpleMiddleDividerItemDecoration(mActivity))
         recordPlanAdapter = RecordPlanAdapter()
         recordPlanAdapter?.apply {
             val footer = TextView(mActivity)
@@ -155,7 +160,7 @@ class RecordVideoSettingFragment : BaseDeviceFragment(), View.OnClickListener {
             )
             footer.gravity = Gravity.CENTER
             footer.text = getString(R.string.addPlan)
-            footer.setTextColor(mActivity.getColor(R.color.title_backBlue))
+            footer.setTextColor(mActivity.resources.getColor(R.color.title_backBlue))
             footer.setBackgroundColor(Color.WHITE)
             footer.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f)
             footer.setOnClickListener { v: View? ->
@@ -166,7 +171,7 @@ class RecordVideoSettingFragment : BaseDeviceFragment(), View.OnClickListener {
                 }
             }
             addFooterView(footer)
-            recyclerView_record.adapter = this
+            binding.recyclerViewRecord.adapter = this
             setOnItemClickListener { adapter, view, position ->
                 fragmentHelp?.apply {
                     val recordPlanFragment = RecordPlanFragment()

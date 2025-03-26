@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.wifi.ScanResult
 import android.net.wifi.WifiManager
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,19 +16,19 @@ import io.reactivex.ObservableOnSubscribe
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_apadddevicelist.*
-import kotlinx.android.synthetic.main.topbar.*
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.R
 import org.khj.khjbasiscamerasdk.activity.video.WatchVideoActivity
 import org.khj.khjbasiscamerasdk.adapter.ApDeviceAdapter
 import org.khj.khjbasiscamerasdk.av_modle.CameraManager
 import org.khj.khjbasiscamerasdk.base.BaseActivity
+import org.khj.khjbasiscamerasdk.databinding.ActivityApadddevicelistBinding
+import org.khj.khjbasiscamerasdk.databinding.ActivityWatchervideoBinding
 import org.khj.khjbasiscamerasdk.utils.WiFiUtil
 import org.khj.khjbasiscamerasdk.view.SimpleMiddleDividerItemDecoration
 import java.util.concurrent.TimeUnit
 
-class ApAddDeviceListActivity : BaseActivity() {
+class ApAddDeviceListActivity : BaseActivity<ActivityApadddevicelistBinding>() {
 
     private var wiFiUtil: WiFiUtil? = null
     private var apDeviceAdapter: ApDeviceAdapter? = null
@@ -37,11 +38,13 @@ class ApAddDeviceListActivity : BaseActivity() {
     private val ssid: String? = null
     private var delayTime: Int? = 0
 
-    override fun getContentViewLayoutID() = R.layout.activity_apadddevicelist
+    override fun inflateBinding(layoutInflater: LayoutInflater): ActivityApadddevicelistBinding {
+        return ActivityApadddevicelistBinding.inflate(layoutInflater)
+    }
 
     override fun initView(savedInstanceState: Bundle?) {
-        topbar.setTitle(R.string.ApMode)
-        topbar.addLeftBackImageButton().setOnClickListener { v: View? -> finish() }
+        topBarBinding.topbar.setTitle(R.string.ApMode)
+        topBarBinding.topbar.addLeftBackImageButton().setOnClickListener { v: View? -> finish() }
         try {
             wiFiUtil = WiFiUtil.getInstance(App.context)
             wiFiUtil?.run {
@@ -72,18 +75,18 @@ class ApAddDeviceListActivity : BaseActivity() {
                 apList = wiFiUtil!!.apList
                 apDeviceAdapter!!.setNewData(apList)
             }
-        mDisposable!!.add(searchLanSub!!)
+        mDisposable.add(searchLanSub!!)
     }
 
     fun initRecyclerView() {
-        rv_ap?.run {
+        binding.rvAp.run {
             setLayoutManager(LinearLayoutManager(mContext))
             addItemDecoration(SimpleMiddleDividerItemDecoration(mContext))
             setAdapter(apDeviceAdapter)
         }
         apDeviceAdapter?.setOnItemClickListener { adapter, view, position ->
             run {
-                var apSsid = apList!!.get(position).SSID
+                val apSsid = apList!!.get(position).SSID
                 if (apSsid != null && apSsid.startsWith("camera_")) {
                     uid = apSsid.substring(10)
                     ViseLog.e(uid)
@@ -102,10 +105,10 @@ class ApAddDeviceListActivity : BaseActivity() {
             wiFiUtil!!.openWifi()
         }
         wiFiUtil?.let {
-            if (device_ssid == it.realSSID){
-                delayTime = 0
+            delayTime = if (device_ssid == it.realSSID){
+                0
             }else{
-                delayTime = 7
+                7
             }
         }
         Observable.create(ObservableOnSubscribe { emitter: ObservableEmitter<Boolean?> ->

@@ -4,34 +4,36 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
+import com.hjq.permissions.Permission
+import com.hjq.permissions.XXPermissions
 import com.khj.Camera
 import com.khj.Camera.searchDeviceInfo
 import com.uuzuche.lib_zxing.activity.CaptureActivity
 import com.uuzuche.lib_zxing.activity.CodeUtils
 import com.vise.log.ViseLog
-import com.yanzhenjie.permission.AndPermission
-import com.yanzhenjie.permission.Permission
 import es.dmoral.toasty.Toasty
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.ObservableOnSubscribe
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import kotlinx.android.synthetic.main.activity_lanadddevice.*
-import kotlinx.android.synthetic.main.topbar.*
 import org.greenrobot.eventbus.EventBus
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.R
 import org.khj.khjbasiscamerasdk.av_modle.CameraManager
 import org.khj.khjbasiscamerasdk.base.BaseActivity
+import org.khj.khjbasiscamerasdk.base.PermissionRetCall
 import org.khj.khjbasiscamerasdk.bean.MulticastBean
 import org.khj.khjbasiscamerasdk.bean.SearchDeviceInfoBean
 import org.khj.khjbasiscamerasdk.database.EntityManager
 import org.khj.khjbasiscamerasdk.database.entity.DeviceEntity
+import org.khj.khjbasiscamerasdk.databinding.ActivityLanadddeviceBinding
+import org.khj.khjbasiscamerasdk.databinding.ActivityQrcodeconfigBinding
 import org.khj.khjbasiscamerasdk.eventbus.DevicesListRefreshEvent
 import org.khj.khjbasiscamerasdk.greendao.DeviceEntityDao
 import org.khj.khjbasiscamerasdk.utils.MulticastServer
@@ -40,7 +42,7 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
 
-class LanAddDeviceActivity : BaseActivity(), View.OnClickListener,
+class LanAddDeviceActivity : BaseActivity<ActivityLanadddeviceBinding>(), View.OnClickListener,
     SelectUidDialogFragment.UidListSelect, Camera.onOffLineCallback {
 
     private val REQUEST_CODE = 188
@@ -50,15 +52,18 @@ class LanAddDeviceActivity : BaseActivity(), View.OnClickListener,
     private var uid: String? = null
     private var disposable: Disposable? = null
 
-    override fun getContentViewLayoutID() = R.layout.activity_lanadddevice
+
+    override fun inflateBinding(layoutInflater: LayoutInflater): ActivityLanadddeviceBinding {
+        return ActivityLanadddeviceBinding.inflate(layoutInflater)
+    }
 
     override fun initView(savedInstanceState: Bundle?) {
-        topbar.setTitle(getString(R.string.addLanDevice))
-        topbar.addLeftBackImageButton().setOnClickListener { v: View? -> finish() }
+        topBarBinding.topbar.setTitle(getString(R.string.addLanDevice))
+        topBarBinding.topbar.addLeftBackImageButton().setOnClickListener { v: View? -> finish() }
 
-        btn_scan.setOnClickListener(this)
-        btn_search.setOnClickListener(this)
-        btn_addDevice.setOnClickListener(this)
+        binding.btnScan.setOnClickListener(this)
+       binding.btnSearch.setOnClickListener(this)
+      binding.btnAddDevice.setOnClickListener(this)
 
         multicastServer = MulticastServer()
     }
@@ -66,12 +71,26 @@ class LanAddDeviceActivity : BaseActivity(), View.OnClickListener,
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.btn_scan -> {
-                AndPermission.with(App.context)
-                    .permission(Permission.CAMERA)
-                    .onGranted { scan() }
-                    .onDenied {
-                        Toasty.error(App.context, getString(R.string.denyCameraAuthority)).show()
-                    }.start()
+                if (XXPermissions.isGranted(
+                        this,
+                        Permission.CAMERA
+                    )
+                ) {
+                    scan()
+                } else {
+                    requestPermissions(
+                        this, object : PermissionRetCall {
+                            override fun onAllow() {
+                                scan()
+                            }
+
+                            override fun onRefuse(never: Boolean) {
+                                Toasty.error(App.context, getString(R.string.denyCameraAuthority)).show()
+                            }
+                        },
+                        Permission.CAMERA
+                    )
+                }
             }
             R.id.btn_search -> {
                 searchLan()
@@ -83,7 +102,7 @@ class LanAddDeviceActivity : BaseActivity(), View.OnClickListener,
     }
 
     private fun bindDeviceToUser() {
-        uid = et_uid.getText().toString()
+        uid = binding.etUid.getText().toString()
         if (TextUtils.isEmpty(uid) || uid!!.length < 10) {
             Toasty.error(App.context, getString(R.string.notNullUid)).show()
             return
@@ -174,7 +193,7 @@ class LanAddDeviceActivity : BaseActivity(), View.OnClickListener,
                 val bundle = data.extras ?: return
                 if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
                     val result = bundle.getString(CodeUtils.RESULT_STRING)
-                    et_uid.setText(result)
+                   binding.etUid.setText(result)
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
                     Toast.makeText(App.context, R.string.ParseQRFailure, Toast.LENGTH_LONG).show()
                 }
@@ -183,7 +202,7 @@ class LanAddDeviceActivity : BaseActivity(), View.OnClickListener,
     }
 
     override fun clickUid(uid: String) {
-        et_uid.setText(uid)
+        binding.etUid.setText(uid)
     }
 
     override fun Offline(p0: Camera?) {

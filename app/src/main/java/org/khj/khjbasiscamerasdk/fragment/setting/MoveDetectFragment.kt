@@ -1,19 +1,21 @@
 package org.khj.khjbasiscamerasdk.fragment.setting
 
 import android.util.SparseArray
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.xw.repo.BubbleSeekBar
 import com.xw.repo.BubbleSeekBar.OnProgressChangedListener
-import kotlinx.android.synthetic.main.fragment_movedetect.*
-import kotlinx.android.synthetic.main.topbar.*
 import org.khj.khjbasiscamerasdk.R
 import org.khj.khjbasiscamerasdk.av_modle.CameraWrapper
 import org.khj.khjbasiscamerasdk.base.BaseDeviceFragment
+import org.khj.khjbasiscamerasdk.databinding.FragmentMediapictureBinding
+import org.khj.khjbasiscamerasdk.databinding.FragmentMovedetectBinding
 import org.khj.khjbasiscamerasdk.viewmodel.MoveDetectViewModel
 
-class MoveDetectFragment : BaseDeviceFragment() {
+class MoveDetectFragment : BaseDeviceFragment<FragmentMovedetectBinding>() {
 
     protected var ignore: Boolean = false
     private val array_interval: Array<String> by lazy {
@@ -25,9 +27,13 @@ class MoveDetectFragment : BaseDeviceFragment() {
     private val devcieType: Int by lazy {
         camera!!.devcieType
     }
-    var moveDetectViewModel: MoveDetectViewModel? = null
 
-    override fun contentViewId() = R.layout.fragment_movedetect
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentMovedetectBinding =
+        { inflater, container, attachToParent ->
+            FragmentMovedetectBinding.inflate(inflater, container, attachToParent)
+        }
+
+    var moveDetectViewModel: MoveDetectViewModel? = null
 
     override fun initData() {
         super.initData()
@@ -36,8 +42,8 @@ class MoveDetectFragment : BaseDeviceFragment() {
             setCamera(cameraWrapper!!, camera!!)
             alarmSwitch.observe(this@MoveDetectFragment, Observer {
                 ignore = true
-                cbx_moveDetect.isChecked = it
-                seekBar.visibility = if (it) View.VISIBLE else View.GONE
+                binding.cbxMoveDetect.isChecked = it
+                binding.seekBar.visibility = if (it) View.VISIBLE else View.GONE
                 ignore = false
                 getAlarmDetect()
             })
@@ -51,16 +57,16 @@ class MoveDetectFragment : BaseDeviceFragment() {
 
     override fun initView() {
         super.initView()
-        topbar.setTitle(getString(R.string.alarmSetting))
-        topbar.addLeftBackImageButton().setOnClickListener { back() }
+        topBarBinding.topbar.setTitle(getString(R.string.alarmSetting))
+        topBarBinding.topbar.addLeftBackImageButton().setOnClickListener { back() }
         if (apMode) {
-            rl_receiveAlarm.setVisibility(View.GONE)
+            binding.rlReceiveAlarm.setVisibility(View.GONE)
         }
         if (cameraWrapper!!.getDevCap(CameraWrapper.Capability.FD)) {
-            rl_faceDetect.setVisibility(View.VISIBLE)
+           binding.rlFaceDetect.setVisibility(View.VISIBLE)
         }
         if (cameraWrapper!!.getDevCap(CameraWrapper.Capability.PD)) {
-            rl_peopleDetect.setVisibility(View.VISIBLE)
+           binding.rlPeopleDetect.setVisibility(View.VISIBLE)
         }
     }
 
@@ -70,7 +76,7 @@ class MoveDetectFragment : BaseDeviceFragment() {
     }
 
     fun initSeekBar(current: Int) {
-        seekBar.configBuilder
+        binding.seekBar.configBuilder
             .min(1f)
             .progress(current.toFloat())
             .max(5f)
@@ -93,13 +99,13 @@ class MoveDetectFragment : BaseDeviceFragment() {
             .touchToSeek()
             .sectionTextPosition(BubbleSeekBar.TextPosition.BELOW_SECTION_MARK)
             .build()
-        seekBar.setCustomSectionTextArray { sectionCount: Int, array: SparseArray<String?> ->
+        binding.seekBar.setCustomSectionTextArray { sectionCount: Int, array: SparseArray<String?> ->
             array.clear()
             array.put(0, getString(R.string.low))
             array.put(4, getString(R.string.high))
             array
         }
-        seekBar.onProgressChangedListener = object : OnProgressChangedListener {
+        binding.seekBar.onProgressChangedListener = object : OnProgressChangedListener {
             override fun onProgressChanged(
                 bubbleSeekBar: BubbleSeekBar,
                 progress: Int,
@@ -114,7 +120,7 @@ class MoveDetectFragment : BaseDeviceFragment() {
                 progressFloat: Float
             ) {
                 camera!!.setMotionDetect(progress) {
-                    seekBar.setProgress(moveDetectViewModel!!.currentSensitivity.value!!.toFloat())
+                    binding.seekBar.setProgress(moveDetectViewModel!!.currentSensitivity.value!!.toFloat())
                 }
             }
 

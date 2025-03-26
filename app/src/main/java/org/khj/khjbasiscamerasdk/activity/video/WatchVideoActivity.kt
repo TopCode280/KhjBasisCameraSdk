@@ -9,31 +9,27 @@ import android.media.AudioManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.Surface
 import android.view.TextureView
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hjq.permissions.Permission
+import com.hjq.permissions.XXPermissions
 import com.khj.Camera
 import com.khj.Camera.*
 import com.khj.Muxing
-import com.khj.glVideoDecodec2
 import com.qmuiteam.qmui.util.QMUIViewHelper
 import com.vise.log.ViseLog
-import com.yanzhenjie.permission.AndPermission
-import com.yanzhenjie.permission.Permission
 import es.dmoral.toasty.Toasty
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_watchervideo.*
-import kotlinx.android.synthetic.main.topbar.*
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.App.Companion.context
 import org.khj.khjbasiscamerasdk.R
@@ -42,7 +38,11 @@ import org.khj.khjbasiscamerasdk.adapter.PlaybackVideoAdapter
 import org.khj.khjbasiscamerasdk.av_modle.CameraManager
 import org.khj.khjbasiscamerasdk.av_modle.CameraWrapper
 import org.khj.khjbasiscamerasdk.base.BaseActivity
+import org.khj.khjbasiscamerasdk.base.PermissionRetCall
 import org.khj.khjbasiscamerasdk.database.entity.DeviceEntity
+import org.khj.khjbasiscamerasdk.databinding.ActivityWatchervideoBinding
+import org.khj.khjbasiscamerasdk.newP2PUtil.CameraSendCommandBufferCall
+import org.khj.khjbasiscamerasdk.newP2PUtil.GetBufferJsonUtil
 import org.khj.khjbasiscamerasdk.utils.*
 import org.khj.khjbasiscamerasdk.view.SimpleMiddleDividerItemDecoration
 import org.khjsdk.com.khjsdk_2020.value.MyConstans
@@ -53,8 +53,9 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 
-class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
-    AdapterView.OnItemSelectedListener {
+class WatchVideoActivity : BaseActivity<ActivityWatchervideoBinding>(), successCallback,
+    onOffLineCallback,
+    AdapterView.OnItemSelectedListener ,CameraSendCommandBufferCall{
 
     private var muxing: Muxing? = null
     private var deviceUid: String? = null
@@ -102,65 +103,77 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
             this.mWeakReference = WeakReference(activity)
         }
 
-        override fun handleMessage(msg: Message?) {
+        override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
             val activity = mWeakReference.get() as WatchVideoActivity?
-
-            if (activity != null && msg != null && activity.cameraWrapper != null) {
+            ViseLog.d("msg.what:"+msg.what)
+            if (activity?.cameraWrapper != null) {
                 when (msg.what) {
-
+                    0 -> {
+                        activity.startVideo()
+                    }
+                    -90->{
+                        Toasty.error(activity, "设备已离线").show()
+                    }
+                    -20009->{
+                        Toasty.error(activity, "设备密码错误").show()
+                    }
                 }
             }
 
         }
     }
 
-    override fun getContentViewLayoutID() = R.layout.activity_watchervideo
+    override fun inflateBinding(layoutInflater: LayoutInflater): ActivityWatchervideoBinding {
+        return ActivityWatchervideoBinding.inflate(layoutInflater)
+    }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun initView(savedInstanceState: Bundle?) {
         requestPerm()
+        mWeakHandler = WeakHandler(this)
         App.videoDecode.reInit()
         App.videoDecode.hw = false // false 软解码 true 硬解码
         initVar()
         initVideo()
-        topbar.setTitle(deviceUid)
-        topbar.addLeftBackImageButton()?.setOnClickListener {
+        topBarBinding.topbar.setTitle(deviceUid)
+        topBarBinding.topbar.addLeftBackImageButton()?.setOnClickListener {
             finish()
         }
-        topbar.addRightImageButton(R.drawable.shezhi, QMUIViewHelper.generateViewId())
+        topBarBinding.topbar.addRightImageButton(R.drawable.shezhi, QMUIViewHelper.generateViewId())
             .setOnClickListener {
                 val intent = Intent(this@WatchVideoActivity, FragmentLoadActivity::class.java)
-                intent.putExtra(myConstans.FragmentLoadActivityTagDeviceUid,deviceUid)
-                intent.putExtra(myConstans.FragmentLoadActivityFragmentTag,1)
+                intent.putExtra(myConstans.FragmentLoadActivityTagDeviceUid, deviceUid)
+                intent.putExtra(myConstans.FragmentLoadActivityFragmentTag, 1)
                 startActivity(intent)
             }
-        btn_direction_up?.setOnClickListener {
+        binding.btnDirectionUp.setOnClickListener {
             // 方向盘 上
             turnCamera(AVIOCTRL_PTZ_UP)
         }
-        btn_direction_left?.setOnClickListener {
+        binding.btnDirectionLeft.setOnClickListener {
             // 方向盘 左
             turnCamera(AVIOCTRL_PTZ_LEFT)
         }
-        btn_direction_right?.setOnClickListener {
+        binding.btnDirectionRight.setOnClickListener {
             // 方向盘 右
             turnCamera(AVIOCTRL_PTZ_RIGHT)
         }
-        btn_direction_down?.setOnClickListener {
+        binding.btnDirectionDown.setOnClickListener {
             // 方向盘 下
             turnCamera(AVIOCTRL_PTZ_DOWN)
         }
-        cbx_changelight?.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.cbxChangelight.setOnCheckedChangeListener { buttonView, isChecked ->
             // 白光灯
             if (!ignore) {
                 cameraWrapper?.ChangeWitchLightStatus(isChecked)
             }
         }
-        btn_screenshot?.setOnClickListener {
+        binding.btnScreenshot.setOnClickListener {
             // 截图
             taskPhoto()
         }
-        btn_sendvoice.setOnTouchListener { view, motionEvent ->
+        binding.btnSendvoice.setOnTouchListener { view, motionEvent ->
             //发送音频
             try {
                 return@setOnTouchListener sendAudio(motionEvent)
@@ -169,18 +182,18 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
             }
             return@setOnTouchListener true
         }
-        tv_recordVideo?.setOnClickListener {
+        binding.tvRecordVideo.setOnClickListener {
             // 录制视频
             if (isRecordingMP4.get()) {
                 closeRecordFile()
-                tv_recordVideo.text = getString(R.string.startRecordingVideo)
+                binding.tvRecordVideo.text = getString(R.string.startRecordingVideo)
             } else {
                 if (connectSuccess.get()) {
                     isRecordingMP4.set(true)
-                    tv_recordVideo.text = getString(R.string.closeRecordingVideo)
+                    binding.tvRecordVideo.text = getString(R.string.closeRecordingVideo)
                     mp4Path =
                         deviceFolder!!.getAbsolutePath() + "/" + TimeUtil.getCurrDateTime() + App.userAccount + ".mov"
-                    if (cbx_receiveAudio.isChecked() && cameraWrapper!!.getmCamera().isRecvAudioOn) {
+                    if (binding.cbxReceiveAudio.isChecked() && cameraWrapper!!.getmCamera().isRecvAudioOn) {
                         isRecordingMP4WithAudio.set(true)
                     } else {
                         isRecordingMP4WithAudio.set(false)
@@ -189,38 +202,38 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                     Observable.timer(3, TimeUnit.SECONDS)
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnSubscribe { disposable: Disposable? ->
-                            tv_recordVideo.setEnabled(false)
+                            binding.tvRecordVideo.setEnabled(false)
                             mDisposable.add(disposable!!)
                         }.subscribe { aLong: Long? ->
-                            tv_recordVideo.setEnabled(true)
+                            binding.tvRecordVideo.setEnabled(true)
                         }
                 } else {
                     ToastUtil.showToast(context, getString(R.string.cannotRecordBefore))
                 }
             }
         }
-        cbx_receiveAudio?.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.cbxReceiveAudio.setOnCheckedChangeListener { buttonView, isChecked ->
             isReceiveAudio = isChecked
             receviceAudio(isChecked)
         }
         cameraWrapper?.let {
             if (it.getDevCap(CameraWrapper.Capability.WHITE_LIGHT)) {
-                cbx_changelight?.visibility = View.VISIBLE
+                binding.cbxChangelight.visibility = View.VISIBLE
             }
         }
-        tv_PlaybackVideo.setOnClickListener {
+        binding.tvPlaybackVideo.setOnClickListener {
             if (isPlayBackVideo) {
-                rv_basicFunction.visibility = View.VISIBLE
-                rv_playbackVideo.visibility = View.GONE
-                tv_PlaybackVideo.text = getString(R.string.playBackVideo)
+                binding.rvBasicFunction.visibility = View.VISIBLE
+                binding.rvPlaybackVideo.visibility = View.GONE
+                binding.tvPlaybackVideo.text = getString(R.string.playBackVideo)
                 cameraWrapper!!.playBackVideoStop()
                 delayToPlaySdSub?.dispose()
-                video_loading.show()
+                binding.videoLoading.show()
                 startVideo()
             } else {
-                rv_basicFunction.visibility = View.GONE
-                rv_playbackVideo.visibility = View.VISIBLE
-                tv_PlaybackVideo.text = getString(R.string.closePlayBack)
+                binding.rvBasicFunction.visibility = View.GONE
+                binding.rvPlaybackVideo.visibility = View.VISIBLE
+                binding.tvPlaybackVideo.text = getString(R.string.closePlayBack)
                 queryRecordVideo()
             }
             isPlayBackVideo = !isPlayBackVideo
@@ -228,13 +241,13 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
 
         val adapter = ArrayAdapter(this, R.layout.simple_list_item, dpis)
         adapter.setDropDownViewResource(R.layout.simple_list_item)
-        sp_dpi.adapter = adapter
-        sp_dpi.setOnItemSelectedListener(this) // 切换视频清晰度
+        binding.spDpi.adapter = adapter
+        binding.spDpi.setOnItemSelectedListener(this) // 切换视频清晰度
 
         playbackAdapter = PlaybackVideoAdapter()
         playbackAdapter!!.setOnItemClickListener { adapter, view, position ->
             ViseLog.i("去播放视频")
-            video_loading.show()
+            binding.videoLoading.show()
             cameraWrapper!!.playBackVideoStop()
             playBackSubcrition = Observable.timer(800, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -243,7 +256,7 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                     playBack(fileTimeInfoArrayList.get(position), position)
                 }
         }
-        recyclerview_playbackVideo?.run {
+        binding.recyclerviewPlaybackVideo.run {
             setLayoutManager(LinearLayoutManager(context))
             addItemDecoration(SimpleMiddleDividerItemDecoration(context))
             setAdapter(playbackAdapter)
@@ -252,9 +265,9 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
 
     override fun onStart() {
         super.onStart()
-        if (mSurface != null ) {
+        if (mSurface != null) {
             App.videoDecode.videoDecodecCreateSurface(mSurface)
-            App.videoDecode.videoDecodecChangeSurface(mSurface)
+            App.videoDecode.videoDecodecChangeSurface()
             startVideo()
             ViseLog.w("onStart" + "startVideo")
         }
@@ -273,7 +286,8 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
 
     fun initVideo() {
         muxing = Muxing()
-        textureView!!.surfaceTextureListener = object : TextureView.SurfaceTextureListener {
+        App.videoDecode.full = true // 设置视频流是否充满屏幕，不设置的话会自动计算 Surface 大小设置一个比例
+        binding.textureView.surfaceTextureListener = object : TextureView.SurfaceTextureListener {
             override fun onSurfaceTextureAvailable(
                 surface: SurfaceTexture,
                 width: Int,
@@ -282,7 +296,7 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                 mSurface = Surface(surface)
                 App.videoDecode.apply {
                     videoDecodecCreateSurface(mSurface)
-                    videoDecodecChangeSurface(mSurface)
+                    videoDecodecChangeSurface()
                 }
             }
 
@@ -294,13 +308,13 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                 mSurface = Surface(surface)
                 App.videoDecode.apply {
                     videoDecodecCreateSurface(mSurface)
-                    videoDecodecChangeSurface(mSurface)
+                    videoDecodecChangeSurface()
                 }
             }
 
             override fun onSurfaceTextureDestroyed(surface: SurfaceTexture): Boolean {
                 App.videoDecode.apply {
-                    videoDecodecDestorySurface(mSurface)
+                    videoDecodecDestorySurface()
                 }
                 return false
             }
@@ -344,24 +358,31 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                         cameraWrapper!!.stopReceiveVideo()
                         isRunning.set(false)
                     }
+
                     1//打开摄像头
                     -> {
                         ViseLog.e("打开摄像头")
-                        textureView.visibility = View.VISIBLE
+                        binding.textureView.visibility = View.VISIBLE
                         isRunning.set(false)
                         ViseLog.e("开启视频")
                         startVideo()
                     }
+
                     2//设备端开始录制视频
                     -> ViseLog.e("设备端开始录制视频")
+
                     3//设备端停止录制视频
                     -> ViseLog.e("设备端停止录制视频")
+
                     4 -> {
                     }
+
                     5 -> {
                     }
+
                     6 -> {
                     }
+
                     7 -> {
                     }
                 }
@@ -393,22 +414,20 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
     }
 
     private fun requestPerm() {
-        AndPermission.with(this)
-            .permission(
-                Permission.Group.MICROPHONE,
-                Permission.Group.STORAGE,
-                Permission.Group.CAMERA
-
-            ).onGranted { permissions ->
-
-            }.onDenied { permissions ->
-                Toast.makeText(
-                    context,
-                    R.string.denyPermissionLedTo,
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            .start()
+        if (!XXPermissions.isGranted(
+                mContext, Permission.MANAGE_EXTERNAL_STORAGE,
+                Permission.CAMERA, Permission.RECORD_AUDIO
+            )
+        ) {
+            requestPermissions(
+                mContext, object : PermissionRetCall {
+                    override fun onAllow() {
+                        ViseLog.i("允许权限")
+                    }
+                },
+                Permission.MANAGE_EXTERNAL_STORAGE, Permission.CAMERA, Permission.RECORD_AUDIO
+            )
+        }
     }
 
 
@@ -425,7 +444,7 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
     }
 
     override fun Online(p0: Camera?, p1: Int) {
-        startVideo()
+        mWeakHandler?.sendEmptyMessage(p1)
     }
 
     @SuppressLint("CheckResult")
@@ -456,13 +475,13 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
             mSurface?.let {
                 App.videoDecode.apply {
                     videoDecodecCreateSurface(mSurface)
-                    videoDecodecChangeSurface(mSurface)
+                    videoDecodecChangeSurface()
                 }
             }
             cameraWrapper!!.startRecvVideo { bytes, pts, keyframe ->
                 totalVideo.set(totalVideo.get() + bytes.size) // 接收到的视频数据总长
                 if (isRecordingMP4.get()) {
-                    muxing?.write(bytes, false)
+                    muxing?.write(bytes, false, -1)
                 }
                 if (!isRunning.get() && keyframe === 1) {
                     connectSuccess.set(true)
@@ -473,13 +492,20 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                     App.videoDecode.apply {
                         videoDecodec(bytes, pts)
                     }
+                    if (cameraWrapper!!.getDevCap(CameraWrapper.Capability.CloudAi)) {
+                        cameraWrapper!!.sendCommonBuffer(
+                            100,
+                            GetBufferJsonUtil.getInstance().setCloudAISwitch(true),
+                            this
+                        ) // 用与发送自定义的新功能指令，flag 100 data携带json，根据设备能力集发送对应的功能设备会回复处理结果
+                    }
                 } else if (isRunning.get()) {
                     if (keyframe == 1) {
                         Observable.just(1)
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe { integer ->
-                                if (video_loading.isShown()) {
-                                    video_loading.hide()
+                                if (binding.videoLoading.isShown()) {
+                                    binding.videoLoading.hide()
                                 }
                                 delayReconnectSubscrition?.let {
                                     delayReconnectSubscrition!!.dispose()
@@ -487,13 +513,12 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                                 }
                             }
                         val tempDiff = System.currentTimeMillis() - pts
-                        //                        KLog.d("temp", initDifference + "*" + tempDiff);
                         if (tempDiff < initDifference) {
                             initDifference = tempDiff
                         } else if (tempDiff > initDifference + 5 * 1000) {
                             cameraWrapper!!.getmCamera().cleanAudioBuf()
                             cameraWrapper!!.getmCamera().cleanVideoBuf()
-                            ViseLog.e(cameraWrapper!!.getUid() + "延迟超过5秒啦，清空缓存***************")
+                            ViseLog.e(cameraWrapper!!.getUid() + "延迟超过5秒，清空缓存")
                         }
                     }
                     App.videoDecode.apply {
@@ -513,8 +538,8 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
             delayReconnectSubscrition!!.dispose()
             delayReconnectSubscrition = null
         }
-        if (video_loading != null && video_loading.isShown()) {
-            video_loading.hide()
+        if (binding.videoLoading != null && binding.videoLoading.isShown()) {
+            binding.videoLoading.hide()
         }
         cameraWrapper?.let {
             cameraWrapper!!.setWatching(false)
@@ -535,7 +560,7 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
         App.videoDecode.apply {
             speed = 1 // 倍数调回一倍
             mSurface?.let {
-                videoDecodecDestorySurface(it);
+                videoDecodecDestorySurface();
             }
             ViseLog.e("onDestroy释放videoDecodec")
         }
@@ -557,9 +582,9 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
 
     fun taskPhoto() {
         val jpgPath = deviceFolder?.getAbsolutePath() + "/"
-        val name = TimeUtil.getCurrDateTime() + deviceInfoId + ".jpg"
+        val name = TimeUtil.getCurrDateTime() + deviceUid + ".jpg"
         try {
-            App.videoDecode.takeJpeg(jpgPath + name) {s, b ->
+            App.videoDecode.takeJpeg(jpgPath + name) { s, b ->
                 Observable.just(b)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe { aBoolean ->
@@ -580,13 +605,14 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                 isRecordingAudio.set(true)
                 startSendAudio()
                 ViseLog.i("开始发送音频!!!")
-                if (cbx_receiveAudio.isChecked()) {
+                if (binding.cbxReceiveAudio.isChecked()) {
                     decoderUtil?.run {
                         pause()
                     }
                     ViseLog.i("暂停声音监听播放!!!!")
                 }
             }
+
             MotionEvent.ACTION_UP -> {
                 isRecordingAudio.set(false)
                 cameraWrapper?.let {
@@ -594,7 +620,7 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                         cleanAudioBuf()
                     }
                 }
-                if (cbx_receiveAudio.isChecked()) {
+                if (binding.cbxReceiveAudio.isChecked()) {
                     decoderUtil?.run {
                         replayAudio()
                     }
@@ -603,9 +629,10 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                 ViseLog.i("结束发送音频!!!")
                 delayStopSendAudio()
             }
+
             MotionEvent.ACTION_CANCEL -> {
                 isRecordingAudio.set(false)
-                if (cbx_receiveAudio.isChecked()) {
+                if (binding.cbxReceiveAudio.isChecked()) {
                     decoderUtil?.run {
                         replayAudio()
                     }
@@ -706,7 +733,7 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
             decoderUtil = AACDecoderUtil()
         }
         setSpeakerphoneOn(context, true)
-        if (cbx_receiveAudio.isChecked) {
+        if (binding.cbxReceiveAudio.isChecked) {
             decoderUtil!!.replay()
         } else {
             decoderUtil!!.pause()
@@ -740,12 +767,14 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                             this@WatchVideoActivity
                         )
                     }
+
                     1 -> {
                         cameraWrapper!!.setQuality(
                             VIDEO_QUALITY_MIDDLE,
                             this@WatchVideoActivity
                         )
                     }
+
                     2 -> {
                         cameraWrapper!!.setQuality(
                             VIDEO_QUALITY_MAX,
@@ -857,7 +886,7 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                         }
                         muxing?.let {
                             if (isRecordingMP4.get()) {
-                                it.write(bytes, false)
+                                it.write(bytes, false, -1)
                             }
                         }
                         var playedMills = (current * duration / total) + 1
@@ -878,7 +907,7 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                         it.decodePCM(bytes, 0, bytes.size)
                         muxing?.let {
                             if (isRecordingMP4.get()) {
-                                it.write(bytes, true)
+                                it.write(bytes, true, -1)
                             }
                         }
                     }
@@ -888,18 +917,18 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
             .doOnSubscribe { disposable: Disposable? ->
 
             }.doFinally {
-                video_loading.hide()
+                binding.videoLoading.hide()
                 dismissLoading()
             }.subscribe({
                 decoderUtil?.let {
-                    if (cbx_receiveAudio.isChecked) {
+                    if (binding.cbxReceiveAudio.isChecked) {
                         it.replay()
                     } else {
                         it.pause()
                     }
                 }
-                if (video_loading.isShown) {
-                    video_loading.smoothToHide()
+                if (binding.videoLoading.isShown) {
+                    binding.videoLoading.smoothToHide()
                 }
                 temFrameCount++
 
@@ -931,5 +960,9 @@ class WatchVideoActivity : BaseActivity(), successCallback, onOffLineCallback,
                 playSDSub = it
                 mDisposable.add(it)
             })
+    }
+
+    override fun call(var1: Int, var2: Byte, var3: String?) {
+
     }
 }

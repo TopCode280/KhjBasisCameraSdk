@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.DialogInterface
 import android.view.View
 import androidx.lifecycle.MutableLiveData
+import androidx.viewbinding.ViewBinding
 import com.adorkable.iosdialog.IOSAlertDialog
 import com.khj.Camera
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog.CheckableDialogBuilder
@@ -122,7 +123,7 @@ class RecordVideoSettingViewModel : DeviceBaseViewModel() {
     }
 
 
-    fun showFormatDialog(activity: BaseActivity) {
+    fun showFormatDialog(activity: BaseActivity<ViewBinding>) {
         activity.run {
             if (!isFinishing) {
                 IOSAlertDialog(activity)

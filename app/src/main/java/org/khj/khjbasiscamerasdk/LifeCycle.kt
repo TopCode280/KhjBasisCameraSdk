@@ -28,38 +28,28 @@ object LifeCycle : Application.ActivityLifecycleCallbacks
         android.os.Process.killProcess(android.os.Process.myPid())
     }
 
-    override fun onActivityPaused(activity: Activity?)
-    {
-
-    }
-
-    override fun onActivityResumed(activity: Activity?)
-    {
-
-    }
-
-    override fun onActivityStarted(activity: Activity?)
-    {
-
-    }
-
     override fun onActivityDestroyed(activity: Activity)
     {
         remove(activity)
     }
 
-    override fun onActivitySaveInstanceState(activity: Activity?, outState: Bundle?)
-    {
-
-    }
-
-    override fun onActivityStopped(activity: Activity?)
-    {
-
-    }
-
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?)
     {
         add(activity)
+    }
+
+    override fun onActivityStarted(activity: Activity) {
+    }
+
+    override fun onActivityResumed(activity: Activity) {
+    }
+
+    override fun onActivityPaused(activity: Activity) {
+    }
+
+    override fun onActivityStopped(activity: Activity) {
+    }
+
+    override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
     }
 }

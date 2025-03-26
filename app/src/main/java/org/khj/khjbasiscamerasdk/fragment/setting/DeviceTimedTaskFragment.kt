@@ -1,29 +1,34 @@
 package org.khj.khjbasiscamerasdk.fragment.setting
 
 import android.annotation.SuppressLint
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.bigkoo.pickerview.builder.TimePickerBuilder
 import com.bigkoo.pickerview.listener.OnTimeSelectListener
 import com.bigkoo.pickerview.view.TimePickerView
-import kotlinx.android.synthetic.main.fragment_time_plan.*
-import kotlinx.android.synthetic.main.topbar.*
 import org.khj.khjbasiscamerasdk.R
 import org.khj.khjbasiscamerasdk.base.BaseDeviceFragment
+import org.khj.khjbasiscamerasdk.databinding.FragmentMediapictureBinding
+import org.khj.khjbasiscamerasdk.databinding.FragmentTimePlanBinding
 import org.khj.khjbasiscamerasdk.utils.TimeUtil
 import org.khj.khjbasiscamerasdk.viewmodel.DeviceTimedTaskViewModel
 
-class DeviceTimedTaskFragment : BaseDeviceFragment(), View.OnClickListener {
+class DeviceTimedTaskFragment : BaseDeviceFragment<FragmentTimePlanBinding>(), View.OnClickListener {
 
     private var viewModel: DeviceTimedTaskViewModel? = null
 
-    override fun contentViewId() = R.layout.fragment_time_plan
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentTimePlanBinding =
+        { inflater, container, attachToParent ->
+            FragmentTimePlanBinding.inflate(inflater, container, attachToParent)
+        }
 
     override fun initView() {
         super.initView()
-        topbar.setTitle(getString(R.string.deviceOnOff))
-        topbar.addLeftBackImageButton().setOnClickListener { back() }
+        topBarBinding.topbar.setTitle(getString(R.string.deviceOnOff))
+        topBarBinding.topbar.addLeftBackImageButton().setOnClickListener { back() }
     }
 
     @SuppressLint("SetTextI18n")
@@ -43,8 +48,8 @@ class DeviceTimedTaskFragment : BaseDeviceFragment(), View.OnClickListener {
 
     override fun setListeners() {
         super.setListeners()
-        rl_closeTime.setOnClickListener(this)
-        rl_openTime.setOnClickListener(this)
+        binding.rlCloseTime.setOnClickListener(this)
+        binding.rlOpenTime.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {

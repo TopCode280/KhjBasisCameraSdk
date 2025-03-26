@@ -1,5 +1,6 @@
 package org.khjsdk.com.khjsdk_2020.mvvm.view.fragment
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,9 +16,6 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_devices.*
-import kotlinx.android.synthetic.main.fragment_devices.view.*
-import kotlinx.android.synthetic.main.topbar.*
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.khj.khjbasiscamerasdk.App
@@ -30,6 +28,8 @@ import org.khj.khjbasiscamerasdk.av_modle.CameraWrapper
 import org.khj.khjbasiscamerasdk.base.BaseFragment
 import org.khj.khjbasiscamerasdk.database.EntityManager
 import org.khj.khjbasiscamerasdk.database.entity.DeviceEntity
+import org.khj.khjbasiscamerasdk.databinding.ActivityMainBinding
+import org.khj.khjbasiscamerasdk.databinding.FragmentDevicesBinding
 import org.khj.khjbasiscamerasdk.eventbus.DevicesListRefreshEvent
 import org.khj.khjbasiscamerasdk.greendao.DeviceEntityDao
 import org.khj.khjbasiscamerasdk.view.MyLinearLayoutManager
@@ -37,35 +37,37 @@ import org.khj.khjbasiscamerasdk.view.SimpleDividerItemDecoration
 import org.khjsdk.com.khjsdk_2020.eventbus.CameraStatusEvent
 import org.khjsdk.com.khjsdk_2020.eventbus.CheckOnLineEvent
 
-class DevicesFragment : BaseFragment(), OnRefreshListener {
+class DevicesFragment : BaseFragment<FragmentDevicesBinding>(), OnRefreshListener {
 
     private var deviceListAdapter: DeviceListAdapter? = null
     private var deviceList: MutableList<CameraWrapper>? = ArrayList()
 
     override fun userEventbus() = true
 
-    override fun contentViewId() = R.layout.fragment_devices
+    override fun initBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentDevicesBinding {
+        return FragmentDevicesBinding.inflate(inflater, container, false)
+    }
 
     override fun initView() {
-        topbar.setTitle(R.string.deviceList)
+       topBarBinding.topbar.setTitle(R.string.deviceList)
         deviceList = CameraManager.getInstance().cameras
         deviceListAdapter = DeviceListAdapter(deviceList)
-        refreshLayout.setEnableLoadMore(false)
-        recyclerView.setLayoutManager(MyLinearLayoutManager(context))
-        recyclerView.setAdapter(deviceListAdapter)
-        recyclerView.addItemDecoration(SimpleDividerItemDecoration(context))
-        refreshLayout.autoRefresh()
+        binding.refreshLayout.setEnableLoadMore(false)
+        binding.recyclerView.setLayoutManager(MyLinearLayoutManager(context))
+        binding.recyclerView.setAdapter(deviceListAdapter)
+        binding.recyclerView.addItemDecoration(SimpleDividerItemDecoration(context))
+        binding.refreshLayout.autoRefresh()
     }
 
     override fun setListeners() {
-        topbar.addRightImageButton(R.mipmap.add, QMUIViewHelper.generateViewId())
+        topBarBinding.topbar.addRightImageButton(R.mipmap.add, QMUIViewHelper.generateViewId())
             .setOnClickListener { v ->
                 val intent = Intent(activity, AddDeviceActivity::class.java)
                 intent.putExtra("INDEX", 0)
                 startActivity(intent)
             }
 
-        iv_addNew.setOnClickListener { v ->
+        binding.ivAddNew.setOnClickListener { v ->
             val intent = Intent(activity, AddDeviceActivity::class.java)
             startActivity(intent)
         }
@@ -88,14 +90,14 @@ class DevicesFragment : BaseFragment(), OnRefreshListener {
                             .removeCamera(cameraWrapper.deviceEntity.getDeviceUid())
                         EntityManager.getInstance()
                             .deviceEntityDao.deleteByKey(cameraWrapper.deviceEntity.id)
-                        refreshLayout.autoRefresh()
+                        binding.refreshLayout.autoRefresh()
                     }
                 }
             } catch (ex: Exception) {
                 ex.printStackTrace()
             }
         }
-        refreshLayout.setOnRefreshListener(this)
+        binding.refreshLayout.setOnRefreshListener(this)
     }
 
     override fun initData() {
@@ -117,7 +119,7 @@ class DevicesFragment : BaseFragment(), OnRefreshListener {
             .subscribe {
                 if (it.size > 0) {
                     getLocalDeviceList(it)
-                    emptyView.visibility = View.GONE
+                    binding.emptyView.visibility = View.GONE
                 } else {
                     context?.let {
                         Toast.makeText(
@@ -125,11 +127,11 @@ class DevicesFragment : BaseFragment(), OnRefreshListener {
                                     "没有绑定过设备", Toast.LENGTH_LONG
                         ).show()
                     }
-                    emptyView.visibility = View.VISIBLE
+                    binding.emptyView.visibility = View.VISIBLE
                 }
             }
         mDisposable!!.add(localDisposable)
-        view.refreshLayout.finishRefresh()
+        binding.refreshLayout.finishRefresh()
     }
 
     private fun getLocalDeviceList(deviceEntityList: List<DeviceEntity>) {
@@ -150,7 +152,7 @@ class DevicesFragment : BaseFragment(), OnRefreshListener {
 
     @Subscribe
     fun ListRefresh(refreshEvent: DevicesListRefreshEvent?) {
-        refreshLayout?.autoRefresh()
+        binding.refreshLayout.autoRefresh()
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -163,6 +165,7 @@ class DevicesFragment : BaseFragment(), OnRefreshListener {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onCameraStausChanged(statusEvent: CameraStatusEvent) { //        if (!App.isIsRunInBackground()) {
         ViseLog.i("收到刷新设备列表EventBus消息")

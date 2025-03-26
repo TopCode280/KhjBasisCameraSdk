@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.khj.Camera
 import com.vise.log.ViseLog
-import kotlinx.android.synthetic.main.dialogfragment_lanaddlist.*
 import org.khj.khjbasiscamerasdk.R
 import org.khj.khjbasiscamerasdk.adapter.UidSelectAdapter
 import org.khj.khjbasiscamerasdk.bean.SearchDeviceInfoBean

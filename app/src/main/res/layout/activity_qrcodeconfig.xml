@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/topbar"/>
+    <include  layout="@layout/topbar"/>
+
 
     <Button
         android:id="@+id/tv_selectWifi"
@@ -32,6 +33,11 @@
         android:keepScreenOn="true"
         android:scaleType="centerInside"
         android:layout_gravity="center"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="这个页面需要等待设备的局域网组播消息，才会显示网络连接成功按钮，保存数据在本地，否则刷新列表不会出现设备"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <Button

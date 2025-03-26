@@ -1,19 +1,25 @@
 package org.khj.khjbasiscamerasdk.activity
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import androidx.viewbinding.ViewBinding
 import org.khj.khjbasiscamerasdk.R
 import org.khj.khjbasiscamerasdk.base.BaseActivity
+import org.khj.khjbasiscamerasdk.base.BaseFragment
+import org.khj.khjbasiscamerasdk.databinding.LayoutFragmentBinding
 import org.khj.khjbasiscamerasdk.fragment.setting.DevicesSettingFragment
 import org.khj.khjbasiscamerasdk.utils.FragmentHelper
 
-class FragmentLoadActivity : BaseActivity() {
+class FragmentLoadActivity : BaseActivity<LayoutFragmentBinding>() {
 
     var uid: String? = ""
     val deviceSetting: DevicesSettingFragment by lazy {
         DevicesSettingFragment()
     }
 
-    override fun getContentViewLayoutID() = R.layout.layout_fragment
+    override fun inflateBinding(layoutInflater: LayoutInflater): LayoutFragmentBinding {
+        return LayoutFragmentBinding.inflate(layoutInflater)
+    }
 
     override fun initView(savedInstanceState: Bundle?) {
         val extras = intent.extras
@@ -34,4 +40,15 @@ class FragmentLoadActivity : BaseActivity() {
 
     fun getDeviceUid(): String = uid!!
 
+    override fun onBackPressed() {
+        val currentFragment: BaseFragment<ViewBinding> = fragmentHelper!!.getCurrentFragment()
+        if (currentFragment.ifAllowDetach) {
+            val count = fragmentHelper!!.pop()
+            if (count == 0) {
+                finish()
+            }
+        } else {
+            currentFragment.onBackPressed()
+        }
+    }
 }

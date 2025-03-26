@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.provider.Settings
+import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
@@ -14,22 +15,23 @@ import com.google.gson.JsonSyntaxException
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.uuzuche.lib_zxing.activity.CodeUtils
 import com.vise.log.ViseLog
-import kotlinx.android.synthetic.main.activity_qrcodeconfig.*
-import kotlinx.android.synthetic.main.topbar.*
 import org.greenrobot.eventbus.EventBus
 import org.khj.khjbasiscamerasdk.App
 import org.khj.khjbasiscamerasdk.R
 import org.khj.khjbasiscamerasdk.av_modle.CameraManager
+import org.khj.khjbasiscamerasdk.base.BaseActivity
 import org.khj.khjbasiscamerasdk.bean.MulticastBean
 import org.khj.khjbasiscamerasdk.database.EntityManager
 import org.khj.khjbasiscamerasdk.database.entity.DeviceEntity
+import org.khj.khjbasiscamerasdk.databinding.ActivityQrcodeconfigBinding
+import org.khj.khjbasiscamerasdk.databinding.ActivityWatchervideoBinding
 import org.khj.khjbasiscamerasdk.eventbus.DevicesListRefreshEvent
 import org.khj.khjbasiscamerasdk.isOpenGPS
 import org.khj.khjbasiscamerasdk.utils.MulticastServer
 import org.khj.khjbasiscamerasdk.utils.WiFiUtil
 
 
-class QrCodeConfigNetWorkActivity : AppCompatActivity(), View.OnClickListener {
+class QrCodeConfigNetWorkActivity : BaseActivity<ActivityQrcodeconfigBinding>(), View.OnClickListener {
 
     var wiFiUtil: WiFiUtil? = null
     private var multicastServer: MulticastServer? = null
@@ -37,23 +39,25 @@ class QrCodeConfigNetWorkActivity : AppCompatActivity(), View.OnClickListener {
 
     val handle = @SuppressLint("HandlerLeak")
     object : Handler() {
-        override fun handleMessage(msg: Message?) {
-            when (msg!!.what) {
+        override fun handleMessage(msg: Message) {
+            when (msg.what) {
                 1 -> {
-                    btn_deviceConnectSuccess!!.visibility = View.VISIBLE
+                    binding.btnDeviceConnectSuccess!!.visibility = View.VISIBLE
                 }
             }
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_qrcodeconfig)
-        topbar.setTitle(R.string.scanErweima)
-        topbar.addLeftBackImageButton().setOnClickListener { finish() }
-        tv_selectWifi!!.setOnClickListener(this)
-        btn_createQRcode!!.setOnClickListener(this)
-        btn_deviceConnectSuccess!!.setOnClickListener(this)
+    override fun inflateBinding(layoutInflater: LayoutInflater): ActivityQrcodeconfigBinding {
+        return ActivityQrcodeconfigBinding.inflate(layoutInflater)
+    }
+
+    override fun initView(savedInstanceState: Bundle?) {
+        topBarBinding.topbar.setTitle(R.string.scanErweima)
+        topBarBinding.topbar.addLeftBackImageButton().setOnClickListener { finish() }
+        binding.tvSelectWifi.setOnClickListener(this)
+       binding.btnCreateQRcode.setOnClickListener(this)
+       binding.btnDeviceConnectSuccess.setOnClickListener(this)
         wiFiUtil = WiFiUtil.getInstance(this)
     }
 
@@ -63,7 +67,7 @@ class QrCodeConfigNetWorkActivity : AppCompatActivity(), View.OnClickListener {
             //获取的SSID带有双引号
             val temp = wiFiUtil!!.getSSID()
             ViseLog.e(temp)
-            tv_selectWifi!!.setText(temp.replace("\"", ""))
+            binding.tvSelectWifi.setText(temp.replace("\"", ""))
         }
     }
 
@@ -98,8 +102,8 @@ class QrCodeConfigNetWorkActivity : AppCompatActivity(), View.OnClickListener {
      * PWD:the wifi password
      */
     private fun createQRcode() {
-        val ssid = tv_selectWifi!!.getText().toString().trim()
-        val pwd = et_pwd?.getText().toString().trim()
+        val ssid = binding.tvSelectWifi.getText().toString().trim()
+        val pwd = binding.etPwd.getText().toString().trim()
         val wifiType = 1 //wpa/wpa2 encrypt type
         val builder = StringBuilder()
         val wifiString = builder.append("S=").append(ssid).append(",")
@@ -108,7 +112,7 @@ class QrCodeConfigNetWorkActivity : AppCompatActivity(), View.OnClickListener {
                 .toString()
         val with = QMUIDisplayHelper.getScreenWidth(App.context)
         val mBitmap = CodeUtils.createImage(wifiString, with, with, null)
-        iv_QrCode!!.setImageBitmap(mBitmap)
+        binding.ivQrCode.setImageBitmap(mBitmap)
         Thread(Runnable { this.receiveMulticast() }).start()
     }
 

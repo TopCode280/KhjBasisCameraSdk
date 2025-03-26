@@ -18,6 +18,7 @@ import org.khj.khjbasiscamerasdk.bean.DeviceInfoBean;
 import org.khj.khjbasiscamerasdk.database.EntityManager;
 import org.khj.khjbasiscamerasdk.database.entity.DeviceEntity;
 
+import org.khj.khjbasiscamerasdk.newP2PUtil.CameraSendCommandBufferCall;
 import org.khj.khjbasiscamerasdk.utils.AACDecoderUtil;
 import org.khj.khjbasiscamerasdk.utils.AACEncoderUtil;
 import org.khj.khjbasiscamerasdk.utils.SharedPreferencesUtil;
@@ -43,7 +44,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
  * Created by ShuRun on 2018/4/24.
  * 摄像头设备的包装类，管理摄像头各种信息与状态
  */
-public class CameraWrapper implements Camera.onOffLineCallback {
+public class CameraWrapper implements Camera.onOffLineCallback, Camera.sendCommonBufferCallback {
 
     private String realPWD;
     public AtomicInteger reconnectTimes = new AtomicInteger(4);
@@ -51,6 +52,7 @@ public class CameraWrapper implements Camera.onOffLineCallback {
     private boolean isApMode;//是否是AP模式
     private String deviceSSID;//设备处于AP模式下的热点SSID
     private Camera mCamera;
+    private CameraSendCommandBufferCall cameraSendCommandBufferCall;
     private long lastOfflineTime;//上一次offline回调时间
     private long lastOnlineTime;//上一次Online回调时间
     private long lastConnectTime;//上一次connect时间
@@ -83,19 +85,38 @@ public class CameraWrapper implements Camera.onOffLineCallback {
         return isContinuousRecord;
     }
 
+    @Override
+    public void sendCommonBuffer(int success, byte type, String data) {
+        if (cameraSendCommandBufferCall != null) {
+            this.cameraSendCommandBufferCall.call(success, type, data);
+        }
+    }
+
     public enum Capability {
-        PTZ,// 云台
-        BATTERY,// 电池
-        WHITE_LIGHT,// 白光灯
-        MD,// 移动侦测
-        VD,// 声音报警
-        CRY,// 哭声检测
-        PD,// 人形检测
-        FD,// 人脸检测
-        DEV_ABTY_CUSTOM_VOICE,        // 自定义报警音
-        MCU433,        // 433模块
-        FOURG,        // 4G
-        BALL,         // 球机
+        PTZ,// 云台 0
+        BATTERY,// 电池 1
+        WHITE_LIGHT,// 白光灯 2
+        MD,// 移动侦测 3
+        VD,// 声音报警 4
+        CRY,// 哭声检测 5
+        PD,// 人形检测 6
+        FD,// 人脸检测 7
+        DEV_ABTY_CUSTOM_VOICE,        // 自定义报警音 8
+        MCU433,        // 433模块 9
+        FOURG,        // 4G 10
+        BALL,         // 球机 11
+        FIGURE,         // 物体追踪 12
+        FASTREPLAY,         // 倍数回放 13
+        CLOUDSTORAGE,         // 设备只支持云存储 14
+        PRESET,         // 预置位 15
+        AreaDetection,         // 区域检测 16
+        VoiceIntercom,         // 双向对讲 17
+        CloudAi,         // 云端AI 18
+        DoubleCamera,         // 双摄像头设备 19
+        NewPlayBack,         // 新回放 20
+        LowPowerConsumption,         // 低功耗 21
+        TwoWayVideo,         // 双向视频设备 22
+        ThreeOrders,         // 三目设备 23
         BUTT
     }
 
@@ -124,7 +145,7 @@ public class CameraWrapper implements Camera.onOffLineCallback {
      */
     public boolean getDevCap(Capability capability) {
         ViseLog.i("获取设备能力集:" + devCap + isSupportCap.get());
-        if (!isSupportCap.get() || devCap == -1) {
+        if (devCap == -1) {
             return false;
         }
         switch (capability) {
@@ -152,8 +173,33 @@ public class CameraWrapper implements Camera.onOffLineCallback {
                 return (devCap & 0x400) == 0x400;
             case BALL:
                 return (devCap & 0x800) == 0x800;
+            case FIGURE:
+                return (devCap & 0x1000) == 0x1000;
+            case FASTREPLAY:
+                return (devCap & 0x2000) == 0x2000;
+            case PRESET:
+                return (devCap & 0x8000) == 0x8000;
+            case AreaDetection:
+                return (devCap & 0x10000) == 0x10000;
+            case VoiceIntercom:
+                return (devCap & 0x20000) == 0x20000;
+            case CloudAi:
+                return (devCap & 0x40000) == 0x40000;
+            case DoubleCamera:
+                return (devCap & 0x80000) == 0x80000;
+            case NewPlayBack: {
+                return (devCap & 0x100000) == 0x100000;
+            }
+            case LowPowerConsumption: {
+                return (devCap & 0x200000) == 0x200000;//(devCap & 0x200000) == 0x200000
+            }
+            case TwoWayVideo: {
+                return (devCap & 0x400000) == 0x400000;
+            }
+            case ThreeOrders: {
+                return (devCap & 0x800000) == 0x800000; //(devCap & 0x800000) == 0x800000
+            }
         }
-
         return false;
     }
 
@@ -414,12 +460,13 @@ public class CameraWrapper implements Camera.onOffLineCallback {
                 mCamera.setPhpServer("http://127.0.0.1:8080", (b, s) -> ViseLog.i(b + s + "设置设备推送报警消息服务器地址"));
                 mCamera.getPhpServer((b, s) -> ViseLog.i(b + s + "获取报警地址"));
                 Observable.create((ObservableOnSubscribe<Boolean>) emitter -> {
-                }).observeOn(AndroidSchedulers.mainThread())
+                        }).observeOn(AndroidSchedulers.mainThread())
                         .subscribe(aBoolean -> {
                             deviceEntity.setDevicePwd(realPWD);
                             EntityManager.getInstance().getDeviceEntityDao().update(deviceEntity);
                         });
-                if (isApMode && realPWD.equals("888888")) {
+                if (isApMode && realPWD.equals("888888")) {  // 如果是ap模式连接设备需要修改设备的密码
+                    // 如果不改密码的话设备将会在半夜复位时候播放语音，设备半夜会自动复位，若是检测到没有修改过默认888888的密码的话则会按照手动长按复位键的情况执行程序。
 //                    mCamera.changePassword("888888", sixOne, b -> {
 //                        if (b) {
 //                            SharedPreferencesUtil.setString(App.context, uid, sixOne);
@@ -828,6 +875,14 @@ public class CameraWrapper implements Camera.onOffLineCallback {
         void onPush(CameraMessageBean messageBean);
     }
 
+    public void sendCommonBuffer(int flag, String data, CameraSendCommandBufferCall cameraSendCommandBufferCall) {
+        ViseLog.d("sendCommonBuffer:" + flag + data);
+        if (cameraSendCommandBufferCall != null) {
+            this.cameraSendCommandBufferCall = cameraSendCommandBufferCall;
+        }
+        mCamera.sendCommonBuffer((byte) flag, data, this);
+    }
+
     @SuppressLint("CheckResult")
     public void ChangeWitchLightStatus(boolean isChecked) {
         int before = getSwitchStatus();
@@ -840,11 +895,11 @@ public class CameraWrapper implements Camera.onOffLineCallback {
         ViseLog.d("switchBefore:" + before + "*" + "After:" + after);
         int finalI = after;
         Observable.create((ObservableOnSubscribe<Boolean>) emitter -> {
-            getmCamera().setSwitch(finalI, b -> {
-                emitter.onNext(b);
-                emitter.onComplete();
-            });
-        }).observeOn(AndroidSchedulers.mainThread())
+                    getmCamera().setSwitch(finalI, b -> {
+                        emitter.onNext(b);
+                        emitter.onComplete();
+                    });
+                }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(aBoolean -> {
                     ToastUtil.showToast(App.context, aBoolean);
                     if (aBoolean) {

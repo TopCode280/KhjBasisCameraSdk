@@ -3,6 +3,7 @@ package org.khj.khjbasiscamerasdk.viewmodel
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.lifecycle.MutableLiveData
+import androidx.viewbinding.ViewBinding
 import com.khj.Camera
 import com.vise.log.ViseLog
 import es.dmoral.toasty.Toasty
@@ -21,7 +22,7 @@ import java.text.DecimalFormat
 
 class DeviceSettingViewModel : DeviceBaseViewModel(),SettingTimeZoneCallBack {
 
-    var activity: BaseActivity? = null
+    var activity: BaseActivity<ViewBinding>? = null
     val isPictureFlip = MutableLiveData<Boolean>()
     val deviceVolume = MutableLiveData<Int>()
     val visionMode = MutableLiveData<Int>()
@@ -30,7 +31,7 @@ class DeviceSettingViewModel : DeviceBaseViewModel(),SettingTimeZoneCallBack {
     override fun setCamera(cameraWrapper: CameraWrapper, camera: Camera, vararg args: Any) {
         this.cameraWrapper = cameraWrapper
         this.camera = camera
-        this.activity = args[0] as BaseActivity
+        this.activity = args[0] as BaseActivity<ViewBinding>
         getPictureFlipStatus()
         getDeviceVolume()
         getNigheSwitch()
