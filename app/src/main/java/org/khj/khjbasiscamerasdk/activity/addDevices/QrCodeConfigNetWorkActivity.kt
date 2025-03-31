@@ -2,6 +2,8 @@ package org.khj.khjbasiscamerasdk.activity.addDevices
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.wifi.WifiManager.WIFI_STATE_ENABLED
 import android.os.Bundle
 import android.os.Handler
@@ -9,9 +11,7 @@ import android.os.Message
 import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
-import com.google.gson.JsonSyntaxException
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.uuzuche.lib_zxing.activity.CodeUtils
 import com.vise.log.ViseLog
@@ -24,14 +24,15 @@ import org.khj.khjbasiscamerasdk.bean.MulticastBean
 import org.khj.khjbasiscamerasdk.database.EntityManager
 import org.khj.khjbasiscamerasdk.database.entity.DeviceEntity
 import org.khj.khjbasiscamerasdk.databinding.ActivityQrcodeconfigBinding
-import org.khj.khjbasiscamerasdk.databinding.ActivityWatchervideoBinding
 import org.khj.khjbasiscamerasdk.eventbus.DevicesListRefreshEvent
 import org.khj.khjbasiscamerasdk.isOpenGPS
+import org.khj.khjbasiscamerasdk.utils.KhjCodeUtils
 import org.khj.khjbasiscamerasdk.utils.MulticastServer
 import org.khj.khjbasiscamerasdk.utils.WiFiUtil
 
 
-class QrCodeConfigNetWorkActivity : BaseActivity<ActivityQrcodeconfigBinding>(), View.OnClickListener {
+class QrCodeConfigNetWorkActivity : BaseActivity<ActivityQrcodeconfigBinding>(),
+    View.OnClickListener {
 
     var wiFiUtil: WiFiUtil? = null
     private var multicastServer: MulticastServer? = null
@@ -56,8 +57,8 @@ class QrCodeConfigNetWorkActivity : BaseActivity<ActivityQrcodeconfigBinding>(),
         topBarBinding.topbar.setTitle(R.string.scanErweima)
         topBarBinding.topbar.addLeftBackImageButton().setOnClickListener { finish() }
         binding.tvSelectWifi.setOnClickListener(this)
-       binding.btnCreateQRcode.setOnClickListener(this)
-       binding.btnDeviceConnectSuccess.setOnClickListener(this)
+        binding.btnCreateQRcode.setOnClickListener(this)
+        binding.btnDeviceConnectSuccess.setOnClickListener(this)
         wiFiUtil = WiFiUtil.getInstance(this)
     }
 
@@ -82,9 +83,11 @@ class QrCodeConfigNetWorkActivity : BaseActivity<ActivityQrcodeconfigBinding>(),
                     searchWiFi()
                 }
             }
+
             R.id.btn_createQRcode -> {
                 createQRcode()
             }
+
             R.id.btn_deviceConnectSuccess -> {
                 saveDeviceInfo()
             }
@@ -107,11 +110,23 @@ class QrCodeConfigNetWorkActivity : BaseActivity<ActivityQrcodeconfigBinding>(),
         val wifiType = 1 //wpa/wpa2 encrypt type
         val builder = StringBuilder()
         val wifiString = builder.append("S=").append(ssid).append(",")
-                .append("P=").append(pwd).append(",")
-                .append("T=").append(wifiType)
-                .toString()
+            .append("P=").append(pwd).append(",")
+            .append("T=").append(wifiType)
+            .toString()
         val with = QMUIDisplayHelper.getScreenWidth(App.context)
-        val mBitmap = CodeUtils.createImage(wifiString, with, with, null)
+        val logo: Bitmap = KhjCodeUtils.getLogo(
+            mContext,
+            R.mipmap.khj_logo,
+            with,
+            with
+        )
+        val mBitmap: Bitmap = KhjCodeUtils.createQRCode(
+            wifiString,
+            with,
+            logo,
+            0.15f,
+            Color.BLACK
+        )
         binding.ivQrCode.setImageBitmap(mBitmap)
         Thread(Runnable { this.receiveMulticast() }).start()
     }
